@@ -16,22 +16,22 @@
         target="_blank"
         rel="noopener noreferrer"
         class="text-primary ms-1"
-      >LUXIMA</a>
+      >LUXIMA.ID</a>
     </span>
     <!-- 👉 Footer: right content -->
     <span class="d-md-flex gap-x-4 text-primary d-none">
       <a
-        href="#"
+        href="https://luxima-id.com"
         target="noopener noreferrer"
-      >License</a>
+      >Main Website</a>
       <a
-        href="#"
+        href="https://luxima-id.com/link"
         target="noopener noreferrer"
-      >More Themes</a>
+      >Links</a>
       <a
-        href="#"
+        href="https://crm.luxima.id"
         target="noopener noreferrer"
-      >Documentation</a>
+      >Client Area</a>
     </span>
   </div>
 </template>

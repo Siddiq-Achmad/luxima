@@ -1,5 +1,6 @@
 import mock from '@/@fake-db/mock'
 import type { User, UserOut } from '@/@fake-db/types.d'
+import { genId } from '@/@fake-db/utils'
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
 
@@ -19,8 +20,8 @@ const userTokens = [
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTB9.txWLuN4QT5PqTtgHmlOiNerIu5Do51PpYOiZutkyXYg',
 ]
 
-// // ❗ These two secrets shall be in .env file and not in any other file
-// // const jwtSecret = 'dd5f3089-40c3-403d-af14-d0c228b05cb4'
+// ❗ These two secrets shall be in .env file and not in any other file
+// const jwtSecret = 'dd5f3089-40c3-403d-af14-d0c228b05cb4'
 
 const database: User[] = [
   {
@@ -61,7 +62,7 @@ const database: User[] = [
   },
 ]
 
-mock.onPost('tes/auth/login').reply(request => {
+mock.onPost('/auth/login').reply(request => {
   const { email, password } = JSON.parse(request.data)
 
   let errors: Record<string, string[]> = {
@@ -107,7 +108,7 @@ mock.onPost('tes/auth/login').reply(request => {
   return [400, { errors }]
 })
 
-mock.onPost('tes/auth/register').reply(request => {
+mock.onPost('/auth/register').reply(request => {
   const { username, email, password } = JSON.parse(request.data)
 
   // If not any of data is missing return 400
@@ -139,15 +140,8 @@ mock.onPost('tes/auth/register').reply(request => {
 
   if (!errors.username && !errors.email) {
     // Calculate user id
-    const { length } = database
-    let lastIndex = 0
-    if (length)
-      lastIndex = database[length - 1].id
-
-    lastIndex += 1
-
     const userData: User = {
-      id: lastIndex,
+      id: genId(database),
       email,
       password,
       username,
@@ -160,8 +154,6 @@ mock.onPost('tes/auth/register').reply(request => {
         },
       ],
     }
-
-    console.log('userData :>> ', userData)
 
     database.push(userData)
 

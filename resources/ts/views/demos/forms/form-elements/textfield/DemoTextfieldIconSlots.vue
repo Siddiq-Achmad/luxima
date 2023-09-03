@@ -17,12 +17,12 @@ const clickMe = () => {
 </script>
 
 <template>
-  <VTextField
+  <AppTextField
     v-model="message"
     clearable
-    clear-icon="tabler-circle-x"
     label="Message"
     type="text"
+    class="textfield-demo-icon-slot"
   >
     <!-- Prepend -->
     <template #prepend>
@@ -42,13 +42,13 @@ const clickMe = () => {
       <VFadeTransition leave-absolute>
         <VProgressCircular
           v-if="loading"
-          size="24"
           color="info"
           indeterminate
         />
 
         <VNodeRenderer
           v-else
+          class="text-2xl"
           :nodes="themeConfig.app.logo"
         />
       </VFadeTransition>
@@ -57,8 +57,6 @@ const clickMe = () => {
     <!-- Append -->
     <template #append>
       <VBtn
-        :size="$vuetify.display.smAndDown ? 'small' : 'large'"
-        class="mt-n3"
         :icon="$vuetify.display.smAndDown"
         @click="clickMe"
       >
@@ -69,5 +67,31 @@ const clickMe = () => {
         >Click me</span>
       </VBtn>
     </template>
-  </VTextField>
+  </AppTextField>
 </template>
+
+<style lang="scss" scoped>
+.textfield-demo-icon-slot {
+  :deep(.v-input) {
+    align-content: center;
+
+    .v-input__prepend,
+    .v-input__append {
+      padding-block-start: 0 !important;
+    }
+
+    .v-input__prepend {
+      align-items: center;
+    }
+
+    .v-field__append-inner .v-progress-circular svg {
+      block-size: 1.3em;
+      inline-size: 1.3em;
+    }
+
+    .v-field__append-inner svg {
+      margin-block-start: 0.1rem;
+    }
+  }
+}
+</style>

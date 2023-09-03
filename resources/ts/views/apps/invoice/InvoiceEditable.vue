@@ -30,7 +30,7 @@ const addItem = () => {
   props.data.purchasedProducts.push({
     title: 'App Design',
     cost: 24,
-    hours: 1,
+    qty: 1,
     description: 'Designed UI kit & app pages.',
   })
 }
@@ -46,7 +46,7 @@ const removeProduct = (id: number) => {
   <VCard>
     <!-- SECTION Header -->
     <!--  eslint-disable vue/no-mutating-props -->
-    <VCardText class="d-flex flex-wrap justify-space-between flex-column flex-sm-row">
+    <VCardText class="d-flex flex-wrap justify-space-between gap-y-5 flex-column flex-sm-row">
       <!-- 👉 Left Content -->
       <div class="ma-sm-4">
         <div class="d-flex align-center mb-6">
@@ -57,7 +57,7 @@ const removeProduct = (id: number) => {
           />
 
           <!-- 👉 Title -->
-          <h6 class="font-weight-bold text-xl">
+          <h6 class="font-weight-bold text-capitalize text-h4">
             {{ themeConfig.app.title }}
           </h6>
         </div>
@@ -66,7 +66,7 @@ const removeProduct = (id: number) => {
         <p class="mb-0">
           Office 149, 450 South Brand Brooklyn
         </p>
-        <p class="mb-0">
+        <p class="my-2">
           San Diego County, CA 91905, USA
         </p>
         <p class="mb-0">
@@ -78,29 +78,34 @@ const removeProduct = (id: number) => {
       <div class="mt-4 ma-sm-4">
         <!-- 👉 Invoice Id -->
         <h6 class="d-flex align-center font-weight-medium justify-sm-end text-xl mb-3">
-          <span class="me-3">Invoice</span>
+          <span
+            class="me-3 text-h4"
+            style="inline-size: 6rem;"
+          >Invoice</span>
 
           <span>
-            <VTextField
+            <AppTextField
               v-model="props.data.invoice.id"
               disabled
               prefix="#"
               density="compact"
-              style="width: 8.9rem;"
+              style="inline-size: 9.5rem;"
             />
           </span>
         </h6>
 
         <!-- 👉 Issue Date -->
         <p class="d-flex align-center justify-sm-end mb-3">
-          <span class="me-3">Date Issued</span>
+          <span
+            class="me-3"
+            style="inline-size: 6rem;"
+          >Date Issued</span>
 
-          <span>
+          <span style="inline-size: 9.5rem;">
             <AppDateTimePicker
               v-model="props.data.invoice.issuedDate"
               density="compact"
               placeholder="YYYY-MM-DD"
-              style="width: 8.9rem;"
               :config="{ position: 'auto right' }"
             />
           </span>
@@ -108,14 +113,16 @@ const removeProduct = (id: number) => {
 
         <!-- 👉 Due Date -->
         <p class="d-flex align-center justify-sm-end mb-0">
-          <span class="me-3">Due Date</span>
+          <span
+            class="me-3"
+            style="inline-size: 6rem;"
+          >Due Date</span>
 
-          <span>
+          <span style="min-inline-size: 9.5rem;">
             <AppDateTimePicker
               v-model="props.data.invoice.dueDate"
               density="compact"
               placeholder="YYYY-MM-DD"
-              style="width: 8.9rem;"
               :config="{ position: 'auto right' }"
             />
           </span>
@@ -126,16 +133,16 @@ const removeProduct = (id: number) => {
 
     <VDivider />
 
-    <VCardText class="d-flex flex-wrap justify-space-between flex-column flex-sm-row gap-4">
+    <VCardText class="d-flex flex-wrap justify-space-between flex-column flex-sm-row gap-y-5 gap-4">
       <div
         class="ma-sm-4"
-        style="width: 15.5rem;"
+        style="inline-size: 15.5rem;"
       >
-        <h6 class="text-sm font-weight-medium mb-3">
+        <h6 class="text-base font-weight-medium mb-6">
           Invoice To:
         </h6>
 
-        <VSelect
+        <AppSelect
           v-model="props.data.invoice.client"
           :items="clients"
           item-title="name"
@@ -166,43 +173,55 @@ const removeProduct = (id: number) => {
       </div>
 
       <div class="ma-sm-4">
-        <h6 class="text-sm font-weight-medium mb-3">
+        <h6 class="text-base font-weight-medium mb-6">
           Bill To:
         </h6>
 
         <table>
           <tbody>
             <tr>
-              <td class="pe-6">
+              <td class="pe-6 pb-1">
                 Total Due:
               </td>
-              <td class="font-weight-semibold">
+              <td class="font-weight-medium pb-1">
                 {{ props.data.paymentDetails.totalDue }}
               </td>
             </tr>
+
             <tr>
-              <td class="pe-6">
+              <td class="pe-6 pb-1">
                 Bank Name:
               </td>
-              <td>{{ props.data.paymentDetails.bankName }}</td>
+              <td class="pb-1">
+                {{ props.data.paymentDetails.bankName }}
+              </td>
             </tr>
+
             <tr>
-              <td class="pe-6">
+              <td class="pe-6 pb-1">
                 Country:
               </td>
-              <td>{{ props.data.paymentDetails.country }}</td>
+              <td class="pb-1">
+                {{ props.data.paymentDetails.country }}
+              </td>
             </tr>
+
             <tr>
-              <td class="pe-6">
+              <td class="pe-6 pb-1">
                 IBAN:
               </td>
-              <td>{{ props.data.paymentDetails.iban }}</td>
+              <td class="pb-1">
+                {{ props.data.paymentDetails.iban }}
+              </td>
             </tr>
+
             <tr>
-              <td class="pe-6">
+              <td class="pe-6 pb-1">
                 SWIFT Code:
               </td>
-              <td>{{ props.data.paymentDetails.swiftCode }}</td>
+              <td class="pb-1">
+                {{ props.data.paymentDetails.swiftCode }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -216,7 +235,7 @@ const removeProduct = (id: number) => {
       <div
         v-for="(product, index) in props.data.purchasedProducts"
         :key="product.title"
-        class="ma-sm-4"
+        class="my-4 ma-sm-4"
       >
         <InvoiceProductEdit
           :id="index"
@@ -236,24 +255,25 @@ const removeProduct = (id: number) => {
 
     <!-- 👉 Total Amount -->
     <VCardText class="d-flex justify-space-between flex-wrap flex-column flex-sm-row">
-      <div class="mx-sm-4 my-2">
+      <div class="mx-sm-4 my-4">
         <div class="d-flex align-center mb-4">
-          <h6 class="text-sm font-weight-semibold me-2">
+          <h6 class="text-sm font-weight-medium me-10">
             Salesperson:
           </h6>
-          <VTextField
+          <AppTextField
             v-model="props.data.salesperson"
-            style="width: 10rem;"
+            style="inline-size: 10rem;"
+            placeholder="John Doe"
           />
         </div>
 
-        <VTextField
+        <AppTextField
           v-model="props.data.thanksNote"
-          placeholder="Thanks for your business"
+          placeholder="Message"
         />
       </div>
 
-      <div class="my-2 mx-sm-4">
+      <div class="my-4 mx-sm-4">
         <table>
           <tr>
             <td class="text-end">
@@ -273,7 +293,7 @@ const removeProduct = (id: number) => {
               </div>
             </td>
 
-            <td class="font-weight-semibold">
+            <td class="font-weight-medium text-high-emphasis">
               <p class="mb-2">
                 $154.25
               </p>
@@ -295,11 +315,12 @@ const removeProduct = (id: number) => {
     <VDivider />
 
     <VCardText class="mx-sm-4">
-      <p class="font-weight-semibold mb-2">
+      <p class="font-weight-medium text-sm text-high-emphasis mb-2">
         Note:
       </p>
-      <VTextarea
+      <AppTextarea
         v-model="props.data.note"
+        placeholder="Note"
         :rows="2"
       />
     </VCardText>

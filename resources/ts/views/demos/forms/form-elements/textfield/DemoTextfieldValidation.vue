@@ -6,7 +6,7 @@ const email = ref('')
 
 <template>
   <VForm>
-    <VTextField
+    <AppTextField
       v-model="email"
       :rules="[requiredValidator, emailValidator]"
       label="E-mail"

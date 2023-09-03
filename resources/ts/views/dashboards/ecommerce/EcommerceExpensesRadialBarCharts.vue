@@ -60,7 +60,7 @@ const chartOptions = computed(() => {
         breakpoint: 1442,
         options: {
           chart: {
-            height: 120,
+            height: 140,
           },
           plotOptions: {
             radialBar: {
@@ -77,70 +77,48 @@ const chartOptions = computed(() => {
         },
       },
       {
-        breakpoint: 1025,
+        breakpoint: 1370,
         options: {
           chart: {
-            height: 136,
+            height: 120,
+          },
+        },
+      },
+      {
+        breakpoint: 1280,
+        options: {
+          chart: {
+            height: 150,
           },
           plotOptions: {
             radialBar: {
-              hollow: {
-                size: '65%',
-              },
               dataLabels: {
                 value: {
                   fontSize: '18px',
                 },
               },
-            },
-          },
-        },
-      },
-      {
-        breakpoint: 769,
-        options: {
-          chart: {
-            height: 120,
-          },
-          plotOptions: {
-            radialBar: {
               hollow: {
-                size: '55%',
+                size: '70%',
               },
             },
           },
         },
       },
       {
-        breakpoint: 426,
+        breakpoint: 960,
         options: {
           chart: {
-            height: 145,
+            height: 250,
           },
           plotOptions: {
             radialBar: {
               hollow: {
-                size: '65%',
+                size: '70%',
               },
-            },
-          },
-          dataLabels: {
-            value: {
-              offsetY: 0,
-            },
-          },
-        },
-      },
-      {
-        breakpoint: 376,
-        options: {
-          chart: {
-            height: 105,
-          },
-          plotOptions: {
-            radialBar: {
-              hollow: {
-                size: '60%',
+              dataLabels: {
+                value: {
+                  fontSize: '18px',
+                },
               },
             },
           },
@@ -154,10 +132,10 @@ const chartOptions = computed(() => {
 <template>
   <VCard>
     <VCardText>
-      <div>
-        <h6 class="text-h6">
+      <div class="mb-n2">
+        <h5 class="text-h5">
           82.5k
-        </h6>
+        </h5>
         <span class="text-disabled text-sm">Expenses</span>
       </div>
 
@@ -165,13 +143,12 @@ const chartOptions = computed(() => {
         :options="chartOptions"
         :series="series"
         type="radialBar"
-        :height="145"
+        :height="155"
       />
 
-      <div class="text-sm text-center text-disabled mt-6">
+      <div class="text-sm text-center clamp-text text-disabled mt-3">
         $21k Expenses more than last month
       </div>
     </VCardText>
   </VCard>
 </template>
-

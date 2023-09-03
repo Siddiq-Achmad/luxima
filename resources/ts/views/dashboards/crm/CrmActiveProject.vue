@@ -50,6 +50,12 @@ const activeProjects = [
     progressColor: 'warning',
   },
 ]
+
+const moreList = [
+  { title: 'Refresh', value: 'Refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
@@ -59,29 +65,7 @@ const activeProjects = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -95,14 +79,15 @@ const activeProjects = [
             <VAvatar
               size="34"
               rounded
-              :image="project.avatarImg"
-            />
+            >
+              <VImg :src="project.avatarImg" />
+            </VAvatar>
           </template>
 
           <VListItemTitle class="font-weight-medium">
             {{ project.title }}
           </VListItemTitle>
-          <VListItemSubtitle class="opacity-100 text-disabled">
+          <VListItemSubtitle class="text-disabled">
             {{ project.subtitle }}
           </VListItemSubtitle>
 
@@ -110,7 +95,7 @@ const activeProjects = [
             <div class="d-flex align-center">
               <div
                 class="me-2"
-                style="width: 4.875rem;"
+                style="inline-size: 4.875rem;"
               >
                 <VProgressLinear
                   :model-value="project.stats"
@@ -128,4 +113,3 @@ const activeProjects = [
     </VCardText>
   </VCard>
 </template>
-

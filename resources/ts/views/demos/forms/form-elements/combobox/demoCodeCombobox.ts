@@ -5,7 +5,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="selectedItem"
     :items="items"
   />
@@ -23,7 +23,7 @@ const items = [
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="selectedItem"
     :items="items"
   />
@@ -38,7 +38,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="select"
     :items="items"
     label="Combobox"
@@ -62,7 +62,7 @@ const items = [
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="select"
     :items="items"
     label="Combobox"
@@ -80,7 +80,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="select"
     :items="items"
     label="Combobox"
@@ -104,7 +104,7 @@ const items = [
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="select"
     :items="items"
     label="Combobox"
@@ -124,7 +124,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
 <template>
   <VRow>
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="Select a favorite activity or create a new one"
@@ -133,7 +133,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="I use chips"
@@ -143,7 +143,7 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         label="I'm readonly"
         chips
@@ -153,24 +153,27 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="I use selection slot"
         multiple
       >
         <template #selection="{ item }">
-          <VChip class="mt-1">
+          <VChip>
             <VAvatar
               start
               color="primary"
             >
-              {{ String(item.title).charAt(0).toUpperCase() }}
+              <span
+                style="margin-top: 1px;"
+                class="text-xs"
+              >{{ String(item.title).charAt(0).toUpperCase() }}</span>
             </VAvatar>
             {{ item.title }}
           </VChip>
         </template>
-      </VCombobox>
+      </AppCombobox>
     </VCol>
   </VRow>
 </template>
@@ -192,7 +195,7 @@ const items = [
 <template>
   <VRow>
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="Select a favorite activity or create a new one"
@@ -201,7 +204,7 @@ const items = [
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="I use chips"
@@ -211,7 +214,7 @@ const items = [
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         label="I'm readonly"
         chips
@@ -221,24 +224,27 @@ const items = [
     </VCol>
 
     <VCol cols="12">
-      <VCombobox
+      <AppCombobox
         v-model="selectedItem"
         :items="items"
         label="I use selection slot"
         multiple
       >
         <template #selection="{ item }">
-          <VChip class="mt-1">
+          <VChip>
             <VAvatar
               start
               color="primary"
             >
-              {{ String(item.title).charAt(0).toUpperCase() }}
+              <span
+                style="margin-top: 1px;"
+                class="text-xs"
+              >{{ String(item.title).charAt(0).toUpperCase() }}</span>
             </VAvatar>
             {{ item.title }}
           </VChip>
         </template>
-      </VCombobox>
+      </AppCombobox>
     </VCol>
   </VRow>
 </template>
@@ -258,7 +264,7 @@ watch(selectedList, value => {
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="selectedList"
     v-model:search-input="search"
     :items="items"
@@ -276,7 +282,7 @@ watch(selectedList, value => {
         </VListItemTitle>
       </VListItem>
     </template>
-  </VCombobox>
+  </AppCombobox>
 </template>
 `,
   js: `<script setup>
@@ -297,7 +303,7 @@ watch(selectedList, value => {
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="selectedList"
     v-model:search-input="search"
     :items="items"
@@ -315,7 +321,7 @@ watch(selectedList, value => {
         </VListItemTitle>
       </VListItem>
     </template>
-  </VCombobox>
+  </AppCombobox>
 </template>
 `,
 }
@@ -333,7 +339,6 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
         v-model="selectedItem"
         :items="items"
         multiple
-        chips
         variant="solo"
         label="solo"
       />
@@ -342,7 +347,6 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="outlined"
         label="Outlined"
@@ -352,7 +356,6 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="underlined"
         label="Underlined"
@@ -362,7 +365,6 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="filled"
         label="Filled"
@@ -372,7 +374,6 @@ const items = ['Programming', 'Design', 'Vue', 'Vuetify']
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="plain"
         label="Plain"
@@ -399,7 +400,6 @@ const items = [
         v-model="selectedItem"
         :items="items"
         multiple
-        chips
         variant="solo"
         label="solo"
       />
@@ -408,7 +408,6 @@ const items = [
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="outlined"
         label="Outlined"
@@ -418,7 +417,6 @@ const items = [
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="underlined"
         label="Underlined"
@@ -428,7 +426,6 @@ const items = [
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="filled"
         label="Filled"
@@ -438,7 +435,6 @@ const items = [
       <VCombobox
         v-model="selectedItem"
         multiple
-        chips
         :items="items"
         variant="plain"
         label="Plain"
@@ -448,4 +444,3 @@ const items = [
 </template>
 `,
 }
-

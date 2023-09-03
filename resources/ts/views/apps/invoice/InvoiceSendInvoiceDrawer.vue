@@ -57,27 +57,10 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
     @update:model-value="handleDrawerModelValueUpdate"
   >
     <!-- 👉 Header -->
-    <div class="d-flex align-center pa-6 pb-1">
-      <h6 class="text-h6">
-        Send Invoice
-      </h6>
-
-      <VSpacer />
-
-      <VBtn
-        icon
-        size="32"
-        color="default"
-        variant="tonal"
-        class="rounded"
-        @click="handleDrawerModelValueUpdate(false)"
-      >
-        <VIcon
-          size="18"
-          icon="tabler-x"
-        />
-      </VBtn>
-    </div>
+    <AppDrawerHeaderSection
+      title="Send Invoice"
+      @cancel="$emit('update:isDrawerOpen', false)"
+    />
 
     <PerfectScrollbar :options="{ wheelPropagation: false }">
       <VCard flat>
@@ -85,28 +68,28 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
           <VForm @submit.prevent="onSubmit">
             <VRow>
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="emailFrom"
                   label="Form"
                 />
               </VCol>
 
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="emailTo"
                   label="To"
                 />
               </VCol>
 
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="invoiceSubject"
                   label="Subject"
                 />
               </VCol>
 
               <VCol cols="12">
-                <VTextarea
+                <AppTextarea
                   v-model="paymentMessage"
                   rows="10"
                   label="Message"

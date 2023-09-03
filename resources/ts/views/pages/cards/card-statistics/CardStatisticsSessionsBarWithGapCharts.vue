@@ -70,7 +70,7 @@ const chartOptions = computed(() => {
         top: -41,
         right: -10,
         left: -8,
-        bottom: -26,
+        bottom: -10,
       },
     },
     xaxis: {
@@ -140,6 +140,7 @@ const chartOptions = computed(() => {
           plotOptions: {
             bar: {
               borderRadius: 6,
+              columnWidth: '30%',
             },
           },
         },
@@ -209,9 +210,9 @@ const chartOptions = computed(() => {
   <VCard>
     <VCardText>
       <div>
-        <h6 class="text-h6">
+        <h5 class="text-h5">
           Sessions
-        </h6>
+        </h5>
         <span class="text-sm text-disabled">Last Month</span>
       </div>
 
@@ -222,9 +223,9 @@ const chartOptions = computed(() => {
       />
 
       <div class="d-flex align-center justify-space-between mt-4">
-        <h6 class="text-h6 text-center font-weight-semibold">
+        <h4 class="text-h4 text-center font-weight-medium">
           45.1k
-        </h6>
+        </h4>
         <span class="text-sm text-success">
           +12.6%
         </span>
@@ -232,4 +233,3 @@ const chartOptions = computed(() => {
     </VCardText>
   </VCard>
 </template>
-

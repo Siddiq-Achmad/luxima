@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'Others',
+    title: 'Settings',
     icon: { icon: 'tabler-dots' },
     children: [
       {

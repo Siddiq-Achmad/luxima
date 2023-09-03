@@ -82,7 +82,7 @@ const socialAccounts = ref([
     <VCol cols="12">
       <VCard title="Connected Accounts">
         <VCardText>
-          <p class="text-sm mt-n6 mb-6">
+          <p class="text-base mt-n6 mb-6">
             Display content from your connected accounts on your site
           </p>
 
@@ -90,9 +90,13 @@ const socialAccounts = ref([
             <VListItem
               v-for="account in connectedAccounts"
               :key="account.title"
-              :title="account.title"
               :subtitle="account.text"
             >
+              <template #title>
+                <h6 class="text-h6">
+                  {{ account.title }}
+                </h6>
+              </template>
               <template #prepend>
                 <VAvatar
                   start
@@ -118,7 +122,7 @@ const socialAccounts = ref([
     <VCol cols="12">
       <VCard title="Social Accounts">
         <VCardText>
-          <p class="text-sm mb-6 mt-n6">
+          <p class="text-base mb-6 mt-n6">
             Display content from social accounts on your site
           </p>
 
@@ -126,8 +130,10 @@ const socialAccounts = ref([
             <VListItem
               v-for="(account) in socialAccounts"
               :key="account.title"
-              :title="account.title"
             >
+              <h6 class="text-h6">
+                {{ account.title }}
+              </h6>
               <template #prepend>
                 <VAvatar
                   start
@@ -152,18 +158,13 @@ const socialAccounts = ref([
               </VListItemSubtitle>
 
               <template #append>
-                <VBtn
-                  icon
-                  :color="account.connected ? 'error' : 'secondary'"
+                <IconBtn
                   variant="tonal"
-                  size="small"
+                  :color="account.connected ? 'error' : 'secondary'"
                   class="rounded"
                 >
-                  <VIcon
-                    size="22"
-                    :icon="account.connected ? 'tabler-trash' : 'tabler-link'"
-                  />
-                </VBtn>
+                  <VIcon :icon="account.connected ? 'tabler-trash' : 'tabler-link'" />
+                </IconBtn>
               </template>
             </VListItem>
           </VList>

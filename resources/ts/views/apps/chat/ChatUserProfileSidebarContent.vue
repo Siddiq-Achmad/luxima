@@ -4,7 +4,7 @@ import { useChat } from './useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
 import { avatarText } from '@core/utils/formatters'
 
-const emit = defineEmits<{
+defineEmits<{
   (e: 'close'): void
 }>()
 
@@ -24,19 +24,13 @@ const userStatusRadioOptions = [
   <template v-if="store.profileUser">
     <!-- Close Button -->
     <div class="pt-2 me-2 text-end">
-      <VBtn
-        variant="text"
-        color="default"
-        icon
-        size="small"
-        @click="$emit('close')"
-      >
+      <IconBtn @click="$emit('close')">
         <VIcon
-          size="24"
           class="text-medium-emphasis"
+          color="disabled"
           icon="tabler-x"
         />
-      </VBtn>
+      </IconBtn>
     </div>
 
     <!-- User Avatar + Name + Role -->
@@ -47,12 +41,12 @@ const userStatusRadioOptions = [
         offset-y="4"
         bordered
         :color="resolveAvatarBadgeVariant(store.profileUser.status)"
-        class="chat-user-profile-badge mb-5"
+        class="chat-user-profile-badge mb-3"
       >
         <VAvatar
           size="84"
-          variant="tonal"
-          :class="`text-${resolveAvatarBadgeVariant(store.profileUser.status)}`"
+          :variant="!store.profileUser.avatar ? 'tonal' : undefined"
+          :color="!store.profileUser.avatar ? resolveAvatarBadgeVariant(store.profileUser.status) : undefined"
         >
           <VImg
             v-if="store.profileUser.avatar"
@@ -64,10 +58,10 @@ const userStatusRadioOptions = [
           >{{ avatarText(store.profileUser.fullName) }}</span>
         </VAvatar>
       </VBadge>
-      <h2 class="mb-1 text-high-emphasis font-weight-medium text-base">
+      <h5 class="text-h5">
         {{ store.profileUser.fullName }}
-      </h2>
-      <p class="text-capitalize text-medium-emphasis text-sm">
+      </h5>
+      <p class="text-capitalize text-medium-emphasis">
         {{ store.profileUser.role }}
       </p>
     </div>
@@ -83,7 +77,7 @@ const userStatusRadioOptions = [
           for="textarea-user-about"
           class="text-sm text-disabled"
         >ABOUT</span>
-        <VTextarea
+        <AppTextarea
           id="textarea-user-about"
           v-model="store.profileUser.about"
           auto-grow
@@ -112,13 +106,14 @@ const userStatusRadioOptions = [
       <!-- Settings -->
       <div class="text-medium-emphasis">
         <span class="text-sm text-disabled">SETTINGS</span>
+
         <div class="d-flex align-center my-3">
           <VIcon
             class="me-2"
-            icon="tabler-circle-check"
+            icon="tabler-message-dots"
             size="22"
           />
-          <span>Two-step Verification</span>
+          <span class="text-high-emphasis">Two-step Verification</span>
         </div>
         <div class="d-flex align-center mb-3">
           <VIcon
@@ -126,15 +121,15 @@ const userStatusRadioOptions = [
             icon="tabler-bell"
             size="22"
           />
-          <span>Notification</span>
+          <span class="text-high-emphasis">Notification</span>
         </div>
         <div class="d-flex align-center mb-3">
           <VIcon
             class="me-2"
-            icon="tabler-user"
+            icon="tabler-user-plus"
             size="22"
           />
-          <span>Invite Friends</span>
+          <span class="text-high-emphasis">Invite Friends</span>
         </div>
         <div class="d-flex align-center">
           <VIcon
@@ -142,7 +137,7 @@ const userStatusRadioOptions = [
             icon="tabler-trash"
             size="22"
           />
-          <span>Delete Account</span>
+          <span class="text-high-emphasis">Delete Account</span>
         </div>
       </div>
 

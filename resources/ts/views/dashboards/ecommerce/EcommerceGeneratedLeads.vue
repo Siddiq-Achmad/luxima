@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import VueApexCharts from 'vue3-apexcharts'
-import { useTheme } from 'vuetify'
+import { useDisplay, useTheme } from 'vuetify'
 import { hexToRgb } from '@layouts/utils'
 
 const vuetifyTheme = useTheme()
+const display = useDisplay()
 
 const series = [45, 58, 30, 50]
 
@@ -52,7 +53,8 @@ const chartOptions = computed(() => {
     },
     grid: {
       padding: {
-        top: 15,
+        top: 0,
+        bottom: -10,
         right: -20,
         left: -20,
       },
@@ -99,6 +101,20 @@ const chartOptions = computed(() => {
         },
       },
     },
+    responsive: [
+      {
+        breakpoint: display.thresholds.value.lg,
+        options: {
+          chart: { width: 200, height: 160 },
+        },
+      },
+      {
+        breakpoint: 420,
+        options: {
+          chart: { width: 150, height: 120 },
+        },
+      },
+    ],
   }
 })
 </script>
@@ -108,20 +124,19 @@ const chartOptions = computed(() => {
     <VCardText class="d-flex justify-space-between">
       <div class="d-flex flex-column">
         <div class="mb-auto">
-          <h6 class="text-h6 text-no-wrap">
+          <h5 class="text-h5 text-no-wrap">
             Generated Leads
-          </h6>
+          </h5>
           <span class="text-sm">Monthly Report</span>
         </div>
 
         <div>
-          <h5 class="text-h5 mb-1">
+          <h3 class="text-h3 mb-1">
             4,350
-          </h5>
-          <div class="text-sm">
+          </h3>
+          <div>
             <VIcon
               icon="tabler-chevron-up"
-              size="24"
               color="success"
               class="me-1"
             />
@@ -133,7 +148,7 @@ const chartOptions = computed(() => {
         <VueApexCharts
           :options="chartOptions"
           :series="series"
-          :height="147"
+          :height="110"
           :width="130"
         />
       </div>

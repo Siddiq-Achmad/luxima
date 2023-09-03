@@ -10,7 +10,7 @@ const checkbox = ref(false)
   <VForm @submit.prevent="{}">
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="firstName"
           prepend-inner-icon="tabler-user"
           label="First Name"
@@ -19,7 +19,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           prepend-inner-icon="tabler-mail"
           label="Email"
@@ -29,7 +29,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="mobile"
           prepend-inner-icon="tabler-device-mobile"
           label="Mobile"
@@ -39,12 +39,12 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="password"
           prepend-inner-icon="tabler-lock"
           label="Password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </VCol>
 

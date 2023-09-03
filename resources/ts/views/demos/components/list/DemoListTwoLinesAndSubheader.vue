@@ -58,6 +58,7 @@ const folders = [
         <VBtn
           variant="text"
           color="default"
+          size="small"
           icon="tabler-info-circle"
         />
       </template>
@@ -91,6 +92,7 @@ const folders = [
         <VBtn
           variant="text"
           color="default"
+          size="small"
           icon="tabler-info-circle"
         />
       </template>

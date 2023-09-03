@@ -12,11 +12,10 @@ const slider = ref(40)
     :step="1"
   >
     <template #append>
-      <VTextField
+      <AppTextField
         v-model="slider"
-        variant="underlined"
         type="number"
-        style="width: 60px ;"
+        style="inline-size: 100px;"
       />
     </template>
   </VSlider>

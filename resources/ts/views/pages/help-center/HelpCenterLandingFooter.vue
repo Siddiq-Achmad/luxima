@@ -1,7 +1,7 @@
 <template>
   <div class="bg-var-theme-background py-12">
     <VCardText class="text-center py-6">
-      <h5 class="text-h5 text-center mb-6">
+      <h5 class="text-h3 text-center mb-6">
         Still need help?
       </h5>
       <p>

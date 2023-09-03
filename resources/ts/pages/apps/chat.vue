@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import { useDisplay } from 'vuetify'
+import { useDisplay, useTheme } from 'vuetify'
 import type { ChatContact as TypeChatContact } from '@/@fake-db/types'
+import vuetifyInitialThemes from '@/plugins/vuetify/theme'
 import ChatActiveChatUserProfileSidebarContent from '@/views/apps/chat/ChatActiveChatUserProfileSidebarContent.vue'
 import ChatLeftSidebarContent from '@/views/apps/chat/ChatLeftSidebarContent.vue'
 import ChatLog from '@/views/apps/chat/ChatLog.vue'
@@ -89,10 +90,29 @@ const isActiveChatUserProfileSidebarOpen = ref(false)
 
 // file input
 const refInputEl = ref<HTMLElement>()
+
+const moreList = [
+  { title: 'View Contact', value: 'View Contact' },
+  { title: 'Mute Notifications', value: 'Mute Notifications' },
+  { title: 'Block Contact', value: 'Block Contact' },
+  { title: 'Clear Chat', value: 'Clear Chat' },
+  { title: 'Report', value: 'Report' },
+]
+
+const { name } = useTheme()
+
+const chatContentContainerBg = computed(() => {
+  let color = 'transparent'
+
+  if (vuetifyInitialThemes)
+    color = vuetifyInitialThemes.themes?.[name.value].colors?.background as string
+
+  return color
+})
 </script>
 
 <template>
-  <VLayout class="chat-app-layout bg-surface">
+  <VLayout class="chat-app-layout">
     <!-- 👉 user profile sidebar -->
     <VNavigationDrawer
       v-model="isUserProfileSidebarOpen"
@@ -147,21 +167,14 @@ const refInputEl = ref<HTMLElement>()
         class="d-flex flex-column h-100"
       >
         <!-- 👉 Active chat header -->
-        <div class="active-chat-header d-flex align-center text-medium-emphasis">
+        <div class="active-chat-header d-flex align-center text-medium-emphasis bg-surface">
           <!-- Sidebar toggler -->
-          <VBtn
-            variant="text"
-            color="default"
-            icon
-            size="small"
+          <IconBtn
             class="d-md-none me-3"
             @click="isLeftSidebarOpen = true"
           >
-            <VIcon
-              size="24"
-              icon="tabler-menu-2"
-            />
-          </VBtn>
+            <VIcon icon="tabler-menu-2" />
+          </IconBtn>
 
           <!-- avatar -->
           <div
@@ -172,14 +185,14 @@ const refInputEl = ref<HTMLElement>()
               dot
               location="bottom right"
               offset-x="3"
-              offset-y="3"
+              offset-y="0"
               :color="resolveAvatarBadgeVariant(store.activeChat.contact.status)"
               bordered
             >
               <VAvatar
-                size="40"
-                variant="tonal"
-                :color="resolveAvatarBadgeVariant(store.activeChat.contact.status)"
+                size="38"
+                :variant="!store.activeChat.contact.avatar ? 'tonal' : undefined"
+                :color="!store.activeChat.contact.avatar ? resolveAvatarBadgeVariant(store.activeChat.contact.status) : undefined"
                 class="cursor-pointer"
               >
                 <VImg
@@ -192,10 +205,12 @@ const refInputEl = ref<HTMLElement>()
             </VBadge>
 
             <div class="flex-grow-1 ms-4 overflow-hidden">
-              <h6 class="text-base font-weight-regular">
+              <p class="text-h6 mb-0">
                 {{ store.activeChat.contact.fullName }}
-              </h6>
-              <span class="d-block text-sm text-truncate text-disabled">{{ store.activeChat.contact.role }}</span>
+              </p>
+              <p class="text-truncate mb-0 text-disabled">
+                {{ store.activeChat.contact.role }}
+              </p>
             </div>
           </div>
 
@@ -203,64 +218,22 @@ const refInputEl = ref<HTMLElement>()
 
           <!-- Header right content -->
           <div class="d-sm-flex align-center d-none">
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-phone"
-              />
-            </VBtn>
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-video"
-              />
-            </VBtn>
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-search"
-              />
-            </VBtn>
+            <IconBtn>
+              <VIcon icon="tabler-phone-call" />
+            </IconBtn>
+            <IconBtn>
+              <VIcon icon="tabler-video" />
+            </IconBtn>
+            <IconBtn>
+              <VIcon icon="tabler-search" />
+            </IconBtn>
           </div>
 
-          <VBtn
-            variant="text"
-            color="default"
-            icon
-            size="small"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View Contact', 'Mute Notifications', 'Block Contact', 'Clear Chat', 'Report']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn
+            :menu-list="moreList"
+            density="comfortable"
+            color="undefined"
+          />
         </div>
 
         <VDivider />
@@ -290,31 +263,16 @@ const refInputEl = ref<HTMLElement>()
             autofocus
           >
             <template #append-inner>
-              <VBtn
-                icon
-                size="small"
-                variant="text"
-                color="default"
-              >
-                <VIcon
-                  size="22"
-                  icon="tabler-microphone"
-                />
-              </VBtn>
+              <IconBtn>
+                <VIcon icon="tabler-microphone" />
+              </IconBtn>
 
-              <VBtn
-                icon
-                size="small"
-                variant="text"
-                color="default"
-                class="me-4"
+              <IconBtn
+                class="me-2"
                 @click="refInputEl?.click()"
               >
-                <VIcon
-                  size="22"
-                  icon="tabler-link"
-                />
-              </VBtn>
+                <VIcon icon="tabler-photo" />
+              </IconBtn>
 
               <VBtn @click="sendMessage">
                 Send
@@ -367,11 +325,10 @@ meta:
 <style lang="scss">
 @use "@styles/variables/_vuetify.scss";
 @use "@core-scss/base/_mixins.scss";
-@use "vuetify/lib/styles/tools/elevation" as elevation;
 @use "@layouts/styles/mixins" as layoutsMixins;
 
 // Variables
-$chat-app-header-height: 68px;
+$chat-app-header-height: 62px;
 
 // Placeholders
 %chat-header {
@@ -384,7 +341,7 @@ $chat-app-header-height: 68px;
 .chat-app-layout {
   border-radius: vuetify.$card-border-radius;
 
-  @include elevation.elevation(vuetify.$card-elevation);
+  @include mixins.elevation(vuetify.$card-elevation);
 
   $sel-chat-app-layout: &;
 
@@ -438,13 +395,18 @@ $chat-app-header-height: 68px;
 }
 
 .chat-content-container {
-  background-color: rgba(var(--v-theme-on-surface), var(--v-hover-opacity));
+  /* stylelint-disable-next-line value-keyword-case */
+  background-color: v-bind(chatContentContainerBg);
 
   // Adjust the padding so text field height stays 48px
   .chat-message-input {
     .v-field__append-inner {
       align-items: center;
       padding-block-start: 0;
+    }
+
+    .v-field--appended {
+      padding-inline-end: 9px;
     }
   }
 }

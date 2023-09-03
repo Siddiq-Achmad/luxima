@@ -50,13 +50,13 @@ const chartOptions = computed(() => {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '40%',
+          columnWidth: '45%',
           borderRadius: 8,
           startingShape: 'rounded',
           endingShape: 'rounded',
         },
       },
-      colors: [currentTheme.primary, currentTheme.warning],
+      colors: [`rgba(${hexToRgb(currentTheme.primary)}, 1)`, `rgba(${hexToRgb(currentTheme.warning)}, 1)`],
       dataLabels: {
         enabled: false,
       },
@@ -96,7 +96,7 @@ const chartOptions = computed(() => {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
         labels: {
           style: {
-            fontSize: '14px',
+            fontSize: '13px',
             colors: labelColor,
             fontFamily: 'Public Sans',
           },
@@ -112,7 +112,7 @@ const chartOptions = computed(() => {
         labels: {
           offsetX: -16,
           style: {
-            fontSize: '14px',
+            fontSize: '13px',
             colors: labelColor,
             fontFamily: 'Public Sans',
           },
@@ -286,14 +286,14 @@ const chartOptions = computed(() => {
         :class="$vuetify.display.smAndUp ? 'border-e' : 'border-b'"
       >
         <VCardText class="pe-2">
-          <h6 class="text-h6 mb-6">
+          <h5 class="text-h5 mb-6">
             Revenue Report
-          </h6>
+          </h5>
 
           <VueApexCharts
             :options="chartOptions.bar"
             :series="series.bar"
-            height="365"
+            height="312"
           />
         </VCardText>
       </VCol>
@@ -328,12 +328,12 @@ const chartOptions = computed(() => {
             </VMenu>
           </VBtn>
 
-          <div class="d-flex flex-column mt-6">
-            <h5 class="font-weight-semibold text-h5">
+          <div class="d-flex flex-column mt-8">
+            <h3 class="font-weight-medium text-h3">
               $25,825
-            </h5>
+            </h3>
             <p>
-              <span class="text-high-emphasis font-weight-semibold me-1">Budget:</span>
+              <span class="text-high-emphasis font-weight-medium me-1">Budget:</span>
               <span>56,800</span>
             </p>
           </div>
@@ -352,4 +352,3 @@ const chartOptions = computed(() => {
     </VRow>
   </VCard>
 </template>
-

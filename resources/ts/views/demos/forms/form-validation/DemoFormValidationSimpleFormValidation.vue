@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import type { VForm } from 'vuetify/components'
+import type { VForm } from 'vuetify/components/VForm'
 import { emailValidator, requiredValidator } from '@validators'
 
 const firstName = ref('')
@@ -19,7 +19,7 @@ const refForm = ref<VForm>()
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           :rules="[requiredValidator]"
@@ -30,7 +30,7 @@ const refForm = ref<VForm>()
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           :rules="[requiredValidator, emailValidator]"

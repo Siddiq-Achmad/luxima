@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VueApexCharts from 'vue3-apexcharts'
 import { useTheme } from 'vuetify'
+import { prefixWithPlus } from '@core/utils/formatters'
 
 const vuetifyTheme = useTheme()
 
@@ -84,43 +85,24 @@ const projectStatus = [
     lossProfit: +576.24,
   },
 ]
+
+const moreList = [
+  { title: 'View More', value: 'View More' },
+  { title: 'Delete', value: 'Delete' },
+]
 </script>
 
 <template>
   <VCard title="Project Status">
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          size="x-small"
-          variant="plain"
-          color="default"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['View More', 'Delete']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
     <VCardText>
       <VList class="card-list">
-        <VListItem
-          title="$4,3742"
-        >
+        <VListItem title="$4,3742">
           <template #prepend>
             <VAvatar
               color="primary"
@@ -146,11 +128,13 @@ const projectStatus = [
         <VListItem
           v-for="status in projectStatus"
           :key="status.title"
-          :title="status.title"
         >
+          <VListItemTitle class="font-weight-medium">
+            {{ status.title }}
+          </VListItemTitle>
           <template #append>
             <span class="me-3">{{ status.amount }}</span>
-            <span :class="status.lossProfit > 0 ? 'text-success' : 'text-error'">{{ status.lossProfit }}</span>
+            <span :class="status.lossProfit > 0 ? 'text-success' : 'text-error'">{{ prefixWithPlus(status.lossProfit) }}</span>
           </template>
         </VListItem>
       </VList>

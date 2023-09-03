@@ -36,10 +36,10 @@ const props = defineProps<Props>()
                 class="mx-auto"
               />
 
-              <h6 class="text-h6 my-3">
+              <h6 class="text-h5 my-3">
                 {{ article.title }}
               </h6>
-              <p>
+              <p class="clamp-text">
                 {{ article.subtitle }}
               </p>
 

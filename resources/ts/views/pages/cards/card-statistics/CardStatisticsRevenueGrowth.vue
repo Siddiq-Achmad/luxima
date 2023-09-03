@@ -75,7 +75,7 @@ const chartOptions = computed(() => {
       labels: {
         style: {
           colors: labelColor,
-          fontSize: '14px',
+          fontSize: '13px',
           fontFamily: 'Public sans',
         },
       },
@@ -175,14 +175,14 @@ const chartOptions = computed(() => {
     <VCardText class="d-flex justify-space-between">
       <div class="d-flex flex-column">
         <div class="mb-auto">
-          <h6 class="text-h6 text-no-wrap">
+          <h6 class="text-h5 text-no-wrap mb-1">
             Revenue Growth
           </h6>
           <span class="text-sm">Weekly Report</span>
         </div>
 
         <div>
-          <h5 class="text-h5 mb-1">
+          <h5 class="text-h3 mb-1">
             $4,673
           </h5>
           <VChip

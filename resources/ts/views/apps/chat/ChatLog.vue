@@ -75,23 +75,21 @@ const msgGroups = computed(() => {
 </script>
 
 <template>
-  <div
-    class="chat-log pa-5"
-  >
+  <div class="chat-log pa-5">
     <div
       v-for="(msgGrp, index) in msgGroups"
       :key="msgGrp.senderId + String(index)"
       class="chat-group d-flex align-start"
       :class="[{
         'flex-row-reverse': msgGrp.senderId !== contact.id,
-        'mb-8': msgGroups.length - 1 !== index,
+        'mb-4': msgGroups.length - 1 !== index,
       }]"
     >
       <div
         class="chat-avatar"
         :class="msgGrp.senderId !== contact.id ? 'ms-4' : 'me-4'"
       >
-        <VAvatar size="38">
+        <VAvatar size="32">
           <VImg :src="msgGrp.senderId === contact.id ? contact.avatar : store.profileUser?.avatar" />
         </VAvatar>
       </div>
@@ -102,23 +100,24 @@ const msgGroups = computed(() => {
         <p
           v-for="(msgData, msgIndex) in msgGrp.messages"
           :key="msgData.time"
-          class="chat-content text-sm py-3 px-4 elevation-1"
+          class="chat-content py-2 px-4 elevation-1"
+          style="background-color: rgb(var(--v-theme-surface));"
           :class="[
-            msgGrp.senderId === contact.id ? 'bg-surface chat-left' : 'bg-primary text-white chat-right',
-            msgGrp.messages.length - 1 !== msgIndex ? 'mb-2' : 'mb-1',
+            msgGrp.senderId === contact.id ? 'chat-left' : 'bg-primary text-white chat-right',
+            msgGrp.messages.length - 1 !== msgIndex ? 'mb-3' : 'mb-1',
           ]"
         >
           {{ msgData.message }}
         </p>
         <div :class="{ 'text-right': msgGrp.senderId !== contact.id }">
-          <span class="text-xs me-1 text-disabled">{{ formatDate(msgGrp.messages[msgGrp.messages.length - 1].time, { hour: 'numeric', minute: 'numeric' }) }}</span>
           <VIcon
             v-if="msgGrp.senderId !== contact.id"
-            size="16"
+            size="18"
             :color="resolveFeedbackIcon(msgGrp.messages[msgGrp.messages.length - 1].feedback).color"
           >
             {{ resolveFeedbackIcon(msgGrp.messages[msgGrp.messages.length - 1].feedback).icon }}
           </VIcon>
+          <span class="text-sm ms-1 text-disabled">{{ formatDate(msgGrp.messages[msgGrp.messages.length - 1].time, { hour: 'numeric', minute: 'numeric' }) }}</span>
         </div>
       </div>
     </div>

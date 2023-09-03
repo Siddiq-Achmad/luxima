@@ -192,9 +192,9 @@ const chartOptions = computed(() => {
   <VCard>
     <VCardText>
       <div class="pb-4">
-        <h6 class="text-h6">
+        <h5 class="text-h5">
           Order
-        </h6>
+        </h5>
         <span class="text-sm text-disabled">Last week</span>
       </div>
 
@@ -205,9 +205,9 @@ const chartOptions = computed(() => {
       />
 
       <div class="d-flex align-center justify-space-between">
-        <h6 class="text-h6 text-center font-weight-semibold">
+        <h4 class="text-h4 text-center">
           124k
-        </h6>
+        </h4>
         <span class="text-sm text-success">
           +12.6%
         </span>

@@ -66,35 +66,19 @@ const resolveStatus: Status = {
   Rejected: 'error',
   Pending: 'secondary',
 }
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
   <VCard title="Last Transaction">
     <template #append>
       <div class="me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -123,20 +107,20 @@ const resolveStatus: Status = {
                 />
               </div>
               <div>
-                <p class="font-weight-semibold text-base mb-0">
+                <p class="font-weight-medium text-base mb-0">
                   {{ transition.lastDigit }}
                 </p>
-                <p class="text-sm mb-0">
+                <p class="text-sm text-disabled mb-0">
                   {{ transition.cardType }}
                 </p>
               </div>
             </div>
           </td>
           <td style="padding-block: 0.61rem;">
-            <p class="font-weight-semibold text-base mb-0">
+            <p class="font-weight-medium text-base mb-0">
               Sent
             </p>
-            <span class="text-sm">{{ transition.sentDate }}</span>
+            <span class="text-sm text-disabled">{{ transition.sentDate }}</span>
           </td>
           <td style="padding-block: 0.61rem;">
             <VChip
@@ -147,7 +131,7 @@ const resolveStatus: Status = {
             </VChip>
           </td>
           <td style="padding-block: 0.61rem;">
-            <span class="font-weight-semibold text-base">{{ transition.trend }}</span>
+            <span class="font-weight-medium text-base">{{ transition.trend }}</span>
           </td>
         </tr>
       </tbody>

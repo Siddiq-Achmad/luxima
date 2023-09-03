@@ -6,17 +6,17 @@ export default [
       {
         title: 'Analytics',
         to: 'dashboards-analytics',
-        icon: { icon: 'tabler-chart-bar' },
+        icon: { icon: 'tabler-chart-pie-2' },
       },
       {
         title: 'eCommerce',
         to: 'dashboards-ecommerce',
-        icon: { icon: 'tabler-shopping-cart' },
+        icon: { icon: 'tabler-atom-2' },
       },
       {
         title: 'CRM',
         to: 'dashboards-crm',
-        icon: { icon: 'tabler-heart-rate-monitor' },
+        icon: { icon: 'tabler-3d-cube-sphere' },
       },
     ],
   },

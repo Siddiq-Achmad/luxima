@@ -49,38 +49,22 @@ const monthlyCampaignState = [
     statsColor: 'success',
   },
 ]
+
+const moreMenuList = [
+  { title: 'Refresh', value: 'Refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
   <VCard
     title="Monthly Campaign State"
-    subtitle="8.52k Social Visiters"
+    subtitle="8.52k Social Visitors"
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreMenuList" />
       </div>
     </template>
 

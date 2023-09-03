@@ -8,7 +8,7 @@ const time = ref('04:56')
 <template>
   <VRow>
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="amount"
         label="Amount"
         prefix="$"
@@ -17,15 +17,16 @@ const time = ref('04:56')
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="weight"
         label="Weight"
         suffix="lbs"
+        type="number"
       />
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="email"
         label="Email address"
         suffix="@gmail.com"
@@ -33,7 +34,7 @@ const time = ref('04:56')
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="time"
         label="Label Text"
         type="time"

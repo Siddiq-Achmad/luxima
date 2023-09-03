@@ -32,7 +32,7 @@ const chartOptions = computed(() => {
         borderRadius: 6,
       },
     },
-    colors: [currentTheme.warning],
+    colors: [`rgba(${hexToRgb(currentTheme.warning)}, 1)`],
     grid: {
       show: false,
       padding: {
@@ -62,7 +62,7 @@ const chartOptions = computed(() => {
       labels: {
         style: {
           colors: `rgba(${hexToRgb(currentTheme['on-surface'])},${variableTheme['disabled-opacity']})`,
-          fontSize: '14px',
+          fontSize: '13px',
           fontFamily: 'Public sans',
         },
         show: true,
@@ -169,7 +169,7 @@ const chartOptions = computed(() => {
     <VCardText>
       <div class="d-flex justify-space-between">
         <div>
-          <h5 class="text-h5">
+          <h5 class="text-h3">
             2.84k
           </h5>
           <span class="text-sm text-disabled">Avg Daily Traffic</span>
@@ -179,7 +179,7 @@ const chartOptions = computed(() => {
           label
           color="success"
         >
-          <span class="font-weight-semibold">+92k</span>
+          <span class="font-weight-medium">+92k</span>
         </VChip>
       </div>
 

@@ -29,7 +29,7 @@ invoiceListStore.fetchInvoice(Number(route.params.id)).then(response => {
       {
         title: 'App Design',
         cost: 24,
-        hours: 2,
+        qty: 2,
         description: 'Designed UI kit & app pages.',
       },
     ],
@@ -118,7 +118,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       </VCard>
 
       <!-- 👉 Accept payment via  -->
-      <VSelect
+      <AppSelect
         v-model="selectedPaymentMethod"
         :items="paymentMethods"
         label="Accept Payment Via"
@@ -126,7 +126,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       />
 
       <!-- 👉 Payment Terms -->
-      <div class="d-flex align-center justify-space-between">
+      <div class="d-flex align-center justify-space-between mb-2">
         <VLabel for="payment-terms">
           Payment Terms
         </VLabel>
@@ -139,7 +139,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       </div>
 
       <!-- 👉 Client Notes -->
-      <div class="d-flex align-center justify-space-between">
+      <div class="d-flex align-center justify-space-between mb-2">
         <VLabel for="client-notes">
           Client Notes
         </VLabel>
@@ -172,4 +172,3 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
     <InvoiceAddPaymentDrawer v-model:isDrawerOpen="isAddPaymentSidebarActive" />
   </VRow>
 </template>
-

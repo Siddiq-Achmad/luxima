@@ -4,7 +4,7 @@ import { useChat } from './useChat'
 import { useChatStore } from '@/views/apps/chat/useChatStore'
 import { avatarText } from '@core/utils/formatters'
 
-const emit = defineEmits<{
+defineEmits<{
   (e: 'close'): void
 }>()
 
@@ -20,19 +20,13 @@ const { resolveAvatarBadgeVariant } = useChat()
       class="pt-2 me-2"
       :class="$vuetify.locale.isRtl ? 'text-left' : 'text-right'"
     >
-      <VBtn
-        variant="text"
-        color="default"
-        icon
-        size="small"
-        @click="$emit('close')"
-      >
+      <IconBtn @click="$emit('close')">
         <VIcon
-          size="24"
           icon="tabler-x"
+          color="disabled"
           class="text-medium-emphasis"
         />
-      </VBtn>
+      </IconBtn>
     </div>
 
     <!-- User Avatar + Name + Role -->
@@ -47,9 +41,8 @@ const { resolveAvatarBadgeVariant } = useChat()
       >
         <VAvatar
           size="80"
-          class="bg-surface"
-          variant="tonal"
-          :class="`text-${resolveAvatarBadgeVariant(store.activeChat.contact.status)}`"
+          :variant="!store.activeChat.contact.avatar ? 'tonal' : undefined"
+          :color="!store.activeChat.contact.avatar ? resolveAvatarBadgeVariant(store.activeChat.contact.status) : undefined"
         >
           <VImg
             v-if="store.activeChat.contact.avatar"
@@ -61,10 +54,10 @@ const { resolveAvatarBadgeVariant } = useChat()
           >{{ avatarText(store.activeChat.contact.fullName) }}</span>
         </VAvatar>
       </VBadge>
-      <h2 class="mb-1 font-weight-medium text-high-emphasis text-base">
+      <h5 class="text-h5">
         {{ store.activeChat.contact.fullName }}
-      </h2>
-      <p class="text-capitalize text-sm text-medium-emphasis">
+      </h5>
+      <p class="text-capitalize text-medium-emphasis">
         {{ store.activeChat.contact.role }}
       </p>
     </div>
@@ -76,10 +69,7 @@ const { resolveAvatarBadgeVariant } = useChat()
     >
       <!-- About -->
       <div class="my-8">
-        <span
-          for="textarea-user-about"
-          class="text-sm text-disabled"
-        >ABOUT</span>
+        <span class="text-sm text-disabled">ABOUT</span>
         <p class="mt-2">
           {{ store.activeChat.contact.about }}
         </p>
@@ -92,15 +82,15 @@ const { resolveAvatarBadgeVariant } = useChat()
           <VIcon
             class="me-2"
             icon="tabler-mail"
-            size="22"
+            size="24"
           />
           <span>lucifer@email.com</span>
         </div>
         <div class="d-flex align-center my-3">
           <VIcon
             class="me-2"
-            icon="tabler-phone"
-            size="22"
+            icon="tabler-phone-call"
+            size="24"
           />
           <span>+1(123) 456 - 7890</span>
         </div>
@@ -108,7 +98,7 @@ const { resolveAvatarBadgeVariant } = useChat()
           <VIcon
             class="me-2"
             icon="tabler-clock"
-            size="22"
+            size="24"
           />
           <span>Mon - Fri 10AM - 8PM</span>
         </div>
@@ -120,8 +110,8 @@ const { resolveAvatarBadgeVariant } = useChat()
         <div class="d-flex align-center">
           <VIcon
             class="me-2"
-            icon="tabler-bookmark"
-            size="22"
+            icon="tabler-badge"
+            size="24"
           />
           <span>Add Tag</span>
         </div>
@@ -129,7 +119,7 @@ const { resolveAvatarBadgeVariant } = useChat()
           <VIcon
             class="me-2"
             icon="tabler-star"
-            size="22"
+            size="24"
           />
           <span>Important Contact</span>
         </div>
@@ -137,7 +127,7 @@ const { resolveAvatarBadgeVariant } = useChat()
           <VIcon
             class="me-2"
             icon="tabler-photo"
-            size="22"
+            size="24"
           />
           <span>Shared Media</span>
         </div>
@@ -145,7 +135,7 @@ const { resolveAvatarBadgeVariant } = useChat()
           <VIcon
             class="me-2"
             icon="tabler-trash"
-            size="22"
+            size="24"
           />
           <span>Delete Contact</span>
         </div>

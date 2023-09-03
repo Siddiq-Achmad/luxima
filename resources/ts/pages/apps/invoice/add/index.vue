@@ -13,8 +13,8 @@ const invoiceData = ref<InvoiceData>({
     total: 0,
     avatar: '',
     invoiceStatus: '',
-    balance: '',
     dueDate: '',
+    balance: 0,
     client: {
       address: '',
       company: '',
@@ -35,7 +35,7 @@ const invoiceData = ref<InvoiceData>({
     {
       title: '',
       cost: 0,
-      hours: 0,
+      qty: 0,
       description: '',
     },
   ],
@@ -101,7 +101,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       </VCard>
 
       <!-- 👉 Select payment method -->
-      <VSelect
+      <AppSelect
         v-model="selectedPaymentMethod"
         :items="paymentMethods"
         label="Accept Payment Via"
@@ -109,7 +109,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       />
 
       <!-- 👉 Payment Terms -->
-      <div class="d-flex align-center justify-space-between">
+      <div class="d-flex align-center justify-space-between mb-2">
         <VLabel for="payment-terms">
           Payment Terms
         </VLabel>
@@ -122,7 +122,7 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
       </div>
 
       <!-- 👉  Client Notes -->
-      <div class="d-flex align-center justify-space-between">
+      <div class="d-flex align-center justify-space-between mb-2">
         <VLabel for="client-notes">
           Client Notes
         </VLabel>
@@ -149,4 +149,3 @@ const paymentMethods = ['Bank Account', 'PayPal', 'UPI Transfer']
     </VCol>
   </VRow>
 </template>
-

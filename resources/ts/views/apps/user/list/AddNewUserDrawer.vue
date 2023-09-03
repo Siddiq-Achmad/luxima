@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import type { VForm } from 'vuetify/components'
+import type { VForm } from 'vuetify/components/VForm'
 
 import type { UserProperties } from '@/@fake-db/types'
 import { emailValidator, requiredValidator } from '@validators'
@@ -79,28 +79,10 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
     @update:model-value="handleDrawerModelValueUpdate"
   >
     <!-- 👉 Title -->
-    <div class="d-flex align-center pa-6 pb-1">
-      <h6 class="text-h6">
-        Add User
-      </h6>
-
-      <VSpacer />
-
-      <!-- 👉 Close btn -->
-      <VBtn
-        variant="tonal"
-        color="default"
-        icon
-        size="32"
-        class="rounded"
-        @click="closeNavigationDrawer"
-      >
-        <VIcon
-          size="18"
-          icon="tabler-x"
-        />
-      </VBTn>
-    </div>
+    <AppDrawerHeaderSection
+      title="Add User"
+      @cancel="closeNavigationDrawer"
+    />
 
     <PerfectScrollbar :options="{ wheelPropagation: false }">
       <VCard flat>
@@ -114,7 +96,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
             <VRow>
               <!-- 👉 Full name -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="fullName"
                   :rules="[requiredValidator]"
                   label="Full Name"
@@ -123,7 +105,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Email -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="email"
                   :rules="[requiredValidator, emailValidator]"
                   label="Email"
@@ -132,7 +114,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 company -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="company"
                   :rules="[requiredValidator]"
                   label="Company"
@@ -141,7 +123,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Country -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="country"
                   :rules="[requiredValidator]"
                   label="Country"
@@ -150,7 +132,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Contact -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="contact"
                   type="number"
                   :rules="[requiredValidator]"
@@ -160,7 +142,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Role -->
               <VCol cols="12">
-                <VSelect
+                <AppSelect
                   v-model="role"
                   label="Select Role"
                   :rules="[requiredValidator]"
@@ -170,7 +152,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Plan -->
               <VCol cols="12">
-                <VSelect
+                <AppSelect
                   v-model="plan"
                   label="Select Plan"
                   :rules="[requiredValidator]"
@@ -180,7 +162,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 
               <!-- 👉 Status -->
               <VCol cols="12">
-                <VSelect
+                <AppSelect
                   v-model="status"
                   label="Select Status"
                   :rules="[requiredValidator]"

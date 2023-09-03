@@ -1,3 +1,3 @@
 <template>
-  <VTextarea label="Default" />
+  <AppTextarea label="Default" />
 </template>

@@ -44,6 +44,12 @@ const browserStates = [
     progress: 'warning',
   },
 ]
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
@@ -53,29 +59,7 @@ const browserStates = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -86,10 +70,9 @@ const browserStates = [
           :key="state.title"
         >
           <template #prepend>
-            <VAvatar
-              size="28"
-              :image="state.avatarImg"
-            />
+            <VAvatar size="28">
+              <VImg :src="state.avatarImg" />
+            </VAvatar>
           </template>
 
           <VListItemTitle class="font-weight-medium">
@@ -102,6 +85,7 @@ const browserStates = [
               :model-value="state.stats"
               :color="state.progress"
               width="3"
+              size="28"
             />
           </template>
         </VListItem>

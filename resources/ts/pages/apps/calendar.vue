@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import '@fullcalendar/core/vdom' // solves problem with Vite
-
-// Local imports
-
 import FullCalendar from '@fullcalendar/vue3'
 import { blankEvent, useCalendar } from '@/views/apps/calendar/useCalendar'
 import { useCalendarStore } from '@/views/apps/calendar/useCalendarStore'
@@ -79,7 +75,6 @@ const checkAll = computed({
           <div class="d-flex align-center justify-center pa-2 mb-3">
             <AppDateTimePicker
               :model-value="new Date().toJSON().slice(0, 10)"
-              label="Inline"
               :config="{ inline: true }"
               class="calendar-date-picker"
               @input="jumpToDate($event.target.value)"
@@ -140,7 +135,7 @@ const checkAll = computed({
 }
 
 .calendar-add-event-drawer {
-  &.v-navigation-drawer {
+  &.v-navigation-drawer:not(.v-navigation-drawer--temporary) {
     border-end-start-radius: 0.375rem;
     border-start-start-radius: 0.375rem;
   }
@@ -158,6 +153,10 @@ const checkAll = computed({
         border-block-end: none;
       }
     }
+  }
+
+  & ~ .flatpickr-calendar .flatpickr-weekdays {
+    margin-block: 0 4px;
   }
 }
 </style>

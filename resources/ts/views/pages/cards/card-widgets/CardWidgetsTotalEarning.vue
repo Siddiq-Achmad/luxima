@@ -182,6 +182,11 @@ const totalEarnings = [
     earning: '+$98',
   },
 ]
+
+const moreList = [
+  { title: 'View More', value: 'View More' },
+  { title: 'Delete', value: 'Delete' },
+]
 </script>
 
 <template>
@@ -204,29 +209,7 @@ const totalEarnings = [
 
       <template #append>
         <div class="mt-n10 me-n2">
-          <VBtn
-            icon
-            size="x-small"
-            variant="plain"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View More', 'Delete']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn :menu-list="moreList" />
         </div>
       </template>
     </VCardItem>
@@ -244,10 +227,13 @@ const totalEarnings = [
           v-for="earning in totalEarnings"
           :key="earning.title"
           :title="earning.title"
-          :subtitle="earning.subtitle"
         >
+          <VListItemSubtitle class="text-disabled">
+            {{ earning.subtitle }}
+          </VListItemSubtitle>
           <template #prepend>
             <VAvatar
+              size="34"
               :icon="earning.avatar"
               :color="earning.avatarColor"
               variant="tonal"
@@ -256,7 +242,7 @@ const totalEarnings = [
           </template>
 
           <template #append>
-            <span class="text-success">{{ earning.earning }}</span>
+            <span class="text-success font-weight-medium">{{ earning.earning }}</span>
           </template>
         </VListItem>
       </VList>

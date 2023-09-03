@@ -29,6 +29,7 @@
         ],
         "liberty/use-logical-spec": true,
         "selector-class-pattern": null,
-        "color-function-notation": null
+        "color-function-notation": null,
+        "number-max-precision": null
     }
 }

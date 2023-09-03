@@ -104,7 +104,7 @@ export const flat = {
   ts: `<template>
   <div class="demo-space-x">
     <VBtn variant="flat">
-      primary
+      Primary
     </VBtn>
 
     <VBtn
@@ -147,7 +147,7 @@ export const flat = {
   js: `<template>
   <div class="demo-space-x">
     <VBtn variant="flat">
-      primary
+      Primary
     </VBtn>
 
     <VBtn
@@ -320,79 +320,123 @@ export const icon = {
 export const iconOnly = {
   ts: `<template>
   <div class="demo-space-x">
-    <VBtn
-      icon="tabler-briefcase"
-      variant="text"
-    />
+    <VBtn size="38">
+      <VIcon
+        icon="tabler-briefcase"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-user-plus"
-      variant="text"
+      size="38"
       color="secondary"
-    />
+    >
+      <VIcon
+        icon="tabler-user-plus"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-search"
-      variant="text"
+      size="38"
       color="success"
-    />
+    >
+      <VIcon
+        icon="tabler-search"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-thumb-up"
-      variant="text"
+      size="38"
       color="info"
-    />
+    >
+      <VIcon
+        icon="tabler-thumb-up"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-star"
-      variant="text"
+      size="38"
       color="warning"
-    />
+    >
+      <VIcon
+        icon="tabler-star"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-heart"
-      variant="text"
+      size="38"
       color="error"
-    />
+    >
+      <VIcon
+        icon="tabler-heart"
+        size="22"
+      />
+    </VBtn>
   </div>
 </template>
 `,
   js: `<template>
   <div class="demo-space-x">
-    <VBtn
-      icon="tabler-briefcase"
-      variant="text"
-    />
+    <VBtn size="38">
+      <VIcon
+        icon="tabler-briefcase"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-user-plus"
-      variant="text"
+      size="38"
       color="secondary"
-    />
+    >
+      <VIcon
+        icon="tabler-user-plus"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-search"
-      variant="text"
+      size="38"
       color="success"
-    />
+    >
+      <VIcon
+        icon="tabler-search"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-thumb-up"
-      variant="text"
+      size="38"
       color="info"
-    />
+    >
+      <VIcon
+        icon="tabler-thumb-up"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-star"
-      variant="text"
+      size="38"
       color="warning"
-    />
+    >
+      <VIcon
+        icon="tabler-star"
+        size="22"
+      />
+    </VBtn>
 
     <VBtn
-      icon="tabler-heart"
-      variant="text"
+      size="38"
       color="error"
-    />
+    >
+      <VIcon
+        icon="tabler-heart"
+        size="22"
+      />
+    </VBtn>
   </div>
 </template>
 `,
@@ -521,7 +565,6 @@ const load = (i: number) => {
     }
   }
   </style>
-
 `,
   js: `<script setup>
 const loadings = ref([])
@@ -610,7 +653,6 @@ const load = i => {
     }
   }
   </style>
-
 `,
 }
 
@@ -725,14 +767,14 @@ export const plain = {
       color="warning"
       variant="plain"
     >
-      warning
+      Warning
     </VBtn>
 
     <VBtn
       color="error"
       variant="plain"
     >
-      error
+      Error
     </VBtn>
   </div>
 </template>
@@ -768,14 +810,14 @@ export const plain = {
       color="warning"
       variant="plain"
     >
-      warning
+      Warning
     </VBtn>
 
     <VBtn
       color="error"
       variant="plain"
     >
-      error
+      Error
     </VBtn>
   </div>
 </template>
@@ -846,7 +888,7 @@ export const router = {
 
     <VBtn
       color="warning"
-      :to="{ path: '/alert' }"
+      :to="{ path: 'alert' }"
     >
       Object Path
     </VBtn>
@@ -860,7 +902,7 @@ export const router = {
 
     <VBtn
       color="secondary"
-      :to="{ path: '/alert', query: { plan: 'private' } }"
+      :to="{ path: 'alert', query: { plan: 'private' } }"
     >
       With Query
     </VBtn>
@@ -875,7 +917,7 @@ export const router = {
 
     <VBtn
       color="warning"
-      :to="{ path: '/alert' }"
+      :to="{ path: 'alert' }"
     >
       Object Path
     </VBtn>
@@ -889,7 +931,7 @@ export const router = {
 
     <VBtn
       color="secondary"
-      :to="{ path: '/alert', query: { plan: 'private' } }"
+      :to="{ path: 'alert', query: { plan: 'private' } }"
     >
       With Query
     </VBtn>
@@ -1088,14 +1130,14 @@ export const tonal = {
       color="warning"
       variant="tonal"
     >
-      warning
+      Warning
     </VBtn>
 
     <VBtn
       color="error"
       variant="tonal"
     >
-      error
+      Error
     </VBtn>
   </div>
 </template>
@@ -1131,17 +1173,16 @@ export const tonal = {
       color="warning"
       variant="tonal"
     >
-      warning
+      Warning
     </VBtn>
 
     <VBtn
       color="error"
       variant="tonal"
     >
-      error
+      Error
     </VBtn>
   </div>
 </template>
 `,
 }
-

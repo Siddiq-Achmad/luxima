@@ -52,6 +52,10 @@ const isSelectAllEmailCheckboxIndeterminate = computed(
     && store.emails.length !== selectedEmails.value.length,
 )
 
+const isAllMarkRead = computed (() => {
+  return selectedEmails.value.every(emailId => store.emails.find(email => email.id === emailId)?.isRead)
+})
+
 const selectAllCheckboxUpdate = () => {
   selectedEmails.value = !selectAllEmailCheckbox.value
     ? store.emails.map(email => email.id)
@@ -202,22 +206,15 @@ const refreshOpenedEmail = async () => {
     <VMain>
       <VCard
         flat
-        class="h-100 d-flex flex-column"
+        class="email-content-list h-100 d-flex flex-column"
       >
         <div class="d-flex align-center">
-          <VBtn
-            variant="text"
-            color="default"
-            icon
-            size="small"
+          <IconBtn
             class="d-lg-none ms-3"
             @click="isLeftSidebarOpen = true"
           >
-            <VIcon
-              size="24"
-              icon="tabler-menu-2"
-            />
-          </VBtn>
+            <VIcon icon="tabler-menu-2" />
+          </IconBtn>
           <!-- 👉 Search -->
           <VTextField
             v-model="q"
@@ -231,7 +228,7 @@ const refreshOpenedEmail = async () => {
         <VDivider />
 
         <!-- 👉 Action bar -->
-        <div class="py-2 px-5 d-flex items-center">
+        <div class="py-2 px-5 d-flex align-center">
           <!-- TODO: Make checkbox primary on indeterminate state -->
           <VCheckbox
             :model-value="selectAllEmailCheckbox"
@@ -240,7 +237,7 @@ const refreshOpenedEmail = async () => {
           />
 
           <div
-            class="w-100 d-flex items-center action-bar-actions"
+            class="w-100 d-flex align-center action-bar-actions"
             :style="{
               visibility:
                 isSelectAllEmailCheckboxIndeterminate || selectAllEmailCheckbox
@@ -249,45 +246,22 @@ const refreshOpenedEmail = async () => {
             }"
           >
             <!-- Trash -->
-            <VBtn
+            <IconBtn
               v-show="$route.params.filter !== 'trashed'"
-              variant="text"
-              color="default"
-              icon
-              size="small"
               @click="handleActionClick('trash')"
             >
-              <VIcon
-                size="22"
-                icon="tabler-trash"
-              />
-            </VBtn>
+              <VIcon icon="tabler-trash" />
+            </IconBtn>
 
-            <!-- Mark unread -->
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-              @click="handleActionClick('unread')"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-mail"
-              />
-            </VBtn>
+            <!-- Mark unread/read -->
+            <IconBtn @click="isAllMarkRead ? handleActionClick('unread') : handleActionClick('read') ">
+              <VIcon :icon="isAllMarkRead ? 'tabler-mail' : 'tabler-mail-opened'" />
+            </IconBtn>
 
             <!-- Move to folder -->
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-folder"
-              />
+            <IconBtn>
+              <VIcon icon="tabler-folder" />
+
               <VMenu activator="parent">
                 <VList density="compact">
                   <template
@@ -316,19 +290,12 @@ const refreshOpenedEmail = async () => {
                   </template>
                 </VList>
               </VMenu>
-            </VBtn>
+            </IconBtn>
 
             <!-- Update labels -->
-            <VBtn
-              variant="text"
-              color="default"
-              icon
-              size="small"
-            >
-              <VIcon
-                size="22"
-                icon="tabler-tag"
-              />
+            <IconBtn>
+              <VIcon icon="tabler-tag" />
+
               <VMenu activator="parent">
                 <VList density="compact">
                   <VListItem
@@ -350,32 +317,16 @@ const refreshOpenedEmail = async () => {
                   </VListItem>
                 </VList>
               </VMenu>
-            </VBtn>
+            </IconBtn>
           </div>
           <VSpacer />
-          <VBtn
-            variant="text"
-            color="default"
-            icon
-            size="small"
-            @click="fetchEmails"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-reload"
-            />
-          </VBtn>
-          <VBtn
-            variant="text"
-            color="default"
-            icon
-            size="small"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-          </VBtn>
+          <IconBtn @click="fetchEmails">
+            <VIcon icon="tabler-reload" />
+          </IconBtn>
+          <MoreBtn
+            density="comfortable"
+            color="undefined"
+          />
         </div>
         <VDivider />
 
@@ -399,20 +350,15 @@ const refreshOpenedEmail = async () => {
               @update:model-value="toggleSelectedEmail(email.id)"
               @click.stop
             />
-            <VBtn
-              variant="text"
-              icon
-              size="small"
+            <IconBtn
               :color="email.isStarred ? 'warning' : 'default'"
-              @click.stop="
-                handleActionClick(email.isStarred ? 'unstar' : 'star', [email.id])
-              "
+              @click.stop=" handleActionClick(email.isStarred ? 'unstar' : 'star', [email.id])"
             >
               <VIcon
-                size="22"
-                icon="tabler-star"
+                :icon="email.isStarred ? 'tabler-star-filled' : 'tabler-star'"
+                :class="email.isStarred ? '' : 'text-disabled'"
               />
-            </VBtn>
+            </IconBtn>
             <VAvatar
               class="mx-2"
               size="32"
@@ -422,12 +368,16 @@ const refreshOpenedEmail = async () => {
                 :alt="email.from.name"
               />
             </VAvatar>
-            <h6 class="mx-2 text-body-1 font-weight-medium text-high-emphasis">
+            <h6 class="mx-3 text-body-1 font-weight-medium text-high-emphasis">
               {{ email.from.name }}
             </h6>
             <span class="truncate">{{ email.subject }}</span>
             <VSpacer />
-            <div class="email-meta">
+
+            <div
+              class="email-meta"
+              :class="$vuetify.display.xs ? 'd-none' : 'd-block'"
+            >
               <VBadge
                 v-for="label in email.labels"
                 :key="label"
@@ -435,51 +385,40 @@ const refreshOpenedEmail = async () => {
                 :color="resolveLabelColor(label)"
                 dot
               />
-              <small class="text-disabled ms-2">{{
+              <small class="text-disabled text-sm ms-2">{{
                 formatDateToMonthShort(email.time)
               }}</small>
             </div>
 
             <!-- 👉 Email actions -->
             <div class="email-actions d-none">
-              <VBtn
-                variant="text"
-                color="default"
-                icon
-                size="small"
-                @click.stop="handleActionClick('trash', [email.id])"
-              >
-                <VIcon
-                  size="22"
-                  icon="tabler-trash"
-                />
-              </VBtn>
-              <VBtn
-                variant="text"
-                color="default"
-                icon
-                size="small"
-                @click.stop="
-                  handleActionClick(email.isRead ? 'unread' : 'read', [email.id])
-                "
-              >
-                <VIcon
-                  size="22"
-                  :icon="email.isRead ? 'tabler-mail' : 'tabler-mail-opened'"
-                />
-              </VBtn>
-              <VBtn
-                variant="text"
-                color="default"
-                icon
-                size="small"
-                @click.stop="handleActionClick('spam', [email.id])"
-              >
-                <VIcon
-                  size="22"
-                  icon="tabler-alert-octagon"
-                />
-              </VBtn>
+              <IconBtn @click.stop="handleActionClick('trash', [email.id])">
+                <VIcon icon="tabler-trash" />
+                <VTooltip
+                  activator="parent"
+                  location="top"
+                >
+                  Delete Mail
+                </VTooltip>
+              </IconBtn>
+              <IconBtn @click.stop=" handleActionClick(email.isRead ? 'unread' : 'read', [email.id])">
+                <VIcon :icon="email.isRead ? 'tabler-mail' : 'tabler-mail-opened'" />
+                <VTooltip
+                  activator="parent"
+                  location="top"
+                >
+                  {{ email.isRead ? 'Unread Mail' : 'read Mail' }}
+                </VTooltip>
+              </IconBtn>
+              <IconBtn @click.stop="handleActionClick('spam', [email.id])">
+                <VIcon icon="tabler-alert-octagon" />
+                <VTooltip
+                  activator="parent"
+                  location="top"
+                >
+                  Move to Spam
+                </VTooltip>
+              </IconBtn>
             </div>
           </li>
           <li
@@ -506,7 +445,6 @@ meta:
 <style lang="scss">
 @use "@styles/variables/_vuetify.scss";
 @use "@core-scss/base/_mixins.scss";
-@use "vuetify/lib/styles/tools/elevation" as elevation;
 
 // ℹ️ Remove border. Using variant plain cause UI issue, caret isn't align in center
 .email-search {
@@ -518,7 +456,7 @@ meta:
 .email-app-layout {
   border-radius: vuetify.$card-border-radius;
 
-  @include elevation.elevation(vuetify.$card-elevation);
+  @include mixins.elevation(vuetify.$card-elevation);
 
   $sel-email-app-layout: &;
 
@@ -529,10 +467,16 @@ meta:
   }
 }
 
+.email-content-list {
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
+}
+
 .email-list {
   white-space: nowrap;
 
   .email-item {
+    block-size: 3.75rem;
     transition: all 0.2s ease-in-out;
     will-change: transform, box-shadow;
 
@@ -548,7 +492,7 @@ meta:
   .email-item:hover {
     transform: translateY(-2px);
 
-    @include elevation.elevation(3);
+    @include mixins.elevation(3);
 
     .email-actions {
       display: block !important;
@@ -560,6 +504,12 @@ meta:
 
     + .email-item {
       border-color: transparent;
+    }
+
+    @media screen and (max-width: 600px) {
+      .email-actions {
+        display: none !important;
+      }
     }
   }
 }
@@ -575,4 +525,3 @@ meta:
   }
 }
 </style>
-

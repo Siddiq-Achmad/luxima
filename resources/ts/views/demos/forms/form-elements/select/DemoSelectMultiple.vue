@@ -20,7 +20,7 @@ const states = [
 </script>
 
 <template>
-  <VSelect
+  <AppSelect
     v-model="selectedOptions"
     :items="states"
     :menu-props="{ maxHeight: '400' }"

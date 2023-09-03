@@ -17,7 +17,7 @@ const value = ref(['Sandra Adams'])
 </script>
 
 <template>
-  <VSelect
+  <AppSelect
     v-model="value"
     :items="items"
     item-title="name"
@@ -36,5 +36,5 @@ const value = ref(['Sandra Adams'])
         <span>{{ item.title }}</span>
       </VChip>
     </template>
-  </VSelect>
+  </AppSelect>
 </template>

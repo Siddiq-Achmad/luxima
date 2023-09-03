@@ -92,7 +92,7 @@ const chartOptions = {
 
     <VCardText class="pt-0">
       <div class="d-flex align-center justify-space-between mt-3">
-        <h6 class="text-h6 text-center font-weight-semibold">
+        <h6 class="text-h6 text-center font-weight-medium">
           175k
         </h6>
         <span class="text-sm text-error">

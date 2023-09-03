@@ -1,70 +1,68 @@
 export const alignment = {
   ts: `<template>
-  <div class="d-flex flex-column gap-4">
-    <!-- Default -->
-    <div>
-      <VTabs>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
+  <VCard>
+    <VCardText class="d-flex flex-column gap-4">
+      <!-- Default -->
+      <div>
+        <VTabs>
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
 
-    <!-- Center -->
-    <div>
-      <VTabs centered>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
+      <!-- Center -->
+      <div>
+        <VTabs align-tabs="center">
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
 
-    <!-- Right -->
-    <div>
-      <VTabs end>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
-  </div>
+      <!-- End -->
+      <div>
+        <VTabs align-tabs="end">
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<template>
-  <div class="d-flex flex-column gap-4">
-    <!-- Default -->
-    <div>
-      <VTabs>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
+  <VCard>
+    <VCardText class="d-flex flex-column gap-4">
+      <!-- Default -->
+      <div>
+        <VTabs>
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
 
-    <!-- Center -->
-    <div>
-      <VTabs centered>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
+      <!-- Center -->
+      <div>
+        <VTabs align-tabs="center">
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
 
-    <!-- Right -->
-    <div>
-      <VTabs end>
-        <VTab>Home</VTab>
-        <VTab>Service</VTab>
-        <VTab>Account</VTab>
-      </VTabs>
-      <VDivider />
-    </div>
-  </div>
+      <!-- End -->
+      <div>
+        <VTabs align-tabs="end">
+          <VTab>Home</VTab>
+          <VTab>Service</VTab>
+          <VTab>Account</VTab>
+        </VTabs>
+      </div>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -76,24 +74,24 @@ const tabItemContent = 'Candy canes donut chupa chups candy canes lemon drops oa
 </script>
 
 <template>
-  <VTabs v-model="currentTab">
-    <VTab>Tab One</VTab>
-    <VTab>Tab Two</VTab>
-    <VTab>Tab Three</VTab>
-  </VTabs>
-  <VDivider />
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab>Tab One</VTab>
+      <VTab>Tab Two</VTab>
+      <VTab>Tab Three</VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="item in 3"
-      :key="item"
-    >
-      {{ tabItemContent }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in 3"
+          :key="item"
+        >
+          {{ tabItemContent }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -102,24 +100,24 @@ const tabItemContent = 'Candy canes donut chupa chups candy canes lemon drops oa
 </script>
 
 <template>
-  <VTabs v-model="currentTab">
-    <VTab>Tab One</VTab>
-    <VTab>Tab Two</VTab>
-    <VTab>Tab Three</VTab>
-  </VTabs>
-  <VDivider />
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab>Tab One</VTab>
+      <VTab>Tab Two</VTab>
+      <VTab>Tab Three</VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="item in 3"
-      :key="item"
-    >
-      {{ tabItemContent }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in 3"
+          :key="item"
+        >
+          {{ tabItemContent }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -186,34 +184,70 @@ const tabItemContent = 'Candy canes donut chupa chups candy canes lemon drops oa
 }
 
 export const customIcons = {
-  ts: `<template>
-  <VTabs
-    next-icon="tabler-arrow-right"
-    prev-icon="tabler-arrow-left"
-  >
-    <VTab
-      v-for="i in 10"
-      :key="i"
+  ts: `<script setup lang="ts">
+const currentTab = ref(0)
+const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu chocolate cookie wafer.'
+</script>
+
+<template>
+  <VCard>
+    <VTabs
+      next-icon="tabler-arrow-right"
+      prev-icon="tabler-arrow-left"
     >
-      Item {{ i }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="i in 10"
+        :key="i"
+      >
+        Item {{ i }}
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 10"
+          :key="i"
+          :value="i"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
-  js: `<template>
-  <VTabs
-    next-icon="tabler-arrow-right"
-    prev-icon="tabler-arrow-left"
-  >
-    <VTab
-      v-for="i in 10"
-      :key="i"
+  js: `<script setup>
+const currentTab = ref(0)
+const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu chocolate cookie wafer.'
+</script>
+
+<template>
+  <VCard>
+    <VTabs
+      next-icon="tabler-arrow-right"
+      prev-icon="tabler-arrow-left"
     >
-      Item {{ i }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="i in 10"
+        :key="i"
+      >
+        Item {{ i }}
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 10"
+          :key="i"
+          :value="i"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -229,34 +263,33 @@ watch(totalTabs, newValue => {
 </script>
 
 <template>
-  <VTabs v-model="currentTab">
-    <VTab
-      v-for="n in totalTabs"
-      :key="n"
-      :value="n"
-    >
-      Tab {{ n }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab
+        v-for="n in totalTabs"
+        :key="n"
+        :value="n"
+      >
+        Tab {{ n }}
+      </VTab>
+    </VTabs>
 
-  <!-- buttons -->
-  <div class="text-center mt-9">
-    <VBtn
-      :disabled="!totalTabs"
-      variant="text"
-      @click="totalTabs--"
-    >
-      Remove Tab
-    </VBtn>
+    <!-- buttons -->
+    <VCardText class="text-center d-flex items-center gap-y-2 flex-wrap">
+      <VBtn
+        :disabled="!totalTabs"
+        class="me-4"
+        :variant="!totalTabs ? 'tonal' : undefined"
+        @click="totalTabs--"
+      >
+        Remove Tab
+      </VBtn>
 
-    <VBtn
-      variant="text"
-      @click="totalTabs++"
-    >
-      Add Tab
-    </VBtn>
-  </div>
+      <VBtn @click="totalTabs++">
+        Add Tab
+      </VBtn>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -269,34 +302,33 @@ watch(totalTabs, newValue => {
 </script>
 
 <template>
-  <VTabs v-model="currentTab">
-    <VTab
-      v-for="n in totalTabs"
-      :key="n"
-      :value="n"
-    >
-      Tab {{ n }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab
+        v-for="n in totalTabs"
+        :key="n"
+        :value="n"
+      >
+        Tab {{ n }}
+      </VTab>
+    </VTabs>
 
-  <!-- buttons -->
-  <div class="text-center mt-9">
-    <VBtn
-      :disabled="!totalTabs"
-      variant="text"
-      @click="totalTabs--"
-    >
-      Remove Tab
-    </VBtn>
+    <!-- buttons -->
+    <VCardText class="text-center d-flex items-center gap-y-2 flex-wrap">
+      <VBtn
+        :disabled="!totalTabs"
+        class="me-4"
+        :variant="!totalTabs ? 'tonal' : undefined"
+        @click="totalTabs--"
+      >
+        Remove Tab
+      </VBtn>
 
-    <VBtn
-      variant="text"
-      @click="totalTabs++"
-    >
-      Add Tab
-    </VBtn>
-  </div>
+      <VBtn @click="totalTabs++">
+        Add Tab
+      </VBtn>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -309,32 +341,32 @@ const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu choc
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    fixed-tabs
-  >
-    <VTab
-      v-for="item in items"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      fixed-tabs
     >
-      {{ item }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items"
+        :key="item"
+        :value="item"
+      >
+        {{ item }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-6"
-  >
-    <VWindowItem
-      v-for="item in items"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -351,32 +383,32 @@ const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu choc
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    fixed-tabs
-  >
-    <VTab
-      v-for="item in items"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      fixed-tabs
     >
-      {{ item }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items"
+        :key="item"
+        :value="item"
+      >
+        {{ item }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-6"
-  >
-    <VWindowItem
-      v-for="item in items"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -389,32 +421,32 @@ const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu choc
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-  >
-    <VTab
-      v-for="item in items"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
     >
-      {{ item }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items"
+        :key="item"
+        :value="item"
+      >
+        {{ item }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-6"
-  >
-    <VWindowItem
-      v-for="item in items"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -431,61 +463,97 @@ const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu choc
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-  >
-    <VTab
-      v-for="item in items"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
     >
-      {{ item }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items"
+        :key="item"
+        :value="item"
+      >
+        {{ item }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-6"
-  >
-    <VWindowItem
-      v-for="item in items"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
 
 export const pagination = {
-  ts: `<template>
-  <VTabs>
-    <VTab
-      v-for="i in 10"
-      :key="i"
-      :value="i"
-    >
-      Item {{ i }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+  ts: `<script setup lang="ts">
+const currentTab = ref(0)
+const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu chocolate cookie wafer.'
+</script>
+
+<template>
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab
+        v-for="i in 10"
+        :key="i"
+        :value="i"
+      >
+        Item {{ i }}
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 10"
+          :key="i"
+          :value="i"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
-  js: `<template>
-  <VTabs>
-    <VTab
-      v-for="i in 10"
-      :key="i"
-      :value="i"
-    >
-      Item {{ i }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+  js: `<script setup>
+const currentTab = ref(0)
+const tabItemText = 'hortbread chocolate bar marshmallow bear claw tiramisu chocolate cookie wafer.'
+</script>
+
+<template>
+  <VCard>
+    <VTabs v-model="currentTab">
+      <VTab
+        v-for="i in 10"
+        :key="i"
+        :value="i"
+      >
+        Item {{ i }}
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 10"
+          :key="i"
+          :value="i"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -509,50 +577,50 @@ const nextTab = () => {
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-  >
-    <VTab
-      v-for="item in items.length"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
     >
-      {{ items[item - 1] }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items.length"
+        :key="item"
+        :value="item"
+      >
+        {{ items[item - 1] }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="item in items.length"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items.length"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
 
-  <div class="text-center">
-    <VBtn
-      variant="text"
-      :disabled="currentTab === 1"
-      @click="preTab"
-    >
-      Previous
-    </VBtn>
+      <div class="d-flex justify-center gap-4 mt-3">
+        <VBtn
+          :disabled="currentTab === 1"
+          :variant="currentTab === 1 ? 'tonal' : undefined"
+          @click="preTab"
+        >
+          Previous
+        </VBtn>
 
-    <VBtn
-      variant="text"
-      :disabled="currentTab === totalTabs"
-      @click="nextTab"
-    >
-      Next
-    </VBtn>
-  </div>
+        <VBtn
+          :disabled="currentTab === totalTabs"
+          :variant="currentTab === totalTabs ? 'tonal' : undefined"
+          @click="nextTab"
+        >
+          Next
+        </VBtn>
+      </div>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -580,50 +648,50 @@ const nextTab = () => {
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-  >
-    <VTab
-      v-for="item in items.length"
-      :key="item"
-      :value="item"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
     >
-      {{ items[item - 1] }}
-    </VTab>
-  </VTabs>
-  <VDivider />
+      <VTab
+        v-for="item in items.length"
+        :key="item"
+        :value="item"
+      >
+        {{ items[item - 1] }}
+      </VTab>
+    </VTabs>
 
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="item in items.length"
-      :key="item"
-      :value="item"
-    >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="item in items.length"
+          :key="item"
+          :value="item"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
 
-  <div class="text-center">
-    <VBtn
-      variant="text"
-      :disabled="currentTab === 1"
-      @click="preTab"
-    >
-      Previous
-    </VBtn>
+      <div class="d-flex justify-center gap-4 mt-3">
+        <VBtn
+          :disabled="currentTab === 1"
+          :variant="currentTab === 1 ? 'tonal' : undefined"
+          @click="preTab"
+        >
+          Previous
+        </VBtn>
 
-    <VBtn
-      variant="text"
-      :disabled="currentTab === totalTabs"
-      @click="nextTab"
-    >
-      Next
-    </VBtn>
-  </div>
+        <VBtn
+          :disabled="currentTab === totalTabs"
+          :variant="currentTab === totalTabs ? 'tonal' : undefined"
+          @click="nextTab"
+        >
+          Next
+        </VBtn>
+      </div>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -635,49 +703,49 @@ const tabItemText = 'Biscuit cheesecake gingerbread oat cake tiramisu. Marzipan 
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-    stacked
-  >
-    <VTab value="tab-1">
-      <VIcon
-        icon="tabler-phone"
-        class="mb-2"
-      />
-      <span>Recent</span>
-    </VTab>
-
-    <VTab value="tab-2">
-      <VIcon
-        icon="tabler-heart"
-        class="mb-2"
-      />
-      <span>Favorites</span>
-    </VTab>
-
-    <VTab value="tab-3">
-      <VIcon
-        icon="tabler-user"
-        class="mb-2"
-      />
-      <span>Nearby</span>
-    </VTab>
-  </VTabs>
-  <VDivider />
-
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="i in 3"
-      :key="i"
-      :value="\`tab-\${i}\`"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
+      stacked
     >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+      <VTab value="tab-1">
+        <VIcon
+          icon="tabler-phone"
+          class="mb-2"
+        />
+        <span>Recent</span>
+      </VTab>
+
+      <VTab value="tab-2">
+        <VIcon
+          icon="tabler-heart"
+          class="mb-2"
+        />
+        <span>Favorites</span>
+      </VTab>
+
+      <VTab value="tab-3">
+        <VIcon
+          icon="tabler-user"
+          class="mb-2"
+        />
+        <span>Nearby</span>
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 3"
+          :key="i"
+          :value="\`tab-\${i}\`"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -686,49 +754,49 @@ const tabItemText = 'Biscuit cheesecake gingerbread oat cake tiramisu. Marzipan 
 </script>
 
 <template>
-  <VTabs
-    v-model="currentTab"
-    grow
-    stacked
-  >
-    <VTab value="tab-1">
-      <VIcon
-        icon="tabler-phone"
-        class="mb-2"
-      />
-      <span>Recent</span>
-    </VTab>
-
-    <VTab value="tab-2">
-      <VIcon
-        icon="tabler-heart"
-        class="mb-2"
-      />
-      <span>Favorites</span>
-    </VTab>
-
-    <VTab value="tab-3">
-      <VIcon
-        icon="tabler-user"
-        class="mb-2"
-      />
-      <span>Nearby</span>
-    </VTab>
-  </VTabs>
-  <VDivider />
-
-  <VWindow
-    v-model="currentTab"
-    class="mt-5"
-  >
-    <VWindowItem
-      v-for="i in 3"
-      :key="i"
-      :value="\`tab-\${i}\`"
+  <VCard>
+    <VTabs
+      v-model="currentTab"
+      grow
+      stacked
     >
-      {{ tabItemText }}
-    </VWindowItem>
-  </VWindow>
+      <VTab value="tab-1">
+        <VIcon
+          icon="tabler-phone"
+          class="mb-2"
+        />
+        <span>Recent</span>
+      </VTab>
+
+      <VTab value="tab-2">
+        <VIcon
+          icon="tabler-heart"
+          class="mb-2"
+        />
+        <span>Favorites</span>
+      </VTab>
+
+      <VTab value="tab-3">
+        <VIcon
+          icon="tabler-user"
+          class="mb-2"
+        />
+        <span>Nearby</span>
+      </VTab>
+    </VTabs>
+
+    <VCardText>
+      <VWindow v-model="currentTab">
+        <VWindowItem
+          v-for="i in 3"
+          :key="i"
+          :value="\`tab-\${i}\`"
+        >
+          {{ tabItemText }}
+        </VWindowItem>
+      </VWindow>
+    </VCardText>
+  </VCard>
 </template>
 `,
 }
@@ -739,83 +807,69 @@ const currentTab = ref(0)
 </script>
 
 <template>
-  <VRow>
-    <VCol
-      cols="5"
-      sm="4"
-    >
-      <VTabs
-        v-model="currentTab"
-        direction="vertical"
-      >
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-user"
-          />
-          Option 1
-        </VTab>
+  <VCard>
+    <div class="d-flex">
+      <div>
+        <VTabs
+          v-model="currentTab"
+          direction="vertical"
+        >
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-user"
+            />
+            Option 1
+          </VTab>
 
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-lock"
-          />
-          Option 2
-        </VTab>
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-lock"
+            />
+            Option 2
+          </VTab>
 
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-access-point"
-          />
-          Option 3
-        </VTab>
-      </VTabs>
-    </VCol>
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-access-point"
+            />
+            Option 3
+          </VTab>
+        </VTabs>
+      </div>
 
-    <VDivider vertical />
+      <VCardText>
+        <VWindow
+          v-model="currentTab"
+          class="ms-3"
+        >
+          <VWindowItem>
+            <p>
+              Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+            </p>
 
-    <VCol
-      cols="7"
-      sm="8"
-    >
-      <VWindow
-        v-model="currentTab"
-        class="ms-3"
-      >
-        <VWindowItem>
-          <p>
-            Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-          </p>
+            <p class="mb-0">
+              Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget.
+            </p>
+          </VWindowItem>
 
-          <p class="mb-0">
-            Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
-          </p>
-        </VWindowItem>
+          <VWindowItem>
+            <p class="mb-0">
+              Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero.
+            </p>
+          </VWindowItem>
 
-        <VWindowItem>
-          <p>
-            Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
-          </p>
-
-          <p class="mb-0">
-            Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
-          </p>
-        </VWindowItem>
-
-        <VWindowItem>
-          <p>
-            Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
-          </p>
-
-          <p class="mb-0">
-            Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus interdum sagittis.
-          </p>
-        </VWindowItem>
-      </VWindow>
-    </VCol>
-  </VRow>
+          <VWindowItem>
+            <p class="mb-0">
+              Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper.
+            </p>
+          </VWindowItem>
+        </VWindow>
+      </VCardText>
+    </div>
+  </VCard>
 </template>
 `,
   js: `<script setup>
@@ -823,83 +877,69 @@ const currentTab = ref(0)
 </script>
 
 <template>
-  <VRow>
-    <VCol
-      cols="5"
-      sm="4"
-    >
-      <VTabs
-        v-model="currentTab"
-        direction="vertical"
-      >
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-user"
-          />
-          Option 1
-        </VTab>
+  <VCard>
+    <div class="d-flex">
+      <div>
+        <VTabs
+          v-model="currentTab"
+          direction="vertical"
+        >
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-user"
+            />
+            Option 1
+          </VTab>
 
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-lock"
-          />
-          Option 2
-        </VTab>
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-lock"
+            />
+            Option 2
+          </VTab>
 
-        <VTab>
-          <VIcon
-            start
-            icon="tabler-access-point"
-          />
-          Option 3
-        </VTab>
-      </VTabs>
-    </VCol>
+          <VTab>
+            <VIcon
+              start
+              icon="tabler-access-point"
+            />
+            Option 3
+          </VTab>
+        </VTabs>
+      </div>
 
-    <VDivider vertical />
+      <VCardText>
+        <VWindow
+          v-model="currentTab"
+          class="ms-3"
+        >
+          <VWindowItem>
+            <p>
+              Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+            </p>
 
-    <VCol
-      cols="7"
-      sm="8"
-    >
-      <VWindow
-        v-model="currentTab"
-        class="ms-3"
-      >
-        <VWindowItem>
-          <p>
-            Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-          </p>
+            <p class="mb-0">
+              Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget.
+            </p>
+          </VWindowItem>
 
-          <p class="mb-0">
-            Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
-          </p>
-        </VWindowItem>
+          <VWindowItem>
+            <p class="mb-0">
+              Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero.
+            </p>
+          </VWindowItem>
 
-        <VWindowItem>
-          <p>
-            Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
-          </p>
-
-          <p class="mb-0">
-            Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
-          </p>
-        </VWindowItem>
-
-        <VWindowItem>
-          <p>
-            Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
-          </p>
-
-          <p class="mb-0">
-            Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus interdum sagittis.
-          </p>
-        </VWindowItem>
-      </VWindow>
-    </VCol>
-  </VRow>
+          <VWindowItem>
+            <p class="mb-0">
+              Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper.
+            </p>
+          </VWindowItem>
+        </VWindow>
+      </VCardText>
+    </div>
+  </VCard>
 </template>
 `,
 }
@@ -910,11 +950,8 @@ const currentTab = ref(0)
 </script>
 
 <template>
-  <VRow>
-    <VCol
-      cols="5"
-      sm="4"
-    >
+  <div class="d-flex gap-6">
+    <div>
       <VTabs
         v-model="currentTab"
         direction="vertical"
@@ -944,49 +981,36 @@ const currentTab = ref(0)
           Option 3
         </VTab>
       </VTabs>
-    </VCol>
+    </div>
 
-    <VCol
-      cols="7"
-      sm="8"
-    >
-      <VCard>
-        <VCardText>
-          <VWindow v-model="currentTab">
-            <VWindowItem>
-              <p>
-                Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-              </p>
+    <VCard>
+      <VCardText>
+        <VWindow v-model="currentTab">
+          <VWindowItem>
+            <p>
+              Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+            </p>
 
-              <p class="mb-0">
-                Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
-              </p>
-            </VWindowItem>
+            <p class="mb-0">
+              Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et.
+            </p>
+          </VWindowItem>
 
-            <VWindowItem>
-              <p>
-                Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
-              </p>
+          <VWindowItem>
+            <p class="mb-0">
+              Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
+            </p>
+          </VWindowItem>
 
-              <p class="mb-0">
-                Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
-              </p>
-            </VWindowItem>
-
-            <VWindowItem>
-              <p>
-                Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
-              </p>
-
-              <p class="mb-0">
-                Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus interdum sagittis.
-              </p>
-            </VWindowItem>
-          </VWindow>
-        </VCardText>
-      </VCard>
-    </VCol>
-  </VRow>
+          <VWindowItem>
+            <p class="mb-0">
+              Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
+            </p>
+          </VWindowItem>
+        </VWindow>
+      </VCardText>
+    </VCard>
+  </div>
 </template>
 `,
   js: `<script setup>
@@ -994,11 +1018,8 @@ const currentTab = ref(0)
 </script>
 
 <template>
-  <VRow>
-    <VCol
-      cols="5"
-      sm="4"
-    >
+  <div class="d-flex gap-6">
+    <div>
       <VTabs
         v-model="currentTab"
         direction="vertical"
@@ -1028,50 +1049,36 @@ const currentTab = ref(0)
           Option 3
         </VTab>
       </VTabs>
-    </VCol>
+    </div>
 
-    <VCol
-      cols="7"
-      sm="8"
-    >
-      <VCard>
-        <VCardText>
-          <VWindow v-model="currentTab">
-            <VWindowItem>
-              <p>
-                Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
-              </p>
+    <VCard>
+      <VCardText>
+        <VWindow v-model="currentTab">
+          <VWindowItem>
+            <p>
+              Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat lorem non metus. Sed a libero.
+            </p>
 
-              <p class="mb-0">
-                Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et, tincidunt eget, semper nec, quam. Phasellus blandit leo ut odio.
-              </p>
-            </VWindowItem>
+            <p class="mb-0">
+              Phasellus dolor. Fusce neque. Fusce fermentum odio nec arcu. Pellentesque libero tortor, tincidunt et.
+            </p>
+          </VWindowItem>
 
-            <VWindowItem>
-              <p>
-                Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
-              </p>
+          <VWindowItem>
+            <p class="mb-0">
+              Morbi nec metus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Nunc sed turpis.
+            </p>
+          </VWindowItem>
 
-              <p class="mb-0">
-                Donec venenatis vulputate lorem. Aenean viverra rhoncus pede. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Fusce commodo aliquam arcu. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
-              </p>
-            </VWindowItem>
-
-            <VWindowItem>
-              <p>
-                Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
-              </p>
-
-              <p class="mb-0">
-                Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus interdum sagittis.
-              </p>
-            </VWindowItem>
-          </VWindow>
-        </VCardText>
-      </VCard>
-    </VCol>
-  </VRow>
+          <VWindowItem>
+            <p class="mb-0">
+              Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
+            </p>
+          </VWindowItem>
+        </VWindow>
+      </VCardText>
+    </VCard>
+  </div>
 </template>
 `,
 }
-

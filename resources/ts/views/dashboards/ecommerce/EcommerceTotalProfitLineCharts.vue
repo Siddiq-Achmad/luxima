@@ -108,10 +108,10 @@ const chartOptions = computed(() => {
 <template>
   <VCard>
     <VCardText>
-      <div class="pb-2">
-        <h6 class="text-h6">
+      <div>
+        <h5 class="text-h5">
           Profit
-        </h6>
+        </h5>
         <span class="text-disabled text-sm">Last Month</span>
       </div>
 
@@ -119,13 +119,13 @@ const chartOptions = computed(() => {
         type="line"
         :options="chartOptions"
         :series="series"
-        :height="90"
+        :height="80"
       />
 
-      <div class="d-flex align-center justify-space-between mt-4">
-        <h6 class="text-h6 text-center font-weight-semibold">
+      <div class="d-flex align-center justify-space-between mt-3">
+        <h4 class="text-h4 text-center font-weight-medium">
           624k
-        </h6>
+        </h4>
         <span class="text-sm text-success">
           +8.24%
         </span>

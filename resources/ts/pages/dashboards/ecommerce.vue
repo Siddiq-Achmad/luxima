@@ -13,7 +13,7 @@ import EcommerceTransactions from '@/views/dashboards/ecommerce/EcommerceTransac
 </script>
 
 <template>
-  <VRow>
+  <VRow class="match-height">
     <!-- 👉 Congratulation John -->
     <VCol
       cols="12"

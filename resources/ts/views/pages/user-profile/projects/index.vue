@@ -19,6 +19,14 @@ const fetchProjectData = () => {
 }
 
 watch(router, fetchProjectData, { immediate: true })
+
+const moreList = [
+  { title: 'Rename Project', value: 'Rename Project' },
+  { title: 'View Details', value: 'View Details' },
+  { title: 'Add to favorites', value: 'Add to favorites' },
+  { type: 'divider', class: 'my-2' },
+  { title: 'Leave Project', value: 'Leave Project', class: 'text-error' },
+]
 </script>
 
 <template>
@@ -36,51 +44,25 @@ watch(router, fetchProjectData, { immediate: true })
             <VAvatar :image="data.avatar" />
           </template>
 
-          <VCardTitle>Social Banners</VCardTitle>
+          <VCardTitle>{{ data.title }}</VCardTitle>
           <p class="mb-0">
             <span class="font-weight-medium me-1">Client:</span>
-            <span>Christian Jimenez</span>
+            <span>{{ data.client }}</span>
           </p>
 
           <template #append>
             <div class="mt-n8 me-n3">
-              <VBtn
-                icon
-                variant="text"
-                color="default"
-                size="x-small"
-              >
-                <VIcon
-                  size="20"
-                  icon="tabler-dots-vertical"
-                  class="text-disabled"
-                />
-
-                <VMenu activator="parent">
-                  <VList density="compact">
-                    <VListItem
-                      v-for="(item, index) in ['Rename Project', 'View Details', 'Add to favorites']"
-                      :key="index"
-                      :value="index"
-                    >
-                      <VListItemTitle>{{ item }}</VListItemTitle>
-                    </VListItem>
-                    <VDivider class="my-2" />
-                    <VListItem
-                      title="Leave Project"
-                      value="Leave Project"
-                      class="text-error"
-                    />
-                  </VList>
-                </VMenu>
-              </VBtn>
+              <MoreBtn
+                item-props
+                :menu-list="moreList"
+              />
             </div>
           </template>
         </VCardItem>
 
         <VCardText>
           <div class="d-flex align-center justify-space-between flex-wrap gap-x-2 gap-y-4">
-            <div class="pa-2 bg-light-secondary rounded">
+            <div class="pa-2 bg-var-theme-background rounded">
               <h6 class="text-base font-weight-medium">
                 {{ data.budgetSpent }} <span class="text-body-1">/ {{ data.budget }}</span>
               </h6>
@@ -97,7 +79,7 @@ watch(router, fetchProjectData, { immediate: true })
             </div>
           </div>
 
-          <p class="mt-4 mb-0">
+          <p class="mt-4 mb-0 clamp-text">
             {{ data.description }}
           </p>
         </VCardText>
@@ -106,7 +88,7 @@ watch(router, fetchProjectData, { immediate: true })
 
         <VCardText>
           <div class="d-flex align-center justify-space-between flex-wrap gap-2">
-            <h6 class="text-base font-weight-semibold">
+            <h6 class="text-base font-weight-medium">
               All Hours: <span class="text-body-1">{{ data.hours }}</span>
             </h6>
 
@@ -121,7 +103,7 @@ watch(router, fetchProjectData, { immediate: true })
 
           <div class="d-flex align-center justify-space-between flex-wrap text-sm mt-4 mb-2">
             <span>Task: {{ data.tasks }}</span>
-            <span>95% Completed</span>
+            <span>{{ Math.round((data.completedTask / data.totalTask) * 100) }}% Completed</span>
           </div>
           <VProgressLinear
             rounded
@@ -143,7 +125,7 @@ watch(router, fetchProjectData, { immediate: true })
                 />
               </div>
               <span class="text-xs">
-                280 members
+                {{ data.members }}
               </span>
             </div>
 

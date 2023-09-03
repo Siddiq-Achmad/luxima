@@ -16,7 +16,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           placeholder="First Name"
@@ -28,7 +28,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="lastName"
           label="Last Name"
           placeholder="Last Name"
@@ -40,7 +40,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           placeholder="Email"
@@ -52,7 +52,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="city"
           label="City"
           placeholder="City"
@@ -64,7 +64,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="country"
           label="Country"
           placeholder="Country"
@@ -76,7 +76,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="company"
           label="Company"
           placeholder="Company"

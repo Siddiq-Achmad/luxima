@@ -53,7 +53,9 @@ watch(activeTab, fetchHelpCenterArticlesData, { immediate: true })
             },
           }"
         >
-          {{ data.title }}
+          <span class="text-wrap">
+            {{ data.title }}
+          </span>
         </VTab>
       </VTabs>
     </VCol>
@@ -62,7 +64,7 @@ watch(activeTab, fetchHelpCenterArticlesData, { immediate: true })
       cols="12"
       md="8"
     >
-      <VWindow>
+      <VWindow class="disable-tab-transition">
         <VWindowItem>
           <VCard>
             <VCardText class="pb-0">
@@ -77,7 +79,7 @@ watch(activeTab, fetchHelpCenterArticlesData, { immediate: true })
                   icon="tabler-chevron-left"
                   class="flip-in-rtl"
                 />
-                <span>Back to help center</span>
+                <span>Back to categories</span>
               </VBtn>
             </VCardText>
 
@@ -94,8 +96,12 @@ watch(activeTab, fetchHelpCenterArticlesData, { immediate: true })
               <VCardTitle>{{ activeArticle.title }}</VCardTitle>
             </VCardItem>
 
-            <!-- eslint-disable-next-line vue/no-v-html vue/no-v-text-v-html-on-component -->
-            <VCardText v-html="activeArticle.content" />
+            <!-- eslint-disable vue/no-v-html vue/no-v-text-v-html-on-component -->
+            <VCardText
+              class="help-center-article-content"
+              v-html="activeArticle.content"
+            />
+            <!-- eslint-enable vue/no-v-html vue/no-v-text-v-html-on-component -->
 
             <VDivider />
 
@@ -145,3 +151,12 @@ watch(activeTab, fetchHelpCenterArticlesData, { immediate: true })
 meta:
   navActiveLink: pages-help-center
 </route>
+
+<style lang="scss">
+.help-center-article-content {
+  ol,
+  ul {
+    list-style-position: inside;
+  }
+}
+</style>

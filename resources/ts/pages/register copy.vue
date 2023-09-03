@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { VForm } from 'vuetify/components'
-import type { RegisterResponse } from '@/@fake-db/types'
 import authV2RegisterIllustrationBorderedDark from '@images/pages/auth-v2-register-illustration-bordered-dark.png'
 import authV2RegisterIllustrationBorderedLight from '@images/pages/auth-v2-register-illustration-bordered-light.png'
 import authV2RegisterIllustrationDark from '@images/pages/auth-v2-register-illustration-dark.png'
 import authV2RegisterIllustrationLight from '@images/pages/auth-v2-register-illustration-light.png'
 import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
+import { VForm } from 'vuetify/components'
 
 import { useAppAbility } from '@/plugins/casl/useAppAbility'
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
@@ -36,7 +35,7 @@ const errors = ref<Record<string, string | undefined>>({
 })
 
 const register = () => {
-  axios.post<RegisterResponse>('/auth/register', {
+  axios.post('api/auth/register', {
     username: username.value,
     email: email.value,
     password: password.value,

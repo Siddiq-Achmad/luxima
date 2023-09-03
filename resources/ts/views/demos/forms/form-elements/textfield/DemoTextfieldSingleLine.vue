@@ -1,5 +1,5 @@
 <template>
-  <VTextField
+  <AppTextField
     label="Regular"
     single-line
   />

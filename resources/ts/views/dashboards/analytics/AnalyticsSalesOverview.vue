@@ -1,23 +1,23 @@
 <template>
   <VCard>
-    <VCardText>
+    <VCardText class="pa-5">
       <div class="d-flex align-center justify-space-between">
         <span class="text-sm text-disabled">Sales Overview</span>
         <span class="text-success">+18.2%</span>
       </div>
-      <h5 class="text-h5">
+      <h4 class="text-h4">
         $42.5k
-      </h5>
+      </h4>
     </VCardText>
 
-    <VCardText>
+    <VCardText class="pa-5">
       <VRow no-gutters>
         <VCol cols="5">
           <div class="d-flex align-center mb-3">
             <VAvatar
               color="info"
               variant="tonal"
-              :size="30"
+              :size="24"
               rounded
               class="me-2"
             >
@@ -29,9 +29,9 @@
 
             <span>Order</span>
           </div>
-          <h6 class="text-h6">
+          <h5 class="text-h5">
             62.2%
-          </h6>
+          </h5>
           <span class="text-sm text-disabled">6,440</span>
         </VCol>
 
@@ -65,7 +65,7 @@
             <VAvatar
               color="primary"
               variant="tonal"
-              :size="30"
+              :size="24"
               rounded
             >
               <VIcon
@@ -74,9 +74,9 @@
               />
             </VAvatar>
           </div>
-          <h6 class="text-h6">
+          <h5 class="text-h5">
             25.5%
-          </h6>
+          </h5>
           <span class="text-sm text-disabled">12,749</span>
         </VCol>
       </VRow>

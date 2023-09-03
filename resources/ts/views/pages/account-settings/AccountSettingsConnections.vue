@@ -165,10 +165,8 @@ const socialAccounts = ref([
 
               <template #append>
                 <VListItemAction>
-                  <VBtn
-                    icon
+                  <IconBtn
                     variant="tonal"
-                    size="x-small"
                     :color="item.connected ? 'error' : 'secondary'"
                     class="rounded"
                   >
@@ -176,7 +174,7 @@ const socialAccounts = ref([
                       size="20"
                       :icon="item.connected ? 'tabler-trash' : 'tabler-link' "
                     />
-                  </VBtn>
+                  </IconBtn>
                 </VListItemAction>
               </template>
             </VListItem>

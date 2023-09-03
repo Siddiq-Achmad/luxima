@@ -69,9 +69,9 @@ const resolveUserRoleVariant = (role: string) => {
           <!-- 👉 Avatar -->
           <VAvatar
             rounded
-            :size="120"
-            color="primary"
-            variant="tonal"
+            :size="100"
+            :color="!props.userData.avatar ? 'primary' : undefined"
+            :variant="!props.userData.avatar ? 'tonal' : undefined"
           >
             <VImg
               v-if="props.userData.avatar"
@@ -79,14 +79,14 @@ const resolveUserRoleVariant = (role: string) => {
             />
             <span
               v-else
-              class="text-5xl font-weight-semibold"
+              class="text-5xl font-weight-medium"
             >
               {{ avatarText(props.userData.fullName) }}
             </span>
           </VAvatar>
 
           <!-- 👉 User fullName -->
-          <h6 class="text-h6 mt-4">
+          <h6 class="text-h4 mt-4">
             {{ props.userData.fullName }}
           </h6>
 
@@ -95,7 +95,7 @@ const resolveUserRoleVariant = (role: string) => {
             label
             :color="resolveUserRoleVariant(props.userData.role).color"
             size="small"
-            class="text-capitalize mt-4"
+            class="text-capitalize mt-3"
           >
             {{ props.userData.role }}
           </VChip>
@@ -103,7 +103,7 @@ const resolveUserRoleVariant = (role: string) => {
 
         <VCardText class="d-flex justify-center flex-wrap mt-3">
           <!-- 👉 Done task -->
-          <div class="d-flex align-center me-8 mb-2">
+          <div class="d-flex align-center me-8">
             <VAvatar
               :size="38"
               rounded
@@ -111,14 +111,11 @@ const resolveUserRoleVariant = (role: string) => {
               variant="tonal"
               class="me-3"
             >
-              <VIcon
-                size="24"
-                icon="tabler-checkbox"
-              />
+              <VIcon icon="tabler-checkbox" />
             </VAvatar>
 
             <div>
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-h6">
                 {{ kFormatter(props.userData.taskDone) }}
               </h6>
               <span class="text-sm">Task Done</span>
@@ -126,7 +123,7 @@ const resolveUserRoleVariant = (role: string) => {
           </div>
 
           <!-- 👉 Done Project -->
-          <div class="d-flex align-center me-4 mb-2">
+          <div class="d-flex align-center me-4">
             <VAvatar
               :size="38"
               rounded
@@ -134,14 +131,11 @@ const resolveUserRoleVariant = (role: string) => {
               variant="tonal"
               class="me-3"
             >
-              <VIcon
-                size="24"
-                icon="tabler-briefcase"
-              />
+              <VIcon icon="tabler-briefcase" />
             </VAvatar>
 
             <div>
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-h6">
                 {{ kFormatter(props.userData.projectDone) }}
               </h6>
               <span class="text-sm">Project Done</span>
@@ -161,9 +155,9 @@ const resolveUserRoleVariant = (role: string) => {
           <VList class="card-list mt-2">
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
-                  Name:
-                  <span class="text-body-2">
+                <h6 class="text-h6">
+                  Username:
+                  <span class="text-body-1">
                     {{ props.userData.fullName }}
                   </span>
                 </h6>
@@ -172,16 +166,16 @@ const resolveUserRoleVariant = (role: string) => {
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
-                  Billing Email:
-                  <span class="text-body-2">{{ props.userData.email }}</span>
+                <h6 class="text-h6">
+                  Email:
+                  <span class="text-body-1">{{ props.userData.email }}</span>
                 </h6>
               </VListItemTitle>
             </VListItem>
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Status:
 
                   <VChip
@@ -198,18 +192,18 @@ const resolveUserRoleVariant = (role: string) => {
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Role:
-                  <span class="text-capitalize text-body-2">{{ props.userData.role }}</span>
+                  <span class="text-capitalize text-body-1">{{ props.userData.role }}</span>
                 </h6>
               </VListItemTitle>
             </VListItem>
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Tax ID:
-                  <span class="text-body-2">
+                  <span class="text-body-1">
                     {{ props.userData.taxId }}
                   </span>
                 </h6>
@@ -218,27 +212,27 @@ const resolveUserRoleVariant = (role: string) => {
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Contact:
-                  <span class="text-body-2">{{ props.userData.contact }}</span>
+                  <span class="text-body-1">{{ props.userData.contact }}</span>
                 </h6>
               </VListItemTitle>
             </VListItem>
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Language:
-                  <span class="text-body-2">{{ props.userData.language }}</span>
+                  <span class="text-body-1">{{ props.userData.language }}</span>
                 </h6>
               </VListItemTitle>
             </VListItem>
 
             <VListItem>
               <VListItemTitle>
-                <h6 class="text-base font-weight-semibold">
+                <h6 class="text-h6">
                   Country:
-                  <span class="text-body-2">{{ props.userData.country }}</span>
+                  <span class="text-body-1">{{ props.userData.country }}</span>
                 </h6>
               </VListItemTitle>
             </VListItem>
@@ -249,11 +243,12 @@ const resolveUserRoleVariant = (role: string) => {
         <VCardText class="d-flex justify-center">
           <VBtn
             variant="elevated"
-            class="me-3"
+            class="me-4"
             @click="isUserInfoEditDialogVisible = true"
           >
             Edit
           </VBtn>
+
           <VBtn
             variant="tonal"
             color="error"
@@ -274,8 +269,9 @@ const resolveUserRoleVariant = (role: string) => {
             label
             color="primary"
             size="small"
+            class="font-weight-medium"
           >
-            Standard
+            Popular
           </VChip>
 
           <VSpacer />
@@ -283,10 +279,10 @@ const resolveUserRoleVariant = (role: string) => {
           <!-- 👉 Current Price  -->
           <div class="d-flex align-center">
             <sup class="text-primary text-sm font-weight-regular">$</sup>
-            <h3 class="text-h3 text-primary font-weight-semibold">
+            <h3 class="text-h3 text-primary">
               99
             </h3>
-            <sub class="mt-3"><h6 class="text-sm font-weight-regular">/ month</h6></sub>
+            <sub class="mt-3"><h6 class="text-sm font-weight-regular text-disabled">/ month</h6></sub>
           </div>
         </VCardText>
 
@@ -309,12 +305,12 @@ const resolveUserRoleVariant = (role: string) => {
 
           <!-- 👉 Days -->
           <div class="my-6">
-            <div class="d-flex font-weight-semibold mt-3 mb-2">
-              <h6 class="text-base font-weight-semibold">
+            <div class="d-flex mt-3 mb-2">
+              <h6 class="text-base font-weight-medium">
                 Days
               </h6>
               <VSpacer />
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-base font-weight-medium">
                 26 of 30 Days
               </h6>
             </div>
@@ -324,7 +320,7 @@ const resolveUserRoleVariant = (role: string) => {
               rounded
               rounded-bar
               :model-value="65"
-              height="8"
+              height="10"
               color="primary"
             />
 
@@ -334,12 +330,17 @@ const resolveUserRoleVariant = (role: string) => {
           </div>
 
           <!-- 👉 Upgrade Plan -->
-          <VBtn
-            block
-            @click="isUpgradePlanDialogVisible = true"
-          >
-            Upgrade Plan
-          </VBtn>
+          <div class="d-flex gap-4">
+            <VBtn @click="isUpgradePlanDialogVisible = true">
+              Upgrade Plan
+            </VBtn>
+            <VBtn
+              variant="tonal"
+              color="default"
+            >
+              cancel
+            </VBtn>
+          </div>
         </VCardText>
       </VCard>
     </VCol>
@@ -358,7 +359,7 @@ const resolveUserRoleVariant = (role: string) => {
 
 <style lang="scss" scoped>
 .card-list {
-  --v-card-list-gap: 0.7rem;
+  --v-card-list-gap: 0.75rem;
 }
 
 .text-capitalize {

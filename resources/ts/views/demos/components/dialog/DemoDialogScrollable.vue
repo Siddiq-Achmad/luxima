@@ -47,7 +47,7 @@ const isDialogVisible = ref(false)
       </VCardItem>
 
       <VDivider />
-      <VCardText style="height: 300px;">
+      <VCardText style="block-size: 300px;">
         <VRadioGroup
           v-model="selectedCountry"
           :inline="false"

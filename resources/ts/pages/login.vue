@@ -3,20 +3,18 @@ import { useAppAbility } from '@/plugins/casl/useAppAbility'
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import axios from '@axios'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
-import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
-import { themeConfig } from '@themeConfig'
-import { emailValidator, requiredValidator } from '@validators'
-import { VForm } from 'vuetify/components'
-
 import authV2LoginIllustrationBorderedDark from '@images/pages/auth-v2-login-illustration-bordered-dark.png'
 import authV2LoginIllustrationBorderedLight from '@images/pages/auth-v2-login-illustration-bordered-light.png'
 import authV2LoginIllustrationDark from '@images/pages/auth-v2-login-illustration-dark.png'
 import authV2LoginIllustrationLight from '@images/pages/auth-v2-login-illustration-light.png'
 import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
+import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
+import { themeConfig } from '@themeConfig'
+import { emailValidator, requiredValidator } from '@validators'
+import { VForm } from 'vuetify/components/VForm'
 
-import Swal from 'sweetalert2'
-import 'sweetalert2/src/sweetalert2.scss'
+
 
 const authThemeImg = useGenerateImageVariant(authV2LoginIllustrationLight, authV2LoginIllustrationDark, authV2LoginIllustrationBorderedLight, authV2LoginIllustrationBorderedDark, true)
 
@@ -42,6 +40,14 @@ const rememberMe = ref(false)
 const login = () => {
   axios.post('api/auth/login', { email: email.value, password: password.value })
     .then(r => {
+      // const { accessToken, userData, userAbilities } = r.data
+
+      // localStorage.setItem('userAbilities', JSON.stringify(userAbilities))
+      // ability.update(userAbilities)
+
+      // localStorage.setItem('userData', JSON.stringify(userData))
+      // localStorage.setItem('accessToken', JSON.stringify(accessToken))
+
       const data = r.data
       const accessToken = data.accessToken
       const userData = data.user
@@ -55,7 +61,6 @@ const login = () => {
       // console.log(userDetail)
       // console.log(userRole)
       // console.log(userAbilities)
-
       localStorage.setItem('accessToken', JSON.stringify(accessToken))
       localStorage.setItem('userData', JSON.stringify(userData))
       localStorage.setItem('userDetail', JSON.stringify(userDetail))
@@ -64,28 +69,10 @@ const login = () => {
       ability.update(userAbilities)
 
 
-      
-
       // Redirect to `to` query if exist or redirect to index route
       router.replace(route.query.to ? String(route.query.to) : '/')
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
-      Toast.fire({
-        icon: 'success',
-        title: 'Welcome Back !!',
-        text: userData.name
-      })
+      
     })
     .catch(e => {
       const { errors: formErrors } = e.response.data
@@ -107,13 +94,13 @@ const onSubmit = () => {
 <template>
   <VRow
     no-gutters
-    class="auth-wrapper"
+    class="auth-wrapper bg-surface"
   >
     <VCol
       lg="8"
       class="d-none d-lg-flex"
     >
-      <div class="position-relative auth-bg rounded-lg w-100 ma-8 me-0">
+      <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
             max-width="505"
@@ -132,7 +119,7 @@ const onSubmit = () => {
     <VCol
       cols="12"
       lg="4"
-      class="d-flex align-center justify-center"
+      class="auth-card-v2 d-flex align-center justify-center"
     >
       <VCard
         flat
@@ -145,14 +132,14 @@ const onSubmit = () => {
             class="mb-6"
           />
 
-          <h5 class="text-h5 font-weight-semibold mb-1">
-            Welcome to {{ themeConfig.app.title }}! 👋🏻
+          <h5 class="text-h5 mb-1">
+            Welcome to <span class="text-capitalize"> {{ themeConfig.app.title }} </span>! 👋🏻
           </h5>
           <p class="mb-0">
             Please sign-in to your account and start the adventure
           </p>
         </VCardText>
-        <!-- <VCardText>
+        <VCardText>
           <VAlert
             color="primary"
             variant="tonal"
@@ -164,7 +151,7 @@ const onSubmit = () => {
               Client Email: <strong>client@demo.com</strong> / Pass: <strong>client</strong>
             </p>
           </VAlert>
-        </VCardText> -->
+        </VCardText>
         <VCardText>
           <VForm
             ref="refVForm"
@@ -173,10 +160,11 @@ const onSubmit = () => {
             <VRow>
               <!-- email -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="email"
                   label="Email"
                   type="email"
+                  autofocus
                   :rules="[requiredValidator, emailValidator]"
                   :error-messages="errors.email"
                 />
@@ -184,7 +172,7 @@ const onSubmit = () => {
 
               <!-- password -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="password"
                   label="Password"
                   :rules="[requiredValidator]"

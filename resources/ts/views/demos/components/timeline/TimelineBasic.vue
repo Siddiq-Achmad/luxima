@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+import pdf from '@images/icons/project-icons/pdf.png'
 import pumaShoes from '@images/pages/puma-shoes.jpeg'
 </script>
 
@@ -10,9 +11,9 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
       <VTimeline
         side="end"
         align="start"
+        line-inset="8"
         truncate-line="both"
         density="compact"
-        class="v-timeline-density-compact"
       >
         <!-- SECTION Timeline Item: Flight -->
         <VTimelineItem
@@ -20,43 +21,38 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
           size="x-small"
         >
           <!-- 👉 Header -->
-          <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold me-3">
+          <div class="d-flex justify-space-between align-center gap-2 flex-wrap">
+            <span class="app-timeline-title">
               Get on the flight
-            </h6>
-            <span class="text-base">3rd October</span>
+            </span>
+            <span class="app-timeline-meta">3rd October</span>
           </div>
-          <VDivider />
 
           <!-- 👉 Content -->
-          <p class="mt-4 mb-1">
+          <div class="app-timeline-text mb-1">
             <span>Charles de Gaulle Airport, Paris</span>
             <VIcon
               size="20"
               icon="tabler-arrow-right"
-              class="mx-2"
+              class="mx-2 flip-in-rtl"
             />
             <span>Heathrow Airport, London</span>
-          </p>
+          </div>
 
-          <p class="mb-2">
+          <p class="app-timeline-meta mb-2">
             6:30 AM
           </p>
 
-          <a
-            href="#"
-            class="d-flex align-center"
-          >
-            <VIcon
-              color="primary"
-              icon="tabler-link"
-              size="18"
-              class="me-1"
-            />
-            <h6 class="text-primary font-weight-semibold text-sm">
-              booking-card.pdf
-            </h6>
-          </a>
+          <div class="app-timeline-text d-flex align-center gap-2">
+            <div>
+              <VImg
+                :src="pdf"
+                :width="22"
+              />
+            </div>
+
+            <span>booking-card.pdf</span>
+          </div>
         </VTimelineItem>
         <!-- !SECTION -->
 
@@ -66,59 +62,51 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
           dot-color="primary"
         >
           <!-- 👉 Header -->
-          <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold mb-1 me-3">
+          <div class="d-flex justify-space-between align-center flex-wrap mb-1">
+            <div class="app-timeline-title">
               Interview Schedule
-            </h6>
-            <span class="text-base text-no-wrap">4th October</span>
+            </div>
+            <span class="app-timeline-meta">4th October</span>
           </div>
 
-          <p class="mb-0">
+          <div class="app-timeline-text">
             Bonbon gummies caramels brownie topping fruitcake gingerbread jelly-o marzipan.
-          </p>
+          </div>
 
           <!-- 👉 Divider -->
-          <VDivider class="my-4" />
+          <VDivider class="my-2" />
 
           <!-- 👉 Person -->
-          <div class="d-flex justify-space-between align-center">
+          <div class="d-flex justify-space-between align-center flex-wrap">
             <!-- 👉 Avatar & Personal Info -->
-            <span class="d-flex align-bottom mt-2">
+            <div class="d-flex align-center mt-2">
               <VAvatar
-                size="40"
+                size="32"
                 class="me-2"
                 :image="avatar2"
               />
-              <div>
-                <h6 class="text-sm font-weight-semibold">Rebecca Godman</h6>
-                <span>Javascript Developer</span>
+              <div class="d-flex flex-column">
+                <p class="text-sm font-weight-medium text-high-emphasis mb-0">
+                  Rebecca Godman
+                </p>
+                <span class="text-xs">Javascript Developer</span>
               </div>
-            </span>
+            </div>
 
             <!-- 👉 Person Actions -->
             <div>
-              <VBtn
-                icon
-                color="default"
-                variant="text"
-                size="x-small"
-              >
+              <IconBtn>
                 <VIcon
                   size="20"
                   icon="tabler-message"
                 />
-              </VBtn>
-              <VBtn
-                icon
-                size="x-small"
-                variant="text"
-                color="default"
-              >
+              </IconBtn>
+              <IconBtn>
                 <VIcon
                   size="20"
                   icon="tabler-phone"
                 />
-              </VBtn>
+              </IconBtn>
             </div>
           </div>
         </VTimelineItem>
@@ -129,7 +117,7 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
           size="x-small"
           dot-color="info"
         >
-          <div class="d-flex align-start flex-sm-row flex-column mb-3">
+          <div class="d-flex align-start flex-sm-row flex-column mb-3 gap-y-2">
             <VImg
               height="62"
               width="62"
@@ -139,35 +127,39 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
 
             <div>
               <!-- Header -->
-              <div class="d-flex justify-space-between">
-                <h6 class="font-weight-semibold text-base mb-1 me-3">
+              <div class="d-flex justify-space-between align-center flex-wrap">
+                <span class="app-timeline-title">
                   Sold Puma POPX Blue Color
-                </h6>
-                <small class="text-base text-no-wrap">January, 10</small>
+                </span>
+                <span class="app-timeline-meta">January, 10</span>
+
+                <span class="app-timeline-meta">January, 10</span>
               </div>
-              <span>PUMA presents the latest shoes from its collection. Light &amp; comfortable made with highly durable material.</span>
+
+              <span class="app-timeline-text">PUMA presents the latest shoes from its collection. Light &amp; comfortable
+                made with highly durable material.</span>
             </div>
           </div>
 
           <!-- 👉 Timeline Item: Meta Content -->
           <div class="d-flex justify-space-between flex-column flex-sm-row gap-3">
             <div class="text-sm-center">
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-sm font-weight-medium">
                 Customer
               </h6>
-              <span>Micheal Scott</span>
+              <span class="text-xs">Micheal Scott</span>
             </div>
             <div class="text-sm-center">
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-sm font-weight-medium">
                 Price
               </h6>
-              <span>$375.00</span>
+              <span class="text-xs">$375.00</span>
             </div>
             <div class="text-sm-center">
-              <h6 class="text-base font-weight-semibold">
+              <h6 class="text-sm font-weight-medium">
                 Quantity
               </h6>
-              <span>1</span>
+              <span class="text-xs">1</span>
             </div>
           </div>
         </VTimelineItem>
@@ -180,23 +172,25 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
         >
           <!-- 👉 Header -->
           <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold mb-1">
+            <span class="app-timeline-title">
               Design Review
-            </h6>
-            <small class="text-base text-no-wrap">September, 20</small>
+            </span>
+            <span class="app-timeline-meta">September, 20</span>
+            <span class="app-timeline-meta">September, 20</span>
           </div>
 
           <!-- 👉 Content -->
-          <p>
+          <p class="app-timeline-text">
             Weekly review of freshly prepared design for our new application.
           </p>
+
           <div class="d-flex align-center">
             <VAvatar
-              size="40"
+              size="32"
               :image="avatar1"
               class="me-2"
             />
-            <h6 class="text-base font-weight-semibold">
+            <h6 class="text-sm font-weight-medium">
               John Doe (Client)
             </h6>
           </div>

@@ -115,12 +115,12 @@ const insetSwitch2 = ref(false)
   <div class="demo-space-x">
     <VSwitch
       v-model="insetSwitch1"
-      inset
+      :inset="false"
       :label="\`Switch 1: \${insetSwitch1.toString()}\`"
     />
     <VSwitch
       v-model="insetSwitch2"
-      inset
+      :inset="false"
       :label="\`Switch 2: \${insetSwitch2.toString()}\`"
     />
   </div>
@@ -135,12 +135,12 @@ const insetSwitch2 = ref(false)
   <div class="demo-space-x">
     <VSwitch
       v-model="insetSwitch1"
-      inset
+      :inset="false"
       :label="\`Switch 1: \${insetSwitch1.toString()}\`"
     />
     <VSwitch
       v-model="insetSwitch2"
-      inset
+      :inset="false"
       :label="\`Switch 2: \${insetSwitch2.toString()}\`"
     />
   </div>
@@ -158,7 +158,6 @@ const switchMe = ref(false)
     <template #label>
       Turn on the progress: <VProgressCircular
         :indeterminate="switchMe"
-        size="24"
         class="ms-2"
       />
     </template>
@@ -174,7 +173,6 @@ const switchMe = ref(false)
     <template #label>
       Turn on the progress: <VProgressCircular
         :indeterminate="switchMe"
-        size="24"
         class="ms-2"
       />
     </template>
@@ -369,4 +367,3 @@ const switch2 = ref('Show')
 </template>
 `,
 }
-

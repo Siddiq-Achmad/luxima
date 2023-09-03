@@ -78,9 +78,9 @@ const chartOptions = {
 <template>
   <VCard>
     <VCardText class="pb-2">
-      <h6 class="text-h6">
+      <h5 class="text-h5">
         Sales
-      </h6>
+      </h5>
       <span class="text-sm text-disabled">Last Year</span>
     </VCardText>
 
@@ -92,9 +92,9 @@ const chartOptions = {
 
     <VCardText class="pt-0">
       <div class="d-flex align-center justify-space-between mt-3">
-        <h6 class="text-h6 text-center font-weight-semibold">
+        <h4 class="text-h4 text-center">
           175k
-        </h6>
+        </h4>
         <span class="text-sm text-error">
           -16.2%
         </span>

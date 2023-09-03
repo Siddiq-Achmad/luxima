@@ -19,34 +19,29 @@ const { width: windowWidth } = useWindowSize()
 </script>
 
 <template>
-  <VerticalNavLayout
-    :nav-items="navItems"
-  >
+  <VerticalNavLayout :nav-items="navItems">
     <!-- 👉 navbar -->
     <template #navbar="{ toggleVerticalOverlayNavActive }">
       <div class="d-flex h-100 align-center">
-        <VBtn
+        <IconBtn
           v-if="isLessThanOverlayNavBreakpoint(windowWidth)"
-          icon
-          variant="text"
-          color="default"
+          id="vertical-nav-toggle-btn"
           class="ms-n3"
-          size="small"
           @click="toggleVerticalOverlayNavActive(true)"
         >
           <VIcon
+            size="26"
             icon="tabler-menu-2"
-            size="24"
           />
-        </VBtn>
+        </IconBtn>
 
         <NavSearchBar class="ms-lg-n3" />
 
         <VSpacer />
 
-        <NavBarI18n />
-        <NavbarThemeSwitcher />
-        <NavbarShortcuts />
+        <NavBarI18n class="me-1" />
+        <NavbarThemeSwitcher class="me-1" />
+        <NavbarShortcuts class="me-1" />
         <NavBarNotifications class="me-2" />
         <UserProfile />
       </div>

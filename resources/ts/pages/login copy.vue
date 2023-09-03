@@ -1,20 +1,19 @@
 <script setup lang="ts">
+import { VForm } from 'vuetify/components/VForm'
 import type { LoginResponse } from '@/@fake-db/types'
 import { useAppAbility } from '@/plugins/casl/useAppAbility'
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import axios from '@axios'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
-import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
-import { themeConfig } from '@themeConfig'
-import { emailValidator, requiredValidator } from '@validators'
-import { VForm } from 'vuetify/components'
-
 import authV2LoginIllustrationBorderedDark from '@images/pages/auth-v2-login-illustration-bordered-dark.png'
 import authV2LoginIllustrationBorderedLight from '@images/pages/auth-v2-login-illustration-bordered-light.png'
 import authV2LoginIllustrationDark from '@images/pages/auth-v2-login-illustration-dark.png'
 import authV2LoginIllustrationLight from '@images/pages/auth-v2-login-illustration-light.png'
 import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
+import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
+import { themeConfig } from '@themeConfig'
+import { emailValidator, requiredValidator } from '@validators'
 
 const authThemeImg = useGenerateImageVariant(authV2LoginIllustrationLight, authV2LoginIllustrationDark, authV2LoginIllustrationBorderedLight, authV2LoginIllustrationBorderedDark, true)
 
@@ -71,13 +70,13 @@ const onSubmit = () => {
 <template>
   <VRow
     no-gutters
-    class="auth-wrapper"
+    class="auth-wrapper bg-surface"
   >
     <VCol
       lg="8"
       class="d-none d-lg-flex"
     >
-      <div class="position-relative auth-bg rounded-lg w-100 ma-8 me-0">
+      <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
             max-width="505"
@@ -96,7 +95,7 @@ const onSubmit = () => {
     <VCol
       cols="12"
       lg="4"
-      class="d-flex align-center justify-center"
+      class="auth-card-v2 d-flex align-center justify-center"
     >
       <VCard
         flat
@@ -109,8 +108,8 @@ const onSubmit = () => {
             class="mb-6"
           />
 
-          <h5 class="text-h5 font-weight-semibold mb-1">
-            Welcome to {{ themeConfig.app.title }}! 👋🏻
+          <h5 class="text-h5 mb-1">
+            Welcome to <span class="text-capitalize"> {{ themeConfig.app.title }} </span>! 👋🏻
           </h5>
           <p class="mb-0">
             Please sign-in to your account and start the adventure
@@ -137,10 +136,11 @@ const onSubmit = () => {
             <VRow>
               <!-- email -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="email"
                   label="Email"
                   type="email"
+                  autofocus
                   :rules="[requiredValidator, emailValidator]"
                   :error-messages="errors.email"
                 />
@@ -148,7 +148,7 @@ const onSubmit = () => {
 
               <!-- password -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="password"
                   label="Password"
                   :rules="[requiredValidator]"

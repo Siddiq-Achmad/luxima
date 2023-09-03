@@ -29,7 +29,12 @@ const totalArticles = (category: HelpCenterCategoriesType) => {
           sm="6"
           md="4"
         >
-          <VCard :title="article.title">
+          <VCard>
+            <template #title>
+              <span class="text-h5">
+                {{ article.title }}
+              </span>
+            </template>
             <template #prepend>
               <VAvatar
                 :icon="article.icon"
@@ -40,10 +45,7 @@ const totalArticles = (category: HelpCenterCategoriesType) => {
             </template>
 
             <VCardText>
-              <ul
-                class="ps-6"
-                style="list-style: disc ;"
-              >
+              <ul class="ps-6">
                 <li
                   v-for="item in article.subCategories"
                   :key="item.title"
@@ -66,7 +68,7 @@ const totalArticles = (category: HelpCenterCategoriesType) => {
                     name: 'pages-help-center-category-subcategory',
                     params: { category: article.slug, subcategory: article.subCategories[0].slug },
                   }"
-                  class="text-base font-weight-semibold"
+                  class="text-base font-weight-medium"
                 >
                   {{ totalArticles(article) }} articles
                 </RouterLink>

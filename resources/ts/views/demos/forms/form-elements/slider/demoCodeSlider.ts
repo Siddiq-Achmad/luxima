@@ -262,8 +262,8 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-r"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="redColorValue"
               type="number"
               variant="underlined"
@@ -283,11 +283,10 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-g"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="greenColorValue"
               type="number"
-              variant="underlined"
               :max="255"
             />
           </div>
@@ -304,8 +303,8 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-b"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="blueColorValue"
               type="number"
               variant="underlined"
@@ -340,8 +339,8 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-r"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="redColorValue"
               type="number"
               variant="underlined"
@@ -361,11 +360,10 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-g"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="greenColorValue"
               type="number"
-              variant="underlined"
               :max="255"
             />
           </div>
@@ -382,8 +380,8 @@ const blueColorValue = ref(255)
         prepend-icon="tabler-letter-b"
       >
         <template #append>
-          <div style="width: 3rem;">
-            <VTextField
+          <div style="inline-size: 7rem;">
+            <AppTextField
               v-model="blueColorValue"
               type="number"
               variant="underlined"
@@ -410,9 +408,7 @@ const sliderValue = ref(30)
     </VCol>
 
     <VCol cols="12">
-      <VSlider
-        v-model="sliderValue"
-      />
+      <VSlider v-model="sliderValue" />
     </VCol>
   </VRow>
 </template>
@@ -428,9 +424,7 @@ const sliderValue = ref(30)
     </VCol>
 
     <VCol cols="12">
-      <VSlider
-        v-model="sliderValue"
-      />
+      <VSlider v-model="sliderValue" />
     </VCol>
   </VRow>
 </template>
@@ -659,11 +653,10 @@ const slider = ref(40)
     :step="1"
   >
     <template #append>
-      <VTextField
+      <AppTextField
         v-model="slider"
-        variant="underlined"
         type="number"
-        style="width: 60px ;"
+        style="inline-size: 100px;"
       />
     </template>
   </VSlider>
@@ -683,11 +676,10 @@ const slider = ref(40)
     :step="1"
   >
     <template #append>
-      <VTextField
+      <AppTextField
         v-model="slider"
-        variant="underlined"
         type="number"
-        style="width: 60px ;"
+        style="inline-size: 100px;"
       />
     </template>
   </VSlider>
@@ -1056,4 +1048,3 @@ const value = ref(10)
 </template>
 `,
 }
-

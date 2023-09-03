@@ -5,7 +5,7 @@ import authV2RegisterIllustrationDark from '@images/pages/auth-v2-register-illus
 import authV2RegisterIllustrationLight from '@images/pages/auth-v2-register-illustration-light.png'
 import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
-import { VForm } from 'vuetify/components'
+import { VForm } from 'vuetify/components/VForm'
 
 import { useAppAbility } from '@/plugins/casl/useAppAbility'
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
@@ -13,15 +13,7 @@ import axios from '@axios'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
-import { emailValidator, requiredValidator } from '@validators'
-
-import Swal from 'sweetalert2'
-import 'sweetalert2/src/sweetalert2.scss'
-
-
-
-
-
+import { alphaDashValidator, emailValidator, requiredValidator } from '@validators'
 
 const refVForm = ref<VForm>()
 const name = ref('')
@@ -36,7 +28,6 @@ const router = useRouter()
 // Ability
 const ability = useAppAbility()
 
-
 // Form Errors
 const errors = ref<Record<string, string | undefined>>({
   email: undefined,
@@ -49,70 +40,26 @@ const register = () => {
     email: email.value,
     password: password.value,
     c_password: password.value,
-    
   })
     .then(r => {
-      
-    
-      //const { accessToken, userData, userAbilities } = r.data
-      const data = r.data
-      const accessToken = data.accessToken
-      const userData = data.user
-      const userRole = userData.role.name
-      const userAbilities = userData.role.abilities
-      const message = data.message
+      const { accessToken, userData, userAbilities } = r.data
 
-      // console.log(data)
-      // console.log(accessToken)
-      // console.log(userData)
-      // console.log(userRole)
-      // console.log(userAbilities)
-      // console.log(message)
+      localStorage.setItem('userAbilities', JSON.stringify(userAbilities))
+      ability.update(userAbilities)
 
-      // localStorage.setItem('accessToken', JSON.stringify(accessToken))
-      // localStorage.setItem('userData', JSON.stringify(userData))
-      // localStorage.setItem('userAbilities', JSON.stringify(userAbilities))
-      // ability.update(userAbilities)
-
-      
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-
-      Toast.fire({
-        icon: 'success',
-        title: 'Register Successfully',
-        text: message
-      })
+      localStorage.setItem('userData', JSON.stringify(userData))
+      localStorage.setItem('accessToken', JSON.stringify(accessToken))
 
       // Redirect to `to` query if exist or redirect to index route
       router.replace(route.query.to ? String(route.query.to) : '/')
 
-      
       return null
-         
-      
     })
     .catch(e => {
       const { errors: formErrors } = e.response.data
 
       errors.value = formErrors
-      console.error(e.response.data.error)
-
-      Swal.fire({
-            title: 'Error : Register Failed',
-            text:  e.response.data.error,
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
+      console.error(e.response.data)
     })
 }
 
@@ -139,13 +86,13 @@ const onSubmit = () => {
 <template>
   <VRow
     no-gutters
-    class="auth-wrapper"
+    class="auth-wrapper bg-surface"
   >
     <VCol
       lg="8"
       class="d-none d-lg-flex"
     >
-      <div class="position-relative auth-bg rounded-lg w-100 ma-8 me-0">
+      <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
             max-width="441"
@@ -176,7 +123,7 @@ const onSubmit = () => {
             :nodes="themeConfig.app.logo"
             class="mb-6"
           />
-          <h5 class="text-h5 font-weight-semibold mb-1">
+          <h5 class="text-h5 mb-1">
             Adventure starts here 🚀
           </h5>
           <p class="mb-0">
@@ -190,18 +137,19 @@ const onSubmit = () => {
             @submit.prevent="onSubmit"
           >
             <VRow>
-              <!-- name -->
+              <!-- Username -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="name"
-                  :rules="[requiredValidator]"
-                  label="Full name"
+                  autofocus
+                  :rules="[requiredValidator, alphaDashValidator]"
+                  label="Full Name"
                 />
               </VCol>
 
               <!-- email -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="email"
                   :rules="[requiredValidator, emailValidator]"
                   label="Email"
@@ -211,7 +159,7 @@ const onSubmit = () => {
 
               <!-- password -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="password"
                   :rules="[requiredValidator]"
                   label="Password"
@@ -219,7 +167,6 @@ const onSubmit = () => {
                   :append-inner-icon="isPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
                   @click:append-inner="isPasswordVisible = !isPasswordVisible"
                 />
-                
 
                 <div class="d-flex align-center mt-2 mb-4">
                   <VCheckbox
@@ -227,19 +174,17 @@ const onSubmit = () => {
                     v-model="privacyPolicies"
                     :rules="[requiredValidator]"
                     inline
-                    
-                  />
-                  <VLabel
-                    for="privacy-policy"
-                    class="pb-1"
-                    style="opacity: 1;"
                   >
-                    <span class="me-1">I agree to</span>
-                    <a
-                      href="javascript:void(0)"
-                      class="text-primary"
-                    >privacy policy & terms</a>
-                  </VLabel>
+                    <template #label>
+                      <span class="me-1">
+                        I agree to
+                        <a
+                          href="javascript:void(0)"
+                          class="text-primary"
+                        >privacy policy & terms</a>
+                      </span>
+                    </template>
+                  </VCheckbox>
                 </div>
 
                 <VBtn

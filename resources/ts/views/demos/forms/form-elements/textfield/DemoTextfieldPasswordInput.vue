@@ -16,9 +16,9 @@ const rules = {
       cols="12"
       sm="6"
     >
-      <VTextField
+      <AppTextField
         v-model="password"
-        :append-inner-icon="show1 ? 'tabler-eye' : 'tabler-eye-off'"
+        :append-inner-icon="show1 ? 'tabler-eye-off' : 'tabler-eye' "
         :rules="[rules.required, rules.min]"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
@@ -33,9 +33,9 @@ const rules = {
       cols="12"
       sm="6"
     >
-      <VTextField
+      <AppTextField
         v-model="confirmPassword"
-        :append-inner-icon="show2 ? 'tabler-eye' : 'tabler-eye-off'"
+        :append-inner-icon="show2 ? 'tabler-eye-off' : 'tabler-eye' "
         :rules="[rules.required, rules.min]"
         :type="show2 ? 'text' : 'password'"
         name="input-10-2"

@@ -13,14 +13,24 @@ const router = createRouter({
       path: '/',
       redirect: to => {
         // const userData = JSON.parse(localStorage.getItem('userData') || '{}')
-        // const userRole = userData && userData.role && userData.role.name ? userData.role.name : null
+        // const userRole = (userData && userData.role) ? userData.role : null
+
         const userRole = JSON.parse(localStorage.getItem('userRole') || '{}')
 
         if (userRole === 'admin' || userRole === 'Admin')
           return { name: 'dashboards-analytics' }
+
+        if (userRole === 'manager' || userRole === 'Manager')
+          return { name: 'dashboards-analytics' }
+
+        if (userRole === 'staff' || userRole === 'Staff' )
+          return { name: 'dashboards-analytics' }
+          
+        if (userRole === 'vendor' || userRole === 'Vendor' )
+          return { name: 'access-control' }
         if (userRole === 'client' || userRole === 'Client' )
           return { name: 'access-control' }
-          if (userRole === 'user' || userRole === 'User' )
+        if (userRole === 'user' || userRole === 'User' )
           return { name: 'access-control' }
 
         return { name: 'login', query: to.query }

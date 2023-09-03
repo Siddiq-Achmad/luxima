@@ -16,7 +16,7 @@ export default [
         to: 'dashboards-crm',
       },
     ],
-    badgeContent: '2',
-    badgeClass: 'bg-light-primary text-primary',
+    badgeContent: '3',
+    badgeClass: 'bg-primary',
   },
 ]

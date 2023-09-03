@@ -9,40 +9,46 @@ import usFlag from '@images/icons/countries/us.png'
 const salesByCountries = [
   {
     avatarImg: usFlag,
-    stats: '$8,567k',
+    stats: '$8.45k',
     subtitle: 'United states',
     profitLoss: 25.8,
   },
   {
     avatarImg: brFlag,
-    stats: '$2,415k',
+    stats: '$7.78k',
     subtitle: 'Brazil',
-    profitLoss: -6.2,
+    profitLoss: -16.2,
   },
   {
     avatarImg: inFlag,
-    stats: '$865k',
+    stats: '$6.48k',
     subtitle: 'India',
-    profitLoss: 12.4,
+    profitLoss: 12.3,
   },
   {
     avatarImg: auFlag,
-    stats: '$745k',
+    stats: '$5.12k',
     subtitle: 'Australia',
     profitLoss: -11.9,
   },
   {
     avatarImg: frFlag,
-    stats: '$45',
+    stats: '$4.45k',
     subtitle: 'France',
     profitLoss: 16.2,
   },
   {
     avatarImg: cnFlag,
-    stats: '$12k',
+    stats: '$3.90k',
     subtitle: 'China',
     profitLoss: 14.8,
   },
+]
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'download' },
+  { title: 'View All', value: 'View All' },
 ]
 </script>
 
@@ -53,29 +59,7 @@ const salesByCountries = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -89,7 +73,6 @@ const salesByCountries = [
             <VAvatar
               size="34"
               color="secondary"
-              variant="tonal"
               :image="country.avatarImg"
             />
           </template>
@@ -97,12 +80,12 @@ const salesByCountries = [
           <VListItemTitle class="font-weight-medium">
             {{ country.stats }}
           </VListItemTitle>
-          <VListItemSubtitle class="opacity-100 text-disabled">
+          <VListItemSubtitle class="text-disabled">
             {{ country.subtitle }}
           </VListItemSubtitle>
 
           <template #append>
-            <div :class="`d-flex align-center font-weight-semibold ${country.profitLoss > 0 ? 'text-success' : 'text-error'}`">
+            <div :class="`d-flex align-center font-weight-medium ${country.profitLoss > 0 ? 'text-success' : 'text-error'}`">
               <VIcon
                 :icon="country.profitLoss > 0 ? 'tabler-chevron-up' : 'tabler-chevron-down'"
                 size="18"

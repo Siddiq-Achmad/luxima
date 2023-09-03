@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 import miscComingSoon from '@images/pages/misc-coming-soon.png'
 import miscMaskDark from '@images/pages/misc-mask-dark.png'
 import miscMaskLight from '@images/pages/misc-mask-light.png'
-import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 
 const email = ref('')
 
@@ -22,8 +22,9 @@ const authThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
 
       <!-- 👉 Email input -->
       <VForm @submit.prevent="() => {}">
-        <VTextField
+        <AppTextField
           v-model="email"
+          autofocus
           placeholder="Enter your email"
           class="misc-email-input"
         >
@@ -35,7 +36,7 @@ const authThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
               Notify
             </VBtn>
           </template>
-        </VTextField>
+        </AppTextField>
       </VForm>
     </div>
 

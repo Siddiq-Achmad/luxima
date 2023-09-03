@@ -1,12 +1,16 @@
 export default [
   {
     title: 'Forms',
-    icon: { icon: 'tabler-checks' },
+    icon: { icon: 'tabler-forms' },
     children: [
       {
         title: 'Form Elements',
         icon: { icon: 'tabler-copy' },
         children: [
+          {
+            title: 'Autocomplete',
+            to: 'forms-autocomplete',
+          },
           {
             title: 'Checkbox',
             to: 'forms-checkbox',
@@ -26,6 +30,10 @@ export default [
           {
             title: 'Radio',
             to: 'forms-radio',
+          },
+          {
+            title: 'Custom Input',
+            to: 'forms-custom-input',
           },
           {
             title: 'Range Slider',

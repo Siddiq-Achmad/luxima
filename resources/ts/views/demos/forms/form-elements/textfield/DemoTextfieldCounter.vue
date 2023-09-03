@@ -7,7 +7,7 @@ const rules = [(v: string) => v.length <= 25 || 'Max 25 characters']
 <template>
   <VRow>
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="title"
         :rules="rules"
         counter="25"
@@ -17,7 +17,7 @@ const rules = [(v: string) => v.length <= 25 || 'Max 25 characters']
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         v-model="description"
         :rules="rules"
         counter

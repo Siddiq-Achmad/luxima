@@ -155,9 +155,9 @@ const chartOptions = computed(() => {
   <VCard>
     <VCardText>
       <div>
-        <h6 class="text-h6">
+        <h5 class="text-h5">
           82.5k
-        </h6>
+        </h5>
         <span class="text-sm text-disabled">Expenses</span>
       </div>
 
@@ -168,10 +168,9 @@ const chartOptions = computed(() => {
         :height="145"
       />
 
-      <div class="text-xs text-center text-disabled mt-6">
+      <div class="text-sm clamp-text text-center text-disabled mt-6">
         $21k Expenses more than last month
       </div>
     </VCardText>
   </VCard>
 </template>
-

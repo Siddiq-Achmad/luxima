@@ -32,7 +32,7 @@ const chartOptions = computed(() => {
           name: {
             offsetY: -20,
             color: `rgba(${hexToRgb(currentTheme['on-background'])},${variableTheme['disabled-opacity']})`,
-            fontSize: '14px',
+            fontSize: '13px',
             fontWeight: '400',
             fontFamily: 'Public Sans',
           },
@@ -40,7 +40,7 @@ const chartOptions = computed(() => {
             offsetY: 10,
             color: `rgba(${hexToRgb(currentTheme['on-background'])},${variableTheme['high-emphasis-opacity']})`,
             fontSize: '38px',
-            fontWeight: '600',
+            fontWeight: '400',
             fontFamily: 'Public Sans',
           },
         },
@@ -85,7 +85,7 @@ const chartOptions = computed(() => {
         breakpoint: 960,
         options: {
           chart: {
-            height: 280,
+            height: 340,
           },
         },
       },
@@ -123,28 +123,7 @@ const supportTicket = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          size="x-small"
-          variant="plain"
-          color="default"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['View More', 'Delete']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="[{ title: 'View More', value: 'View More' }, { title: 'Delete', value: 'Delete' }]" />
       </div>
     </template>
 
@@ -156,11 +135,11 @@ const supportTicket = [
           sm="6"
           class="mt-auto"
         >
-          <div class="mb-4">
-            <h4 class="text-4xl font-weight-semibold mb-2">
+          <div class="mb-6">
+            <h4 class="text-h1">
               164
             </h4>
-            <p class="text-sm">
+            <p>
               Total Tickets
             </p>
           </div>
@@ -173,7 +152,7 @@ const supportTicket = [
               <VListItemTitle class="font-weight-medium">
                 {{ ticket.title }}
               </VListItemTitle>
-              <VListItemSubtitle class="opacity-100 text-disabled">
+              <VListItemSubtitle class="text-disabled">
                 {{ ticket.subtitle }}
               </VListItemSubtitle>
               <template #prepend>
@@ -197,7 +176,7 @@ const supportTicket = [
           <VueApexCharts
             :options="chartOptions"
             :series="series"
-            height="360"
+            height="340"
           />
         </VCol>
       </VRow>

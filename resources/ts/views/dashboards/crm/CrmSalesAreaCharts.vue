@@ -78,26 +78,28 @@ const chartOptions = {
 <template>
   <VCard>
     <VCardText class="pb-2">
-      <h6 class="text-h6">
+      <h5 class="text-h5">
         Sales
-      </h6>
-      <span class="text-body-2">Last Year</span>
+      </h5>
+      <p class="mb-0 text-sm text-disabled">
+        Last Year
+      </p>
     </VCardText>
 
     <VueApexCharts
       :options="chartOptions"
       :series="series"
-      :height="80"
+      :height="72"
     />
 
     <VCardText class="pt-0">
       <div class="d-flex align-center justify-space-between mt-3">
-        <h6 class="text-h6 text-center font-weight-semibold">
+        <h4 class="text-h4">
           175k
-        </h6>
-        <span class="text-sm text-error">
+        </h4>
+        <p class="mb-0 text-sm text-error">
           -16.2%
-        </span>
+        </p>
       </div>
     </VCardText>
   </VCard>

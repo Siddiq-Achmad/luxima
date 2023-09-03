@@ -298,6 +298,7 @@ const isInputEnabled = ref(false)
     <VCol
       sm="1"
       cols="2"
+      class="d-flex align-end"
     >
       <VCheckbox v-model="includeFiles" />
     </VCol>
@@ -306,7 +307,7 @@ const isInputEnabled = ref(false)
       sm="11"
       cols="10"
     >
-      <VTextField label="Include files" />
+      <AppTextField label="Include files" />
     </VCol>
   </VRow>
 
@@ -314,6 +315,7 @@ const isInputEnabled = ref(false)
     <VCol
       cols="2"
       sm="1"
+      class="d-flex align-end"
     >
       <VCheckbox v-model="isInputEnabled" />
     </VCol>
@@ -322,7 +324,7 @@ const isInputEnabled = ref(false)
       cols="10"
       sm="11"
     >
-      <VTextField
+      <AppTextField
         :disabled="!isInputEnabled"
         label="I only work if you check the box"
       />
@@ -340,6 +342,7 @@ const isInputEnabled = ref(false)
     <VCol
       sm="1"
       cols="2"
+      class="d-flex align-end"
     >
       <VCheckbox v-model="includeFiles" />
     </VCol>
@@ -348,7 +351,7 @@ const isInputEnabled = ref(false)
       sm="11"
       cols="10"
     >
-      <VTextField label="Include files" />
+      <AppTextField label="Include files" />
     </VCol>
   </VRow>
 
@@ -356,6 +359,7 @@ const isInputEnabled = ref(false)
     <VCol
       cols="2"
       sm="1"
+      class="d-flex align-end"
     >
       <VCheckbox v-model="isInputEnabled" />
     </VCol>
@@ -364,7 +368,7 @@ const isInputEnabled = ref(false)
       cols="10"
       sm="11"
     >
-      <VTextField
+      <AppTextField
         :disabled="!isInputEnabled"
         label="I only work if you check the box"
       />
@@ -580,4 +584,3 @@ const toggleOffCheckbox = ref(false)
 </template>
 `,
 }
-

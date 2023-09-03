@@ -65,7 +65,7 @@ const currentBillingAddress = {
   contact: '+1(609) 933-44-22',
   country: 'USA',
   state: 'Queensland',
-  zipCode: '403114',
+  zipCode: 403114,
 }
 </script>
 
@@ -82,22 +82,22 @@ const currentBillingAddress = {
               order-md="1"
               order="2"
             >
-              <h6 class="text-base font-weight-semibold mb-1">
+              <h6 class="text-base font-weight-medium text-high-emphasis mb-1">
                 Your Current Plan is Basic
               </h6>
-              <p class="text-sm">
+              <p class="text-sm mb-3">
                 A simple start for everyone
               </p>
 
-              <h6 class="text-base font-weight-semibold mb-1">
+              <h6 class="text-base font-weight-medium text-high-emphasis mb-1">
                 Active until Dec 09, 2021
               </h6>
-              <p class="text-sm">
+              <p class="text-sm mb-3">
                 We will send you a notification upon Subscription expiration
               </p>
 
-              <h6 class="text-base font-weight-semibold mb-1">
-                <span class="me-3">$199 Per Month</span>
+              <h6 class="text-base font-weight-medium text-high-emphasis mb-1">
+                <span class="me-2">$199 Per Month</span>
                 <VChip
                   color="primary"
                   size="small"
@@ -122,14 +122,14 @@ const currentBillingAddress = {
                 color="warning"
                 variant="tonal"
               >
-                <VAlertTitle class="mb-1">
+                <VAlertTitle class="mb-2">
                   We need your attention!
                 </VAlertTitle>
                 <span>Your plan requires update</span>
               </VAlert>
 
               <!-- 👉 Progress -->
-              <div class="d-flex justify-space-between font-weight-bold mt-8 mb-2">
+              <div class="d-flex justify-space-between font-weight-bold mt-4 mb-2">
                 <h6 class="text-sm">
                   Days
                 </h6>
@@ -198,7 +198,7 @@ const currentBillingAddress = {
                   :width="60"
                   :height="25"
                 />
-                <h4 class="text-base my-3">
+                <p class="text-base my-3">
                   {{ card.name }}
                   <VChip
                     v-if="card.isPrimary"
@@ -208,7 +208,7 @@ const currentBillingAddress = {
                   >
                     Primary
                   </VChip>
-                </h4>
+                </p>
                 <span class="text-body-1">**** **** **** {{ card.number.substring(card.number.length - 4) }}</span>
               </div>
 
@@ -242,15 +242,6 @@ const currentBillingAddress = {
     <VCol cols="12">
       <!-- 👉 Billing Address -->
       <VCard title="Billing Address">
-        <template #append>
-          <VBtn
-            size="small"
-            @click="isEditAddressDialogVisible = !isEditAddressDialogVisible"
-          >
-            Edit Address
-          </VBtn>
-        </template>
-
         <VCardText>
           <VRow>
             <VCol
@@ -260,60 +251,60 @@ const currentBillingAddress = {
               <VTable class="billing-address-table">
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       Company Name:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.companyName }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       Billing Email:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.billingEmail }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       Tax ID:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.taxID }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       VAT Number:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.vatNumber }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td class="d-flex align-baseline">
-                    <h6 class="text-sm text-no-wrap">
+                    <h6 class="text-h6 text-no-wrap">
                       Billing Address:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2 mb-0">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.address }}
                     </p>
                   </td>
@@ -328,48 +319,48 @@ const currentBillingAddress = {
               <VTable class="billing-address-table">
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       Contact:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.contact }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       Country:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.country }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap mb-4">
+                    <h6 class="text-h6 text-no-wrap mb-2">
                       State:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.state }}
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h6 class="text-sm text-no-wrap">
+                    <h6 class="text-h6 text-no-wrap">
                       Zip Code:
                     </h6>
                   </td>
                   <td>
-                    <p class="text-body-2 mb-0">
+                    <p class="text-body-1 mb-0">
                       {{ currentBillingAddress.zipCode }}
                     </p>
                   </td>
@@ -386,17 +377,13 @@ const currentBillingAddress = {
   <CardAddEditDialog
     v-model:isDialogVisible="isCardEditDialogVisible"
     :card-details="currentCardDetails"
-    class="v-dialog-lg"
   />
 
   <!-- 👉 Add Card Dialog -->
-  <CardAddEditDialog
-    v-model:isDialogVisible="isCardAddDialogVisible"
-    class="v-dialog-lg"
-  />
+  <CardAddEditDialog v-model:isDialogVisible="isCardAddDialogVisible" />
 
   <!-- 👉 Edit Address dialog -->
-  <EditAddressDialog
+  <AddEditAddressDialog
     v-model:isDialogVisible="isEditAddressDialogVisible"
     :billing-address="currentBillingAddress"
   />

@@ -5,11 +5,7 @@ import { hexToRgb } from '@layouts/utils'
 
 const vuetifyTheme = useTheme()
 
-const series = [
-  {
-    data: [28, 10, 45, 38, 15, 30, 35, 30, 8],
-  },
-]
+const series = [{ data: [32, 52, 72, 94, 116, 94, 72] }]
 
 const chartOptions = computed(() => {
   const currentTheme = vuetifyTheme.current.value.colors
@@ -74,7 +70,7 @@ const chartOptions = computed(() => {
       labels: {
         style: {
           colors: labelColor,
-          fontSize: '14px',
+          fontSize: '13px',
           fontFamily: 'Public sans',
         },
       },
@@ -174,16 +170,18 @@ const chartOptions = computed(() => {
     <VCardText class="d-flex justify-space-between">
       <div class="d-flex flex-column">
         <div class="mb-auto">
-          <h6 class="text-h6 text-no-wrap">
+          <h5 class="text-h5 text-no-wrap mb-2">
             Revenue Growth
-          </h6>
-          <span class="text-sm">Weekly Report</span>
+          </h5>
+          <p class="mb-0 text-sm">
+            Weekly Report
+          </p>
         </div>
 
         <div>
-          <h5 class="text-h5 mb-1">
+          <h3 class="text-h3 mb-2">
             $4,673
-          </h5>
+          </h3>
           <VChip
             label
             color="success"

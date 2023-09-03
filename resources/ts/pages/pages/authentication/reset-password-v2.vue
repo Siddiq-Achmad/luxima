@@ -26,13 +26,13 @@ const isConfirmPasswordVisible = ref(false)
 <template>
   <VRow
     no-gutters
-    class="auth-wrapper"
+    class="auth-wrapper bg-surface"
   >
     <VCol
       md="8"
       class="d-none d-md-flex"
     >
-      <div class="position-relative auth-bg rounded-lg w-100 ma-8 me-0">
+      <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
             max-width="400"
@@ -64,7 +64,7 @@ const isConfirmPasswordVisible = ref(false)
             class="mb-6"
           />
 
-          <h5 class="text-h5 font-weight-semibold mb-1">
+          <h5 class="text-h5 mb-1">
             Reset Password 🔒
           </h5>
           <p class="mb-0">
@@ -77,8 +77,9 @@ const isConfirmPasswordVisible = ref(false)
             <VRow>
               <!-- password -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="form.newPassword"
+                  autofocus
                   label="New Password"
                   :type="isPasswordVisible ? 'text' : 'password'"
                   :append-inner-icon="isPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
@@ -88,7 +89,7 @@ const isConfirmPasswordVisible = ref(false)
 
               <!-- Confirm Password -->
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="form.confirmPassword"
                   label="Confirm Password"
                   :type="isConfirmPasswordVisible ? 'text' : 'password'"

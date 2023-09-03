@@ -1,7 +1,7 @@
 <template>
   <VRow>
     <VCol cols="12">
-      <VTextarea
+      <AppTextarea
         disabled
         label="Disabled"
         hint="Hint text"
@@ -10,7 +10,7 @@
     </VCol>
 
     <VCol cols="12">
-      <VTextarea
+      <AppTextarea
         readonly
         rows="2"
         label="Readonly"

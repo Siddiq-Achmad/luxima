@@ -9,61 +9,61 @@ import avatar6 from '@images/avatars/avatar-6.png'
 
 <template>
   <div class="v-avatar-group">
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar1" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         John Doe
       </VTooltip>
     </VAvatar>
 
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar2" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         Jennie Obrien
       </VTooltip>
     </VAvatar>
 
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar3" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         Peter Harper
       </VTooltip>
     </VAvatar>
 
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar4" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         Vivian Padilla
       </VTooltip>
     </VAvatar>
 
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar5" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         Scott Wells
       </VTooltip>
     </VAvatar>
 
-    <VAvatar :size="45">
+    <VAvatar :size="42">
       <VImg :src="avatar6" />
       <VTooltip
         activator="parent"
-        location="start"
+        location="top"
       >
         Angel Bishop
       </VTooltip>

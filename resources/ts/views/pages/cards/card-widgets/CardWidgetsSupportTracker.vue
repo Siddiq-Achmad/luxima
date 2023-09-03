@@ -32,7 +32,7 @@ const chartOptions = computed(() => {
           name: {
             offsetY: -20,
             color: `rgba(${hexToRgb(currentTheme['on-surface'])},${variableTheme['disabled-opacity']})`,
-            fontSize: '14px',
+            fontSize: '13px',
             fontWeight: '400',
             fontFamily: 'Public Sans',
           },
@@ -40,7 +40,7 @@ const chartOptions = computed(() => {
             offsetY: 10,
             color: `rgba(${hexToRgb(currentTheme['on-background'])},${variableTheme['high-emphasis-opacity']})`,
             fontSize: '38px',
-            fontWeight: '600',
+            fontWeight: '400',
             fontFamily: 'Public Sans',
           },
         },
@@ -114,6 +114,11 @@ const supportTicket = [
     subtitle: '1 Day',
   },
 ]
+
+const moreList = [
+  { title: 'View More', value: 'View More' },
+  { title: 'Delete', value: 'Delete' },
+]
 </script>
 
 <template>
@@ -124,29 +129,7 @@ const supportTicket = [
 
       <template #append>
         <div class="mt-n4 me-n2">
-          <VBtn
-            icon
-            size="x-small"
-            variant="plain"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View More', 'Delete']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn :menu-list="moreList" />
         </div>
       </template>
     </VCardItem>
@@ -159,7 +142,7 @@ const supportTicket = [
           md="4"
         >
           <div class="mt-lg-7 mt-lg-2 mb-lg-9 mb-4">
-            <h4 class="text-h4">
+            <h4 class="text-h1">
               164
             </h4>
             <p class="text-sm mb-0">
@@ -172,8 +155,10 @@ const supportTicket = [
               v-for="ticket in supportTicket"
               :key="ticket.title"
               :title="ticket.title"
-              :subtitle="ticket.subtitle"
             >
+              <VListItemSubtitle class="text-disabled">
+                {{ ticket.subtitle }}
+              </VListItemSubtitle>
               <template #prepend>
                 <VAvatar
                   rounded

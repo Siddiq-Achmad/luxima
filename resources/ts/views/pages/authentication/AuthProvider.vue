@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useTheme } from 'vuetify';
+
+const { global } = useTheme()
+
 const authProviders = [
   {
     icon: 'fa-facebook',

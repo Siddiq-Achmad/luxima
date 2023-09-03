@@ -4,7 +4,7 @@ const items = ref(['Streaming', 'Eating', 'Programming', 'Playing video games', 
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="chips"
     chips
     clearable

@@ -1,35 +1,39 @@
 <script lang="ts" setup>
-import type { ProfileHeader } from '@/@fake-db/types'
-import axios from '@axios'
 
-const profileHeaderData = ref<ProfileHeader>()
+import avatar1 from '@images/avatars/avatar-1.png';
+import UserProfileHeaderBg from '@images/pages/user-profile-header-bg.png';
 
-const fetchHeaderData = () => {
-  axios.get('/pages/profile-header').then(response => {
-    profileHeaderData.value = response.data
-  })
-}
+const userData = JSON.parse(localStorage.getItem('userData') || 'null')
+const userDetail = JSON.parse(localStorage.getItem('userDetail') || 'null')
 
-fetchHeaderData()
+
+
 </script>
 
 <template>
-  <VCard v-if="profileHeaderData">
-    <VImg :src="profileHeaderData.coverImg" />
+  
+  <VCard v-if="userData">
+    <VImg
+      
+      :src="UserProfileHeaderBg"
+      min-height="125"
+      max-height="250"
+      cover
+    />
 
     <VCardText class="d-flex align-bottom flex-sm-row flex-column justify-center gap-x-5">
       <div class="d-flex h-0">
         <VAvatar
           rounded
           size="120"
-          :image="profileHeaderData.profileImg"
+          :image="avatar1"
           class="user-profile-avatar mx-auto"
         />
       </div>
 
       <div class="user-profile-info w-100 mt-16 pt-6 pt-sm-0 mt-sm-0">
-        <h6 class="text-h6 text-center text-sm-start font-weight-semibold mb-3">
-          {{ profileHeaderData?.fullName }}
+        <h6 class="text-h6 text-center text-sm-start font-weight-medium mb-3">
+          {{ userData?.username }}
         </h6>
 
         <div class="d-flex align-center justify-center justify-sm-space-between flex-wrap gap-4">
@@ -41,7 +45,7 @@ fetchHeaderData()
                 class="me-1"
               />
               <span class="text-body-1">
-                {{ profileHeaderData?.designation }}
+                {{ userData?.user_detail.job_title }}
               </span>
             </span>
 
@@ -52,7 +56,7 @@ fetchHeaderData()
                 class="me-2"
               />
               <span class="text-body-1">
-                {{ profileHeaderData?.location }}
+                {{ userData?.user_detail.city }}
               </span>
             </span>
 
@@ -63,7 +67,7 @@ fetchHeaderData()
                 class="me-2"
               />
               <span class="text-body-1">
-                {{ profileHeaderData?.joiningDate }}
+                {{ userData?.created_at }}
               </span>
             </span>
           </div>
@@ -75,6 +79,9 @@ fetchHeaderData()
       </div>
     </VCardText>
   </VCard>
+
+
+
 </template>
 
 <style lang="scss">

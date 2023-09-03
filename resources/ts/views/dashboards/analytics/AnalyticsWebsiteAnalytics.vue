@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VIcon } from 'vuetify/components'
+import { VIcon } from 'vuetify/components/VIcon'
 import sliderBar1 from '@images/illustrations/sidebar-pic-1.png'
 import sliderBar2 from '@images/illustrations/sidebar-pic-2.png'
 import sliderBar3 from '@images/illustrations/sidebar-pic-3.png'
@@ -92,9 +92,9 @@ const websiteAnalytics = [
         <VCardText>
           <VRow>
             <VCol cols="12">
-              <h6 class="text-h6 text-white mb-1">
+              <h5 class="text-h5 text-white mb-1">
                 Website Analytics
-              </h6>
+              </h5>
               <p class="text-sm mb-0">
                 Total 28.5% Conversion Rate
               </p>
@@ -109,9 +109,9 @@ const websiteAnalytics = [
               <VRow>
                 <VCol
                   cols="12"
-                  class="pb-0"
+                  class="pb-0 pt-1"
                 >
-                  <p class="font-weight-semibold">
+                  <p class="font-weight-medium mb-1">
                     {{ item.name }}
                   </p>
                 </VCol>
@@ -120,11 +120,14 @@ const websiteAnalytics = [
                   v-for="d in item.data"
                   :key="d.number"
                   cols="6"
-                  class="text-no-wrap"
+                  class="text-no-wrap pb-2"
                 >
                   <VChip
                     label
-                    class="me-2"
+                    variant="flat"
+                    size="default"
+                    color="#685ED8"
+                    class="font-weight-medium text-white rounded me-2"
                   >
                     {{ d.number }}
                   </VChip>
@@ -143,6 +146,7 @@ const websiteAnalytics = [
               <img
                 :src="item.slideImg"
                 class="card-website-analytics-img"
+                style="filter: drop-shadow(0 4px 40px rgba(0, 0, 0, 40%));"
               >
             </VCol>
           </VRow>
@@ -154,7 +158,7 @@ const websiteAnalytics = [
 
 <style lang="scss">
 .card-website-analytics-img {
-  block-size: 160px;
+  block-size: 150px;
 }
 
 @media screen and (min-width: 600px) {
@@ -175,4 +179,3 @@ const websiteAnalytics = [
   }
 }
 </style>
-

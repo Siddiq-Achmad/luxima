@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+import pdf from '@images/icons/project-icons/pdf.png'
 import pumaShoes from '@images/pages/puma-shoes.jpeg'
 
 const serverSwitch = ref(false)
@@ -17,59 +18,52 @@ const serverSwitch = ref(false)
         justify="center"
         truncate-line="both"
         :density="$vuetify.display.smAndDown ? 'compact' : 'default'"
+        class="v-timeline-icon-only"
       >
         <!-- SECTION Timeline Item: Flight -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-plane-tilt"
-                  color="primary"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-plane-tilt"
+              color="primary"
+            />
           </template>
 
           <VCard>
             <VCardText>
               <!-- 👉 Header -->
-              <div class="d-flex justify-space-between">
-                <h6 class="text-base font-weight-semibold mb-1 me-3">
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">
                   Get on the flight
-                </h6>
-                <small class="text-sm">Wednesday</small>
+                </span>
+                <span class="app-timeline-meta">Wednesday</span>
               </div>
 
               <!-- 👉 Content -->
-              <p class="mb-1">
+              <p class="app-timeline-text mb-1">
                 <span>Charles de Gaulle Airport, Paris</span>
                 <VIcon
                   size="20"
                   icon="tabler-arrow-right"
-                  class="mx-2"
+                  class="mx-2 flip-in-rtl"
                 />
                 <span>Heathrow Airport, London</span>
               </p>
 
-              <p class="mb-2">
+              <p class="app-timeline-meta mb-2">
                 6:30 AM
               </p>
 
-              <div class="d-flex align-center">
-                <VIcon
-                  color="primary"
-                  icon="tabler-link"
-                  size="20"
-                  class="me-1"
-                />
-                <h6 class="text-primary font-weight-semibold text-sm">
-                  booking-card.pdf
-                </h6>
+              <div class="app-timeline-text d-flex align-center gap-2">
+                <div>
+                  <VImg
+                    :src="pdf"
+                    :width="22"
+                  />
+                </div>
+
+                <span>booking-card.pdf</span>
               </div>
             </VCardText>
           </VCard>
@@ -77,34 +71,28 @@ const serverSwitch = ref(false)
         <!-- !SECTION -->
 
         <!-- SECTION Timeline Item: Interview -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-clock"
-                  color="success"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-clock"
+              color="success"
+            />
           </template>
 
           <VCard>
             <VCardText>
               <!-- 👉 Header -->
-              <div class="d-flex justify-space-between">
-                <h6 class="text-base font-weight-semibold mb-1">
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">
                   Interview Schedule
-                </h6>
-                <small class="text-sm text-no-wrap">April, 18</small>
+                </span>
+                <span class="app-timeline-meta">April, 18</span>
               </div>
 
-              <p class="mb-0">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus quos, voluptates voluptas rem veniam expedita.
+              <p class="app-timeline-text mb-0">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus quos, voluptates voluptas rem veniam
+                expedita.
               </p>
 
               <!-- 👉 Divider -->
@@ -120,35 +108,25 @@ const serverSwitch = ref(false)
                     class="me-3"
                   />
                   <div class="d-flex flex-column">
-                    <h6 class="text-sm font-weight-semibold">Rebecca Godman</h6>
-                    <span>Javascript Developer</span>
+                    <h6 class="text-sm font-weight-medium">Rebecca Godman</h6>
+                    <span class="text-xs">Javascript Developer</span>
                   </div>
                 </span>
 
                 <!-- 👉 Person Actions -->
                 <div>
-                  <VBtn
-                    icon
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                  >
+                  <IconBtn>
                     <VIcon
                       icon="tabler-message"
                       size="20"
                     />
-                  </VBtn>
-                  <VBtn
-                    icon
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                  >
+                  </IconBtn>
+                  <IconBtn>
                     <VIcon
                       icon="tabler-phone"
                       size="20"
                     />
-                  </VBtn>
+                  </IconBtn>
                 </div>
               </div>
             </VCardText>
@@ -157,25 +135,18 @@ const serverSwitch = ref(false)
         <!-- !SECTION -->
 
         <!-- SECTION Timeline Item: Puma Shoes -->
-        <VTimelineItem
-          fill-dot
-          size="x-small"
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-shopping-cart"
-                  color="warning"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-shopping-cart"
+              color="warning"
+            />
           </template>
 
           <VCard>
             <VCardText>
-              <div class="d-flex align-start flex-sm-row flex-column mb-3">
+              <div class="d-flex align-start flex-sm-row flex-column mb-3 gap-y-2">
                 <VImg
                   height="62"
                   width="62"
@@ -185,37 +156,39 @@ const serverSwitch = ref(false)
 
                 <div>
                   <!-- 👉 Header -->
-                  <div class="d-flex justify-space-between">
-                    <h6 class="mb-1 font-weight-semibold text-base me-3">
+                  <div class="d-flex justify-space-between align-center mb-1">
+                    <span class="app-timeline-title">
                       Sold Puma POPX Blue Color
-                    </h6>
-                    <small class="text-sm text-no-wrap">January, 10</small>
+                    </span>
+                    <span class="app-timeline-meta">January, 10
+                    </span>
                   </div>
-                  <span>PUMA presents the latest shoes from its collection. Light &amp; comfortable made with highly durable material.</span>
+                  <span class="app-timeline-text">PUMA presents the latest shoes from its collection. Light &amp;
+                    comfortable made with highly durable material.</span>
                 </div>
               </div>
 
               <!-- 👉 Timeline Item: Meta Content -->
               <div class="d-flex justify-space-between flex-sm-row flex-column gap-3">
                 <div class="text-sm-center">
-                  <h6 class="text-base font-weight-semibold">
+                  <h6 class="text-sm font-weight-medium">
                     Customer
                   </h6>
-                  <span>Micheal Scott</span>
+                  <span class="text-xs">Micheal Scott</span>
                 </div>
 
                 <div class="text-sm-center">
-                  <h6 class="text-base font-weight-semibold">
+                  <h6 class="text-sm font-weight-medium">
                     Price
                   </h6>
-                  <span>$375.00</span>
+                  <span class="text-xs">$375.00</span>
                 </div>
 
                 <div class="text-sm-center">
-                  <h6 class="text-base font-weight-semibold">
+                  <h6 class="text-sm font-weight-medium">
                     Quantity
                   </h6>
-                  <span>1</span>
+                  <span class="text-xs">1</span>
                 </div>
               </div>
             </VCardText>
@@ -224,43 +197,37 @@ const serverSwitch = ref(false)
         <!-- !SECTION -->
 
         <!-- SECTION Timeline Item: Design Review -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-edit"
-                  color="info"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-edit"
+              color="info"
+            />
           </template>
 
           <VCard>
             <VCardText>
               <!-- 👉 Header -->
-              <div class="d-flex justify-space-between">
-                <h6 class="mb-1 text-base font-weight-semibold">
+              <div class="d-flex justify-space-between align-center">
+                <span class="app-timeline-title">
                   Design Review
-                </h6>
-                <small class="text-sm text-no-wrap">September, 20</small>
+                </span>
+                <span class="app-timeline-meta">September, 20</span>
               </div>
 
               <!-- 👉 Content -->
-              <p>
+              <p class="app-timeline-text">
                 Weekly review of freshly prepared design for our new application.
               </p>
+
               <div class="d-flex align-center">
                 <VAvatar
                   size="40"
                   :image="avatar1"
                   class="me-3"
                 />
-                <h6 class="text-sm font-weight-semibold">
+                <h6 class="text-sm font-weight-medium">
                   John Doe (Client)
                 </h6>
               </div>
@@ -270,29 +237,22 @@ const serverSwitch = ref(false)
         <!-- !SECTION -->
 
         <!-- SECTION Timeline Item: Ubuntu Server -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-server"
-                  color="error"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-server"
+              color="error"
+            />
           </template>
 
           <VCard>
             <VCardText>
               <!-- 👉 Header -->
-              <div class="d-flex justify-space-between">
-                <h6 class="mb-1 text-base font-weight-semibold">
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">
                   Ubuntu Server
-                </h6>
+                </span>
 
                 <VChip
                   color="error"
@@ -303,7 +263,7 @@ const serverSwitch = ref(false)
               </div>
 
               <!-- 👉 Content -->
-              <table class="w-100 mt-3">
+              <table class="text-sm w-100 mt-3">
                 <tr>
                   <td class="d-flex align-center pb-2">
                     <VIcon
@@ -347,32 +307,22 @@ const serverSwitch = ref(false)
                 </tr>
               </table>
 
-              <VDivider class="mt-3" />
+              <VDivider class="my-3" />
 
               <div class="d-flex justify-space-between align-end">
                 <div>
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  <IconBtn>
                     <VIcon
                       icon="tabler-share"
                       size="20"
                     />
-                  </VBtn>
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  </IconBtn>
+                  <IconBtn>
                     <VIcon
                       icon="tabler-reload"
                       size="20"
                     />
-                  </VBtn>
+                  </IconBtn>
                 </div>
 
                 <VSwitch v-model="serverSwitch" />
@@ -383,34 +333,26 @@ const serverSwitch = ref(false)
         <!-- !SECTION -->
 
         <!-- SECTION Timeline Item: Location -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-map-pin"
-                  color="success"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-map-pin"
+              color="success"
+            />
           </template>
 
           <VCard>
             <VCardText>
               <!-- 👉 Header -->
-              <div class="d-flex justify-space-between">
+              <div class="d-flex justify-space-between align-center mb-1">
                 <div class="d-flex align-end mb-3">
                   <VIcon
                     icon="tabler-map-pin"
                     class="me-1"
                   />
-                  <h6 class="text-base font-weight-semibold">
-                    <span>Location</span>
-                  </h6>
+
+                  <span class="app-timeline-title">Location</span>
                 </div>
 
                 <VChip
@@ -422,52 +364,39 @@ const serverSwitch = ref(false)
               </div>
 
               <!-- 👉 Content -->
-              <h6 class="mb-0 text-sm font-weight-semibold">
+              <p class="app-timeline-text mb-0">
                 Find location for the company celebration.
-              </h6>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              </p>
+              <p class="app-timeline-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              </p>
 
               <VDivider />
 
               <div class="d-flex justify-space-between mt-4 flex-wrap">
                 <div>
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  <IconBtn>
                     <VIcon
                       size="20"
                       icon="tabler-link"
                     />
-                  </VBtn>
+                  </IconBtn>
 
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  <IconBtn>
                     <VIcon
                       size="20"
                       icon="tabler-message"
                     />
-                  </VBtn>
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  </IconBtn>
+                  <IconBtn>
                     <VIcon
                       size="20"
                       icon="tabler-user"
                     />
-                  </VBtn>
+                  </IconBtn>
                 </div>
 
-                <span class="text-sm">Due date: 15th Jan</span>
+                <span class="app-timeline-meta">Due date: 15th Jan</span>
               </div>
             </VCardText>
           </VCard>
@@ -477,9 +406,3 @@ const serverSwitch = ref(false)
     </VCardText>
   </VCard>
 </template>
-
-<style lang="scss" scoped>
-.v-timeline-avatar-wrapper {
-  background-color: rgb(var(--v-theme-background));
-}
-</style>

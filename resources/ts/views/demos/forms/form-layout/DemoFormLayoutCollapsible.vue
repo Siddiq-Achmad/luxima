@@ -46,7 +46,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Full Name" />
+              <AppTextField label="Full Name" />
             </VCol>
 
             <!-- 👉 Phone No -->
@@ -54,12 +54,15 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Phone No" />
+              <AppTextField
+                label="Phone No"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Address -->
             <VCol cols="12">
-              <VTextarea
+              <AppTextarea
                 label="Address"
                 rows="3"
               />
@@ -70,7 +73,10 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Pincode" />
+              <AppTextField
+                label="Pincode"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Landmark -->
@@ -78,7 +84,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Landmark" />
+              <AppTextField label="Landmark" />
             </VCol>
 
             <!-- 👉 City -->
@@ -86,7 +92,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="City" />
+              <AppTextField label="City" />
             </VCol>
 
             <!-- 👉 State -->
@@ -94,7 +100,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VSelect
+              <AppSelect
                 :items="stateList"
                 label="State"
               />
@@ -152,7 +158,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Standard 3-5 Days
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   Free
                 </h6>
               </div>
@@ -174,7 +180,7 @@ const paymentMethods = [
                 <h5 class="text-base font-weight-medium">
                   Express
                 </h5>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $5.00
                 </h6>
               </div>
@@ -196,7 +202,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Overnight
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $10.00
                 </h6>
               </div>
@@ -246,7 +252,10 @@ const paymentMethods = [
               <VRow v-show="paymentMethod === 'credit-debit-card'">
                 <!-- 👉 Card Number -->
                 <VCol cols="12">
-                  <VTextField label="Card Number" />
+                  <AppTextField
+                    label="Card Number"
+                    type="number"
+                  />
                 </VCol>
 
                 <!-- 👉 Name -->
@@ -254,7 +263,7 @@ const paymentMethods = [
                   cols="12"
                   md="6"
                 >
-                  <VTextField label="Name" />
+                  <AppTextField label="Name" />
                 </VCol>
 
                 <!-- 👉 Expire Date -->
@@ -262,7 +271,7 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="Expiry Date" />
+                  <AppTextField label="Expiry" />
                 </VCol>
 
                 <!-- 👉 CVV Code -->
@@ -270,7 +279,11 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="CVV Code" />
+                  <AppTextField
+                    label="CVV"
+                    type="number"
+                    max="3"
+                  />
                 </VCol>
               </VRow>
             </VForm>

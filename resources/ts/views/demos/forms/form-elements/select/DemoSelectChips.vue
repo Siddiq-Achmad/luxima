@@ -4,7 +4,7 @@ const selected = ref(['foo', 'bar', 'fizz', 'buzz'])
 </script>
 
 <template>
-  <VSelect
+  <AppSelect
     v-model="selected"
     :items="items"
     label="Chips"

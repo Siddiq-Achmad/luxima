@@ -52,7 +52,7 @@ const chartConfigs = computed(() => {
         colors: [
           labelPrimaryColor,
           labelPrimaryColor,
-          currentTheme.primary,
+          `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
           labelPrimaryColor,
           labelPrimaryColor,
           labelPrimaryColor,
@@ -91,7 +91,7 @@ const chartConfigs = computed(() => {
           labels: {
             style: {
               colors: labelColor,
-              fontSize: '14px',
+              fontSize: '13px',
               fontFamily: 'Public Sans',
             },
           },
@@ -100,10 +100,10 @@ const chartConfigs = computed(() => {
           labels: {
             offsetX: -15,
             formatter(val: number) {
-              return `$${parseInt(val / 1)}k`
+              return `${parseInt(val / 1)}k`
             },
             style: {
-              fontSize: '14px',
+              fontSize: '13px',
               colors: labelColor,
               fontFamily: 'Public Sans',
             },
@@ -196,13 +196,13 @@ const chartConfigs = computed(() => {
           labelPrimaryColor,
           labelPrimaryColor,
           labelPrimaryColor,
-          currentTheme.primary,
+          `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
           labelPrimaryColor,
           labelPrimaryColor,
         ],
         dataLabels: {
           enabled: true,
-          formatter(val: any) {
+          formatter(val: number) {
             return `${val}k`
           },
           offsetY: -25,
@@ -231,7 +231,7 @@ const chartConfigs = computed(() => {
           labels: {
             style: {
               colors: labelColor,
-              fontSize: '14px',
+              fontSize: '13px',
               fontFamily: 'Public Sans',
             },
           },
@@ -240,10 +240,10 @@ const chartConfigs = computed(() => {
           labels: {
             offsetX: -15,
             formatter(val: number) {
-              return `$${parseInt(val / 1)}k`
+              return `${parseInt(val / 1)}k`
             },
             style: {
-              fontSize: '14px',
+              fontSize: '13px',
               colors: labelColor,
               fontFamily: 'Public Sans',
             },
@@ -333,7 +333,7 @@ const chartConfigs = computed(() => {
           labelPrimaryColor,
           labelPrimaryColor,
           labelPrimaryColor,
-          currentTheme.primary,
+          `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
           labelPrimaryColor,
           labelPrimaryColor,
           labelPrimaryColor,
@@ -341,7 +341,7 @@ const chartConfigs = computed(() => {
         ],
         dataLabels: {
           enabled: true,
-          formatter(val: any) {
+          formatter(val: number) {
             return `${val}k`
           },
           offsetY: -25,
@@ -370,7 +370,7 @@ const chartConfigs = computed(() => {
           labels: {
             style: {
               colors: labelColor,
-              fontSize: '14px',
+              fontSize: '13px',
               fontFamily: 'Public Sans',
             },
           },
@@ -379,10 +379,10 @@ const chartConfigs = computed(() => {
           labels: {
             offsetX: -15,
             formatter(val: unknown) {
-              return `$${parseInt(val / 1)}k`
+              return `${parseInt(val / 1)}k`
             },
             style: {
-              fontSize: '14px',
+              fontSize: '13px',
               colors: labelColor,
               fontFamily: 'Public Sans',
             },
@@ -476,11 +476,11 @@ const chartConfigs = computed(() => {
           labelPrimaryColor,
           labelPrimaryColor,
           labelPrimaryColor,
-          currentTheme.primary,
+          `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
         ],
         dataLabels: {
           enabled: true,
-          formatter(val: any) {
+          formatter(val: number) {
             return `${val}k`
           },
           offsetY: -25,
@@ -509,7 +509,7 @@ const chartConfigs = computed(() => {
           labels: {
             style: {
               colors: labelColor,
-              fontSize: '14px',
+              fontSize: '13px',
               fontFamily: 'Public Sans',
             },
           },
@@ -518,10 +518,10 @@ const chartConfigs = computed(() => {
           labels: {
             offsetX: -15,
             formatter(val: number) {
-              return `$${parseInt(val / 1)}k`
+              return `${parseInt(val / 1)}k`
             },
             style: {
-              fontSize: '14px',
+              fontSize: '13px',
               colors: labelColor,
               fontFamily: 'Public Sans',
             },
@@ -577,6 +577,11 @@ const chartConfigs = computed(() => {
     },
   ]
 })
+
+const moreList = [
+  { title: 'View More', value: 'View More' },
+  { title: 'Delete', value: 'Delete' },
+]
 </script>
 
 <template>
@@ -586,29 +591,7 @@ const chartConfigs = computed(() => {
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          size="x-small"
-          variant="plain"
-          color="default"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['View More', 'Delete']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -633,7 +616,7 @@ const chartConfigs = computed(() => {
           >
             <VAvatar
               rounded
-              size="38"
+              size="34"
               :color="isSelected ? 'primary' : 'secondary'"
               variant="tonal"
               class="mb-2"
@@ -654,7 +637,7 @@ const chartConfigs = computed(() => {
           >
             <VAvatar
               rounded
-              size="38"
+              size="34"
               color="default"
               variant="tonal"
               class="text-disabled"

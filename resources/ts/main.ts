@@ -30,6 +30,5 @@ app.use(abilitiesPlugin, ability, {
   useGlobalProperties: true,
 })
 
-
 // Mount vue app
 app.mount('#app')

@@ -45,7 +45,7 @@ const chartOptions = computed(() => {
     },
     legend: {
       show: true,
-      fontSize: '14px',
+      fontSize: '13px',
       position: 'bottom',
       labels: {
         colors: legendColor,
@@ -83,7 +83,7 @@ const chartOptions = computed(() => {
         show: true,
         style: {
           colors: [labelColor, labelColor, labelColor, labelColor, labelColor, labelColor],
-          fontSize: '14px',
+          fontSize: '13px',
           fontFamily: 'Public Sans',
         },
       },
@@ -116,29 +116,7 @@ const chartOptions = computed(() => {
 
       <template #append>
         <div class="mt-n4 me-n2">
-          <VBtn
-            icon
-            size="x-small"
-            variant="plain"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View More', 'Delete']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn :menu-list="[{ title: 'View More', value: 'View More' }, { title: 'Delete', value: 'Delete' }]" />
         </div>
       </template>
     </VCardItem>

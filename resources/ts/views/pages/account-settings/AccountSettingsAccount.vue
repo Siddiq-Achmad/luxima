@@ -120,10 +120,7 @@ const currencies = [
           />
 
           <!-- 👉 Upload Photo -->
-          <form
-            ref="refForm"
-            class="d-flex flex-column justify-center gap-4"
-          >
+          <form class="d-flex flex-column justify-center gap-4">
             <div class="d-flex flex-wrap gap-2">
               <VBtn
                 color="primary"
@@ -176,7 +173,7 @@ const currencies = [
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.firstName"
                   label="First Name"
                 />
@@ -187,7 +184,7 @@ const currencies = [
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.lastName"
                   label="Last Name"
                 />
@@ -198,7 +195,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.email"
                   label="E-mail"
                   type="email"
@@ -210,7 +207,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.org"
                   label="Organization"
                 />
@@ -221,7 +218,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.phone"
                   label="Phone Number"
                 />
@@ -232,7 +229,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.address"
                   label="Address"
                 />
@@ -243,7 +240,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.state"
                   label="State"
                 />
@@ -254,7 +251,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="accountDataLocal.zip"
                   label="Zip Code"
                 />
@@ -265,7 +262,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="accountDataLocal.country"
                   label="Country"
                   :items="['USA', 'Canada', 'UK', 'India', 'Australia']"
@@ -277,7 +274,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="accountDataLocal.language"
                   label="Language"
                   :items="['English', 'Spanish', 'Arabic', 'Hindi', 'Urdu']"
@@ -289,7 +286,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="accountDataLocal.timezone"
                   label="Timezone"
                   :items="timezones"
@@ -302,7 +299,7 @@ const currencies = [
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="accountDataLocal.currency"
                   label="Currency"
                   :items="currencies"
@@ -337,18 +334,6 @@ const currencies = [
       <VCard title="Delete Account">
         <VCardText>
           <!-- 👉 Checkbox and Button  -->
-          <VAlert
-            color="warning"
-            variant="tonal"
-            class="mb-4"
-          >
-            <VAlertTitle class="mb-1">
-              Are you sure you want to delete your account?
-            </VAlertTitle>
-            <p class="mb-0">
-              Once you delete your account, there is no going back. Please be certain.
-            </p>
-          </VAlert>
           <div>
             <VCheckbox
               v-model="isAccountDeactivated"
@@ -373,6 +358,10 @@ const currencies = [
   <!-- Confirm Dialog -->
   <ConfirmDialog
     v-model:isDialogVisible="isConfirmDialogOpen"
-    confirmation-msg="Are you sure you want to deactivate your account?"
+    confirmation-question="Are you sure you want to deactivate your account?"
+    confirm-title="Deactivated!"
+    confirm-msg="Your account has been deactivated successfully."
+    cancel-title="Cancelled"
+    cancel-msg="Account Deactivation Cancelled!"
   />
 </template>

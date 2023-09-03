@@ -44,6 +44,12 @@ const popularProducts = [
     stats: '$129.48',
   },
 ]
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
@@ -53,29 +59,7 @@ const popularProducts = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -87,7 +71,7 @@ const popularProducts = [
         >
           <template #prepend>
             <VAvatar
-              size="44"
+              size="46"
               rounded
               :image="product.avatarImg"
             />
@@ -96,7 +80,7 @@ const popularProducts = [
           <VListItemTitle class="font-weight-medium">
             {{ product.title }}
           </VListItemTitle>
-          <VListItemSubtitle>
+          <VListItemSubtitle class="text-disabled">
             {{ product.subtitle }}
           </VListItemSubtitle>
 
@@ -110,9 +94,3 @@ const popularProducts = [
     </VCardText>
   </VCard>
 </template>
-
-<style lang="scss" scoped>
-.card-list {
-  --v-card-list-gap: 29px;
-}
-</style>

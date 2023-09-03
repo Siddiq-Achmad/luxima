@@ -5,9 +5,9 @@
         <span class="text-sm text-disabled">Sales Overview</span>
         <span class="text-success">+18.2%</span>
       </div>
-      <h5 class="text-h5">
+      <h4 class="text-h4">
         $42.5k
-      </h5>
+      </h4>
     </VCardText>
 
     <VCardText>
@@ -17,7 +17,7 @@
             <VAvatar
               color="info"
               variant="tonal"
-              :size="30"
+              :size="24"
               rounded
               class="me-2"
             >
@@ -29,10 +29,10 @@
 
             <span>Order</span>
           </div>
-          <h6 class="text-h6">
+          <h6 class="text-h5">
             62.2%
           </h6>
-          <span class="text-sm">6,440</span>
+          <span class="text-sm text-disabled">6,440</span>
         </VCol>
 
         <VCol cols="2">
@@ -65,7 +65,7 @@
             <VAvatar
               color="primary"
               variant="tonal"
-              :size="30"
+              :size="24"
               rounded
             >
               <VIcon
@@ -74,10 +74,10 @@
               />
             </VAvatar>
           </div>
-          <h6 class="text-h6">
+          <h6 class="text-h5">
             25.5%
           </h6>
-          <span class="text-sm">12,749</span>
+          <span class="text-sm text-disabled">12,749</span>
         </VCol>
       </VRow>
 

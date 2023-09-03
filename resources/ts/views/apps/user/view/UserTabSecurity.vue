@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import { VDataTable } from 'vuetify/labs/VDataTable'
+
 const isNewPasswordVisible = ref(false)
 const isConfirmPasswordVisible = ref(false)
 const smsVerificationNumber = ref('+1(968) 819-2547')
 const isTwoFactorDialogOpen = ref(false)
+
+// Recent devices Headers
+const recentDeviceHeader = [
+  { title: 'BROWSER', key: 'browser' },
+  { title: 'DEVICE', key: 'device' },
+  { title: 'LOCATION', key: 'location' },
+  { title: 'RECENT ACTIVITY', key: 'activity' },
+]
 
 const recentDevices = [
   {
@@ -67,19 +77,19 @@ const recentDevices = [
             color="warning"
             class="mb-4"
           >
-            <VAlertTitle class="mb-1">
+            <VAlertTitle class="mb-2">
               Ensure that these requirements are met
             </VAlertTitle>
             <span>Minimum 8 characters long, uppercase & symbol</span>
           </VAlert>
 
-          <VForm @submit.prevent="() => {}">
+          <VForm @submit.prevent="() => { }">
             <VRow>
               <VCol
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   label="New Password"
                   :type="isNewPasswordVisible ? 'text' : 'password'"
                   :append-inner-icon="isNewPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
@@ -90,7 +100,7 @@ const recentDevices = [
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   label="Confirm Password"
                   :type="isConfirmPasswordVisible ? 'text' : 'password'"
                   :append-inner-icon="isConfirmPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
@@ -111,51 +121,42 @@ const recentDevices = [
 
     <VCol cols="12">
       <!-- 👉 Two step verification -->
-      <VCard
-        title="Two-step verification"
-        subtitle="Keep your account secure with authentication step."
-      >
+      <VCard title="Two-step verification">
+        <template #subtitle>
+          <span class="text-base">
+            Keep your account secure with authentication step.
+          </span>
+        </template>
         <VCardText>
           <div>
-            <h4 class="font-weight-semibold">
+            <h4 class="font-weight-medium">
               SMS
             </h4>
 
-            <VTextField
-              variant="underlined"
+            <AppTextField
               :model-value="smsVerificationNumber"
               readonly
             >
               <template #append-inner>
-                <VBtn
-                  icon
-                  size="x-small"
-                  color="default"
-                  variant="text"
-                >
+                <div class="d-flex align-center gap-2">
                   <VIcon
-                    size="22"
                     icon="tabler-edit"
+                    size="22"
                     @click="isTwoFactorDialogOpen = true"
                   />
-                </VBtn>
-                <VBtn
-                  icon
-                  size="x-small"
-                  color="default"
-                  variant="text"
-                >
+
                   <VIcon
                     size="22"
                     icon="tabler-trash"
                   />
-                </VBtn>
+                </div>
               </template>
-            </VTextField>
+            </AppTextField>
           </div>
 
           <p class="mb-0 mt-4">
-            Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in. <a
+            Two-factor authentication adds an additional layer of security to your account by requiring more than just a
+            password to log in. <a
               href="javascript:void(0)"
               class="text-decoration-none"
             >Learn more</a>.
@@ -168,63 +169,32 @@ const recentDevices = [
       <!-- 👉 Recent devices -->
       <VCard title="Recent devices">
         <VDivider />
-        <VTable class="text-no-wrap">
-          <thead>
-            <tr>
-              <th scope="col">
-                BROWSER
-              </th>
-              <th scope="col">
-                DEVICE
-              </th>
-              <th scope="col">
-                LOCATION
-              </th>
-              <th scope="col">
-                RECENT ACTIVITY
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr
-              v-for="device in recentDevices"
-              :key="device.browser"
-            >
-              <td>
-                <VAvatar
-                  :size="22"
-                  class="me-3"
-                >
-                  <VIcon
-                    :color="device.color"
-                    :icon="device.icon"
-                  />
-                </VAvatar>
-                <span class="font-weight-medium">{{ device.browser }}</span>
-              </td>
-
-              <td class="text-medium-emphasis">
-                {{ device.device }}
-              </td>
-
-              <td class="text-medium-emphasis">
-                {{ device.location }}
-              </td>
-
-              <td class="text-medium-emphasis">
-                {{ device.activity }}
-              </td>
-            </tr>
-          </tbody>
-        </VTable>
+        <VDataTable
+          :items="recentDevices"
+          :headers="recentDeviceHeader"
+          hide-default-footer
+        >
+          <template #item.browser="{ item }">
+            <div class="d-flex">
+              <VIcon
+                :icon="item.raw.icon"
+                :color="item.raw.color"
+                :size="22"
+                class="me-3"
+              />
+              {{ item.raw.browser }}
+            </div>
+          </template>
+          <!-- TODO Refactor this after vuetify provides proper solution for removing default footer -->
+          <template #bottom />
+        </VDataTable>
       </VCard>
     </VCol>
   </VRow>
 
   <!-- 👉 Enable One Time Password Dialog -->
-  <EnableOneTimePasswordDialog
+  <TwoFactorAuthDialog
     v-model:isDialogVisible="isTwoFactorDialogOpen"
-    :mobile-number="smsVerificationNumber"
+    :sms-code="smsVerificationNumber"
   />
 </template>

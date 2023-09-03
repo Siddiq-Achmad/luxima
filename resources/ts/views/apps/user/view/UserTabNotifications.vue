@@ -31,7 +31,7 @@ const notifications = ref([
   <VCard class="user-tab-notification">
     <VCardItem>
       <VCardTitle>Notifications</VCardTitle>
-      <p class="text-sm mt-2 mb-0">
+      <p class="text-base mt-2 mb-0">
         You will receive notification for the below selected items.
       </p>
     </VCardItem>
@@ -64,9 +64,7 @@ const notifications = ref([
               <VCheckbox v-model="notification.email" />
             </td>
             <td>
-              <VCheckbox
-                v-model="notification.browser"
-              />
+              <VCheckbox v-model="notification.browser" />
             </td>
             <td>
               <VCheckbox v-model="notification.app" />

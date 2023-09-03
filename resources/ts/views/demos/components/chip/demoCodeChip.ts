@@ -423,7 +423,7 @@ const items = ref(['Streaming', 'Eating', 'Programming', 'Playing video games', 
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="chips"
     chips
     clearable
@@ -453,7 +453,7 @@ const items = ref([
 </script>
 
 <template>
-  <VCombobox
+  <AppCombobox
     v-model="chips"
     chips
     clearable
@@ -685,7 +685,9 @@ export const sizes = {
       small chip
     </VChip>
 
-    <VChip>Default</VChip>
+    <VChip size="default">
+      Default
+    </VChip>
 
     <VChip size="large">
       large chip
@@ -707,7 +709,9 @@ export const sizes = {
       small chip
     </VChip>
 
-    <VChip>Default</VChip>
+    <VChip size="default">
+      Default
+    </VChip>
 
     <VChip size="large">
       large chip
@@ -946,4 +950,3 @@ export const withIcon = {
 </template>
 `,
 }
-

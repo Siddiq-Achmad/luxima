@@ -32,38 +32,15 @@ watch(router, fetchProjectData, { immediate: true })
     >
       <VCard>
         <div class="vertical-more">
-          <VBtn
-            icon
-            variant="text"
-            color="default"
-            size="x-small"
-          >
-            <VIcon
-              size="20  "
-              icon="tabler-dots-vertical"
-              class="text-disabled"
-            />
-
-            <VMenu activator="parent">
-              <VList density="compact">
-                <VListItem
-                  v-for="(item, index) in ['Share connection', 'Block connection']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-
-                <VDivider class="my-2" />
-
-                <VListItem
-                  title="Delete"
-                  value="Delete"
-                  class="text-error"
-                />
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn
+            :menu-list="[
+              { title: 'Share connection', value: 'Share connection' },
+              { title: 'Block connection', value: 'Block connection' },
+              { type: 'divider', class: 'my-2' },
+              { title: 'Delete', value: 'Delete', class: 'text-error' },
+            ]"
+            item-props
+          />
         </div>
 
         <VCardItem>
@@ -95,7 +72,7 @@ watch(router, fetchProjectData, { immediate: true })
         <VCardText>
           <div class="d-flex justify-space-around">
             <div class="text-center">
-              <h6 class="text-h6 font-weight-semibold">
+              <h6 class="text-h6">
                 {{ data.projects }}
               </h6>
               <span class="text-body-1">Projects</span>
@@ -119,21 +96,15 @@ watch(router, fetchProjectData, { immediate: true })
               :prepend-icon="data.isConnected ? 'tabler-user-check' : 'tabler-user-plus'"
               :variant="data.isConnected ? 'elevated' : 'tonal'"
             >
-              Connected
+              {{ data.isConnected ? 'connected' : 'connect' }}
             </VBtn>
 
-            <VBtn
-              icon
+            <IconBtn
               variant="tonal"
-              color="default"
-              size="small"
               class="rounded"
             >
-              <VIcon
-                size="22"
-                icon="tabler-mail"
-              />
-            </VBtn>
+              <VIcon icon="tabler-mail" />
+            </IconBtn>
           </div>
         </VCardText>
       </VCard>

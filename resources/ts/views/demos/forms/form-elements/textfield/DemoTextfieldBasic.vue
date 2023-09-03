@@ -1,3 +1,3 @@
 <template>
-  <VTextField label="Regular" />
+  <AppTextField label="Regular" />
 </template>

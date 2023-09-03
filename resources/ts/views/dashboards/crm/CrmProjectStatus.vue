@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VueApexCharts from 'vue3-apexcharts'
 import { useTheme } from 'vuetify'
+import { prefixWithPlus } from '@core/utils/formatters'
 
 const vuetifyTheme = useTheme()
 
@@ -90,29 +91,7 @@ const projectStatus = [
   <VCard title="Project Status">
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          size="x-small"
-          variant="plain"
-          color="default"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['View More', 'Delete']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="[{ title: 'View More', value: 'View More' }, { title: 'Delete', value: 'Delete' }]" />
       </div>
     </template>
 
@@ -121,6 +100,7 @@ const projectStatus = [
         <VListItem>
           <template #prepend>
             <VAvatar
+              size="34"
               color="warning"
               variant="tonal"
               rounded
@@ -130,12 +110,12 @@ const projectStatus = [
           <VListItemTitle class="font-weight-medium">
             $4,3742
           </VListItemTitle>
-          <VListItemSubtitle class="opacity-100 text-disabled">
+          <VListItemSubtitle class="text-disabled">
             Your Earnings
           </VListItemSubtitle>
 
           <template #append>
-            <span class="text-success">10.2%</span>
+            <span class="text-success font-weight-medium">10.2%</span>
           </template>
         </VListItem>
       </VList>
@@ -155,7 +135,10 @@ const projectStatus = [
           </VListItemTitle>
           <template #append>
             <span class="me-3 text-medium-emphasis">{{ status.amount }}</span>
-            <span :class="status.lossProfit > 0 ? 'text-success' : 'text-error'">{{ status.lossProfit }}</span>
+            <span
+              class="font-weight-medium"
+              :class="status.lossProfit > 0 ? 'text-success' : 'text-error'"
+            >{{ prefixWithPlus(status.lossProfit) }}</span>
           </template>
         </VListItem>
       </VList>

@@ -5,31 +5,23 @@
 
       <template #append>
         <div class="me-n3">
-          <VBtn
-            icon
-            variant="plain"
-            size="x-small"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-          </VBtn>
+          <IconBtn>
+            <VIcon icon="tabler-dots-vertical" />
+          </IconBtn>
         </div>
       </template>
     </VCardItem>
 
     <VCardText>
       <div class="d-flex justify-space-between mb-2">
-        <h6 class="text-base">
+        <h6 class="text-base font-weight-medium">
           Subscribers Gained
         </h6>
         <VChip
           label
           color="success"
         >
-          <span class="font-weight-semibold">+92k</span>
+          <span class="font-weight-medium">+92k</span>
         </VChip>
       </div>
 
@@ -38,7 +30,7 @@
           1.2k new subscriber
         </span>
 
-        <span class="text-disabled">85%</span>
+        <span class="text-disabled text-sm">85%</span>
       </div>
 
       <VProgressLinear
@@ -49,14 +41,14 @@
       />
 
       <div class="d-flex justify-space-between mb-2 mt-6">
-        <h6 class="text-base">
+        <h6 class="text-base font-weight-medium">
           Orders Received
         </h6>
         <VChip
           label
           color="success"
         >
-          <span class="font-weight-semibold">+38k</span>
+          <span class="font-weight-medium">+38k</span>
         </VChip>
       </div>
 
@@ -65,7 +57,7 @@
           2.4k new orders
         </span>
 
-        <span class="text-disabled">65%</span>
+        <span class="text-disabled text-sm">65%</span>
       </div>
 
       <VProgressLinear

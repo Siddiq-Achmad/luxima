@@ -159,12 +159,12 @@ const iconsList = [
     <!-- more icons -->
     <div class="text-center">
       <VBtn
-        href="https://materialdesignicons.com/"
+        href="https://tablericons.com/"
         rel="noopener noreferrer"
         color="primary"
         target="_blank"
       >
-        View All Material Design Icons
+        View All Tabler Icons
       </VBtn>
     </div>
   </div>

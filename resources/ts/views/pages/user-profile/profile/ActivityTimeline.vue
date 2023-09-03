@@ -13,30 +13,13 @@ import avatar2 from '@images/avatars/avatar-2.png'
 
       <template #append>
         <div>
-          <VBtn
-            icon
-            color="default"
-            variant="text"
-            size="x-small"
-          >
-            <VIcon
-              size="20"
-              icon="tabler-dots-vertical"
-              class="text-disabled"
-            />
-
-            <VMenu activator="parent">
-              <VList density="compact">
-                <VListItem
-                  v-for="(item, index) in ['Share timeline', 'Suggest edits0', 'Report bug']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn
+            :menu-list="[
+              { title: 'Share timeline', value: 'Share timeline' },
+              { title: 'Suggest edits', value: 'Suggest edits' },
+              { title: 'Report bug', value: 'Report bug' },
+            ]"
+          />
         </div>
       </template>
     </VCardItem>
@@ -53,12 +36,12 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <div class="d-flex justify-space-between align-center flex-wrap">
-            <h4 class="text-base font-weight-semibold me-1 mb-1">
+            <span class="app-timeline-title">
               Client Meeting
-            </h4>
-            <span class="text-sm text-disabled text-no-wrap">Today</span>
+            </span>
+            <span class="app-timeline-meta">Today</span>
           </div>
-          <p class="mb-2">
+          <p class="app-timeline-text mb-2">
             Project meeting with john @10:15am
           </p>
 
@@ -69,10 +52,10 @@ import avatar2 from '@images/avatars/avatar-2.png'
               :image="avatar2"
             />
             <div>
-              <h6 class="text-base font-weight-semibold ">
+              <h6 class="text-sm font-weight-medium mb-n1">
                 Lester McCarthy (Client)
               </h6>
-              <span>
+              <span class="app-timeline-meta">
                 CEO of Infidel
               </span>
             </div>
@@ -84,13 +67,13 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <div class="d-flex justify-space-between align-center flex-wrap">
-            <h4 class="text-base font-weight-semibold me-1 mb-1">
+            <span class="app-timeline-title">
               Create a new project for client 😎
-            </h4>
-            <span class="text-sm text-disabled text-no-wrap">2 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">2 Day Ago</span>
           </div>
 
-          <p class="mb-1">
+          <p class="app-timeline-text mb-1">
             Add files to new design folder
           </p>
         </VTimelineItem>
@@ -100,12 +83,12 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <div class="d-flex justify-space-between align-center flex-wrap">
-            <h4 class="text-base font-weight-semibold me-1 mb-1">
+            <span class="app-timeline-title">
               Shared 2 New Project Files
-            </h4>
-            <span class="text-sm text-disabled text-no-wrap">6 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">6 Day Ago</span>
           </div>
-          <p class="mb-0">
+          <p class="app-timeline-text mb-0">
             Sent by Mollie Dixon
           </p>
           <div class="d-flex align-center mt-3">
@@ -115,7 +98,7 @@ import avatar2 from '@images/avatars/avatar-2.png'
               size="20"
               class="me-2"
             />
-            <h6 class="font-weight-semibold text-sm me-3">
+            <h6 class="font-weight-medium text-xs me-3">
               App Guidelines
             </h6>
 
@@ -125,7 +108,7 @@ import avatar2 from '@images/avatars/avatar-2.png'
               size="20"
               class="me-2"
             />
-            <h6 class="font-weight-semibold text-sm">
+            <h6 class="font-weight-medium text-xs">
               Testing Results
             </h6>
           </div>
@@ -136,12 +119,12 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <div class="d-flex justify-space-between align-center flex-wrap">
-            <h4 class="text-base font-weight-semibold me-1 mb-1">
+            <span class="app-timeline-title">
               Project status updated
-            </h4>
-            <span class="text-sm text-disabled text-no-wrap">10 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">10 Day Ago</span>
           </div>
-          <p class="mb-1">
+          <p class="app-timeline-text mb-1">
             WooCommerce iOS App Completed
           </p>
         </VTimelineItem>

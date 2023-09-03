@@ -4,7 +4,7 @@
       cols="12"
       sm="6"
     >
-      <VTextarea
+      <AppTextarea
         label="One row"
         auto-grow
         rows="1"
@@ -16,7 +16,7 @@
       cols="12"
       sm="6"
     >
-      <VTextarea
+      <AppTextarea
         auto-grow
         label="Two rows"
         rows="2"
@@ -28,7 +28,7 @@
       cols="12"
       sm="6"
     >
-      <VTextarea
+      <AppTextarea
         label="Three rows"
         auto-grow
         rows="3"
@@ -40,7 +40,7 @@
       cols="12"
       sm="6"
     >
-      <VTextarea
+      <AppTextarea
         auto-grow
         label="Four rows"
         rows="4"

@@ -1,5 +1,5 @@
 <template>
-  <VTextField
+  <AppTextField
     color="success"
     label="First name"
   />

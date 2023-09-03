@@ -18,9 +18,7 @@ const { appRouteTransition } = useThemeConfig()
 </script>
 
 <template>
-  <HorizontalNavLayout
-    :nav-items="navItems"
-  >
+  <HorizontalNavLayout :nav-items="navItems">
     <!-- 👉 navbar -->
     <template #navbar>
       <RouterLink
@@ -29,7 +27,7 @@ const { appRouteTransition } = useThemeConfig()
       >
         <VNodeRenderer :nodes="themeConfig.app.logo" />
 
-        <h1 class="app-title font-weight-bold leading-normal text-xl">
+        <h1 class="app-title font-weight-bold leading-normal text-xl text-capitalize">
           {{ themeConfig.app.title }}
         </h1>
       </RouterLink>
@@ -37,23 +35,20 @@ const { appRouteTransition } = useThemeConfig()
 
       <NavSearchBar trigger-btn-class="ms-lg-n3" />
 
-      <NavBarI18n />
-      <NavbarThemeSwitcher />
-      <NavbarShortcuts />
+      <NavBarI18n class="me-1" />
+      <NavbarThemeSwitcher class="me-1" />
+      <NavbarShortcuts class="me-1" />
       <NavBarNotifications class="me-2" />
       <UserProfile />
     </template>
 
     <!-- 👉 Pages -->
-    <RouterView v-slot="{ Component, route }">
+    <RouterView v-slot="{ Component }">
       <Transition
         :name="appRouteTransition"
         mode="out-in"
       >
-        <Component
-          :is="Component"
-          :key="route.path"
-        />
+        <Component :is="Component" />
       </Transition>
     </RouterView>
 

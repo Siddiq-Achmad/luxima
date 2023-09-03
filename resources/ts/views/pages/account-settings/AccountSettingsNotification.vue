@@ -92,7 +92,7 @@ const selectedNotification = ref('Only when I\'m online')
             cols="12"
             sm="6"
           >
-            <VSelect
+            <AppSelect
               v-model="selectedNotification"
               mandatory
               :items="['Only when I\'m online', 'Anytime']"

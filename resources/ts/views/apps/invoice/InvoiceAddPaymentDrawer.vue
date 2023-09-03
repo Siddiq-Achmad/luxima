@@ -19,8 +19,8 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits<Emit>()
 
-const invoiceBalance = ref('')
-const paymentAmount = ref('')
+const invoiceBalance = ref()
+const paymentAmount = ref()
 const paymentDate = ref('')
 const paymentMethod = ref()
 const paymentNote = ref('')
@@ -51,27 +51,10 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
     @update:model-value="handleDrawerModelValueUpdate"
   >
     <!-- 👉 Header -->
-    <div class="d-flex align-center pa-6 pb-1">
-      <h6 class="text-h6">
-        Add Payment
-      </h6>
-
-      <VSpacer />
-
-      <VBtn
-        icon
-        size="32"
-        color="default"
-        variant="tonal"
-        class="rounded"
-        @click="handleDrawerModelValueUpdate(false)"
-      >
-        <VIcon
-          size="18"
-          icon="tabler-x"
-        />
-      </VBtn>
-    </div>
+    <AppDrawerHeaderSection
+      title="Add Payment"
+      @cancel="$emit('update:isDrawerOpen', false)"
+    />
 
     <PerfectScrollbar :options="{ wheelPropagation: false }">
       <VCard flat>
@@ -79,16 +62,18 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
           <VForm @submit.prevent="onSubmit">
             <VRow>
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="invoiceBalance"
                   label="Invoice Balance"
+                  type="number"
                 />
               </VCol>
 
               <VCol cols="12">
-                <VTextField
+                <AppTextField
                   v-model="paymentAmount"
                   label="Payment Amount"
+                  type="number"
                 />
               </VCol>
 
@@ -100,7 +85,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
               </VCol>
 
               <VCol cols="12">
-                <VSelect
+                <AppSelect
                   v-model="paymentMethod"
                   label="Select Payment Method"
                   :items="['Cash', 'Bank Transfer', 'Debit', 'Credit', 'Paypal']"
@@ -108,7 +93,7 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
               </VCol>
 
               <VCol cols="12">
-                <VTextarea
+                <AppTextarea
                   v-model="paymentNote"
                   label="Internal Payment Note"
                 />

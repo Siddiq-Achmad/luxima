@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+import pdf from '@images/icons/project-icons/pdf.png'
 import pumaShoes from '@images/pages/puma-shoes.jpeg'
 </script>
 
@@ -12,23 +13,16 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
         align="start"
         truncate-line="both"
         density="compact"
-        class="v-timeline-density-compact"
+        class="v-timeline-density-compact v-timeline-icon-only"
       >
         <!-- SECTION Flight -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-send"
-                  color="primary"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-send"
+              color="primary"
+            />
           </template>
 
           <VCard
@@ -36,58 +30,47 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
             variant="text"
           >
             <VCardText>
-              <h6 class="d-flex justify-space-between font-weight-semibold text-base mb-3">
-                <span>Get on the flight</span>
-                <small class="text-sm">Wednesday</small>
-              </h6>
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">Get on the flight</span>
+                <small class="app-timeline-meta">Wednesday</small>
+              </div>
 
-              <p class="mb-1">
+              <div class="app-timeline-text mb-1">
                 <span>Charles de Gaulle Airport, Paris</span>
                 <VIcon
                   size="20"
                   icon="tabler-arrow-right"
-                  class="mx-2"
+                  class="mx-2 flip-in-rtl"
                 />
                 <span>Heathrow Airport, London</span>
-              </p>
-              <p class="mb-1">
+              </div>
+              <p class="app-timeline-meta mb-1">
                 6:30 AM
               </p>
 
-              <a
-                href="#"
-                class="d-flex align-center"
-              >
-                <VIcon
-                  color="primary"
-                  icon="tabler-link"
-                  size="18"
-                  class="me-1"
-                />
-                <h6 class="text-primary font-weight-semibold text-sm">
-                  booking-card.pdf
-                </h6>
-              </a>
+              <div class="app-timeline-text d-flex align-center gap-2">
+                <div>
+                  <VImg
+                    :src="pdf"
+                    :width="22"
+                  />
+                </div>
+
+                <span>booking-card.pdf</span>
+              </div>
             </VCardText>
           </VCard>
         </VTimelineItem>
         <!-- !SECTION -->
 
         <!-- SECTION Interview Schedule -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-brush"
-                  color="success"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-brush"
+              color="success"
+            />
           </template>
 
           <VCard
@@ -95,12 +78,12 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
             variant="text"
           >
             <VCardText>
-              <h6 class="d-flex justify-space-between font-weight-semibold text-base mb-3">
-                <span>Interview Schedule</span>
-                <small class="text-sm">April, 18</small>
-              </h6>
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">Interview Schedule</span>
+                <span class="app-timeline-meta">April, 18</span>
+              </div>
 
-              <p class="mb-0">
+              <p class="app-timeline-text mb-0">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus quos, voluptates voluptas rem veniam expedita.
               </p>
 
@@ -110,7 +93,7 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
               <!-- 👉 Person -->
               <div class="d-flex justify-space-between align-center">
                 <!-- 👉 Avatar & Personal Info -->
-                <span class="d-flex align-start">
+                <span class="d-flex align-center">
                   <VAvatar
                     size="40"
                     :image="avatar2"
@@ -118,35 +101,25 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
                   />
 
                   <div>
-                    <h6 class="text-sm font-weight-semibold">Rebecca Godman</h6>
-                    <span>Javascript Developer</span>
+                    <h6 class="text-sm font-weight-medium">Rebecca Godman</h6>
+                    <span class="text-xs">Javascript Developer</span>
                   </div>
                 </span>
 
                 <!-- 👉 Person Actions -->
                 <div>
-                  <VBtn
-                    icon
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                  >
+                  <IconBtn>
                     <VIcon
                       size="20"
                       icon="tabler-message"
                     />
-                  </VBtn>
-                  <VBtn
-                    size="x-small"
-                    variant="text"
-                    color="default"
-                    icon
-                  >
+                  </IconBtn>
+                  <IconBtn>
                     <VIcon
                       size="20"
                       icon="tabler-phone"
                     />
-                  </VBtn>
+                  </IconBtn>
                 </div>
               </div>
             </VCardText>
@@ -155,20 +128,13 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
         <!-- !SECTION -->
 
         <!-- SECTION Puma Shoes -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-basket"
-                  color="error"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-basket"
+              color="error"
+            />
           </template>
 
           <VCard
@@ -177,20 +143,21 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
           >
             <!-- 👉 content -->
             <VCardText>
-              <h6 class="d-flex justify-space-between font-weight-semibold text-base mb-3">
-                <span>Sold Puma POPX Blue Color</span>
-                <small class="text-sm">January, 10</small>
-              </h6>
+              <div class="d-flex justify-space-between align-center mb-1">
+                <span class="app-timeline-title">Sold Puma POPX Blue Color</span>
+                <span class="app-timeline-meta">January, 10</span>
+              </div>
 
-              <div class="d-flex align-sm-center flex-sm-row flex-column mb-3">
+              <div class="d-flex align-sm-center flex-sm-row flex-column mb-3 gap-y-2">
                 <VImg
                   height="62"
                   width="62"
                   :src="pumaShoes"
                   class="rounded me-4"
                 />
+
                 <div>
-                  <span>
+                  <span class="app-timeline-text">
                     PUMA presents the latest shoes from its collection. Light &amp; comfortable made with highly durable material.
                   </span>
                 </div>
@@ -198,22 +165,22 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
 
               <div class="d-flex justify-space-between flex-column flex-sm-row gap-3">
                 <div class="text-sm-center">
-                  <p class="mb-0 text-base font-weight-semibold">
+                  <p class="text-high-emphasis text-sm font-weight-medium mb-0">
                     Customer
                   </p>
-                  <span>Micheal Scott</span>
+                  <span class="text-xs">Micheal Scott</span>
                 </div>
                 <div class="text-sm-center">
-                  <p class="mb-0 text-base font-weight-semibold">
+                  <p class="text-high-emphasis text-sm font-weight-medium mb-0">
                     Price
                   </p>
-                  <span>$375.00</span>
+                  <span class="text-xs">$375.00</span>
                 </div>
                 <div class="text-sm-center">
-                  <p class="mb-0 text-base font-weight-semibold">
+                  <p class="text-high-emphasis text-sm font-weight-medium mb-0">
                     Quantity
                   </p>
-                  <span>1</span>
+                  <span class="text-xs">1</span>
                 </div>
               </div>
             </VCardText>
@@ -222,20 +189,13 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
         <!-- !SECTION -->
 
         <!-- 👉 Design Review -->
-        <VTimelineItem
-          size="x-small"
-          fill-dot
-        >
+        <VTimelineItem>
           <template #icon>
-            <div class="v-timeline-avatar-wrapper rounded-circle">
-              <VAvatar size="x-small">
-                <VIcon
-                  size="20"
-                  icon="tabler-user-circle"
-                  color="info"
-                />
-              </VAvatar>
-            </div>
+            <VIcon
+              size="20"
+              icon="tabler-user-circle"
+              color="info"
+            />
           </template>
 
           <VCard
@@ -243,12 +203,12 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
             variant="text"
           >
             <VCardText>
-              <h6 class="d-flex justify-space-between font-weight-semibold text-base mb-3">
-                <span>Design Review</span>
-                <small class="text-sm">September, 20</small>
-              </h6>
+              <div class="d-flex justify-space-between mb-1">
+                <span class="app-timeline-title">Design Review</span>
+                <span class="app-timeline-meta">September, 20</span>
+              </div>
 
-              <p>
+              <p class="app-timeline-text mb-2">
                 Weekly review of freshly prepared design for our new application.
               </p>
               <div class="d-flex align-center">
@@ -258,7 +218,8 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
                 >
                   <VImg :src="avatar1" />
                 </VAvatar>
-                <h6 class="text-sm font-weight-semibold">
+
+                <h6 class="text-sm font-weight-medium">
                   John Doe (Client)
                 </h6>
               </div>
@@ -269,9 +230,3 @@ import pumaShoes from '@images/pages/puma-shoes.jpeg'
     </VCardText>
   </VCard>
 </template>
-
-<style lang="scss" scoped>
-.v-timeline-avatar-wrapper {
-  background-color: rgb(var(--v-theme-surface));
-}
-</style>

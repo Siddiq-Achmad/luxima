@@ -4,7 +4,7 @@ const rules = [(v: string) => v.length <= 25 || 'Max 25 characters']
 </script>
 
 <template>
-  <VTextarea
+  <AppTextarea
     v-model="textareaValue"
     label="Validation"
     :rules="rules"

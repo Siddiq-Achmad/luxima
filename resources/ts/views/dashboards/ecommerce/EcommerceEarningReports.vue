@@ -52,7 +52,7 @@ const chartOptions = computed(() => {
       labelPrimaryColor,
       labelPrimaryColor,
       labelPrimaryColor,
-      currentTheme.primary,
+      `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
       labelPrimaryColor,
       labelPrimaryColor,
     ],
@@ -73,7 +73,7 @@ const chartOptions = computed(() => {
       labels: {
         style: {
           colors: labelColor,
-          fontSize: '14px',
+          fontSize: '13px',
         },
       },
     },
@@ -111,6 +111,12 @@ const earningReports = [
     percentage: '52.8%',
   },
 ]
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
@@ -120,29 +126,7 @@ const earningReports = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -166,13 +150,13 @@ const earningReports = [
           <VListItemTitle class="font-weight-medium">
             {{ report.title }}
           </VListItemTitle>
-          <VListItemSubtitle>
+          <VListItemSubtitle class="text-disabled">
             {{ report.subtitle }}
           </VListItemSubtitle>
 
           <template #append>
             <div class="d-flex align-center text-body-2">
-              <span class="me-1">{{ report.earnings }}</span>
+              <span class="me-3">{{ report.earnings }}</span>
               <VIcon
                 color="success"
                 icon="tabler-chevron-up"
@@ -188,7 +172,7 @@ const earningReports = [
       <VueApexCharts
         :options="chartOptions"
         :series="series"
-        :height="245"
+        :height="220"
       />
     </VCardText>
   </VCard>

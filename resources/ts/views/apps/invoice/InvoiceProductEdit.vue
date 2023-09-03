@@ -10,7 +10,7 @@ interface Props {
   data: {
     title: string
     cost: number
-    hours: number
+    qty: number
     description: string
   }
 }
@@ -19,59 +19,56 @@ const props = withDefaults(defineProps<Props>(), {
   data: () => ({
     title: 'App Design',
     cost: 24,
-    hours: 1,
+    qty: 1,
     description: 'Designed UI kit & app pages.',
   }),
 })
 
 const emit = defineEmits<Emit>()
 
-const itemsOptions = [
+const itemsOptions: Props['data'][] = [
   {
     title: 'App Design',
     cost: 24,
-    hours: 1,
+    qty: 1,
     description: 'Designed UI kit & app pages.',
   },
   {
     title: 'App Customization',
     cost: 26,
-    hours: 1,
+    qty: 1,
     description: 'Customization & Bug Fixes.',
   },
   {
     title: 'ABC Template',
     cost: 28,
-    hours: 1,
+    qty: 1,
     description: 'Vuetify admin template.',
   },
   {
     title: 'App Development',
     cost: 32,
-    hours: 1,
+    qty: 1,
     description: 'Native App Development.',
   },
 ]
 
-const selectedItem = ref({
-  title: 'App Customization',
-  cost: 26,
-  hours: 1,
-  description: 'Customization & Bug Fixes.',
-})
+const selectedItem = ref('App Customization')
+const localProductData = ref(structuredClone(toRaw(props.data)))
 
 watch(selectedItem, () => {
-  props.data.cost = structuredClone(toRaw(selectedItem.value.cost))
-  props.data.hours = structuredClone(toRaw(selectedItem.value.hours))
-  props.data.description = structuredClone(toRaw(selectedItem.value.description))
-  props.data.title = structuredClone(toRaw(selectedItem.value.title))
+  const item = itemsOptions.filter(obj => {
+    return obj.title === selectedItem.value
+  })
+
+  localProductData.value = item[0]
 })
 
 const removeProduct = () => {
   emit('removeProduct', props.id)
 }
 
-const totalPrice = computed(() => Number(props.data.cost) * Number(props.data.hours))
+const totalPrice = computed(() => Number(localProductData.value.cost) * Number(localProductData.value.qty))
 
 watch(totalPrice, () => {
   emit('totalAmount', totalPrice.value)
@@ -80,37 +77,40 @@ watch(totalPrice, () => {
 
 <template>
   <!-- eslint-disable vue/no-mutating-props -->
-  <div class="add-products-header mb-2 d-none d-md-flex">
-    <VRow class="font-weight-medium px-4">
+  <div class="add-products-header mb-4 d-none d-md-flex ps-5 pe-16">
+    <VRow class="font-weight-medium">
       <VCol
         cols="12"
         md="6"
       >
-        <span class="text-sm">
+        <span class="text-base">
           Item
         </span>
       </VCol>
+
       <VCol
         cols="12"
         md="2"
       >
-        <span class="text-sm">
+        <span class="text-base">
           Cost
         </span>
       </VCol>
+
       <VCol
         cols="12"
         md="2"
       >
-        <span class="text-sm">
-          Hours
+        <span class="text-base">
+          Qty
         </span>
       </VCol>
+
       <VCol
         cols="12"
         md="2"
       >
-        <span class="text-sm">
+        <span class="text-base">
           Price
         </span>
       </VCol>
@@ -129,28 +129,30 @@ watch(totalPrice, () => {
           cols="12"
           md="6"
         >
-          <VSelect
+          <AppSelect
             v-model="selectedItem"
             :items="itemsOptions"
+            item-title="title"
+            item-value="title"
             label="Select Item"
-            return-object
             class="mb-3"
           />
 
-          <VTextarea
-            v-model="props.data.description"
+          <AppTextarea
+            v-model="localProductData.description"
             rows="2"
             label="Description"
             placeholder="Description"
           />
         </VCol>
+
         <VCol
           cols="12"
           md="2"
           sm="4"
         >
-          <VTextField
-            v-model="props.data.cost"
+          <AppTextField
+            v-model="localProductData.cost"
             type="number"
             label="Cost"
           />
@@ -159,34 +161,39 @@ watch(totalPrice, () => {
             <p class="mb-1">
               Discount
             </p>
+
             <span>0%</span>
+
             <span class="mx-2">
               0%
               <VTooltip activator="parent">Tax 1</VTooltip>
             </span>
+
             <span>
               0%
               <VTooltip activator="parent">Tax 2</VTooltip>
             </span>
           </div>
         </VCol>
+
         <VCol
           cols="12"
           md="2"
           sm="4"
         >
-          <VTextField
-            v-model="props.data.hours"
+          <AppTextField
+            v-model="localProductData.qty"
             type="number"
-            label="Hours"
+            label="Qty"
           />
         </VCol>
+
         <VCol
           cols="12"
           md="2"
           sm="4"
         >
-          <p class="text-sm-center my-2">
+          <p class="my-2">
             <span class="d-inline d-md-none">Price: </span>
             <span class="text-body-1">${{ totalPrice }}</span>
           </p>
@@ -196,30 +203,19 @@ watch(totalPrice, () => {
 
     <!-- 👉 Item Actions -->
     <div class="d-flex flex-column justify-space-between border-s pa-1">
-      <VBtn
-        icon
-        size="x-small"
-        color="default"
-        variant="text"
-        @click="removeProduct"
-      >
+      <IconBtn @click="removeProduct">
         <VIcon
           size="20"
           icon="tabler-x"
         />
-      </VBtn>
+      </IconBtn>
 
-      <VBtn
-        icon
-        size="x-small"
-        color="default"
-        variant="text"
-      >
+      <IconBtn>
         <VIcon
           size="20"
           icon="tabler-settings"
         />
-      </VBtn>
+      </IconBtn>
     </div>
   </VCard>
 </template>

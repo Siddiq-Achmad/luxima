@@ -14,8 +14,6 @@ import CardStatisticsSalesOverview from '@/views/pages/cards/card-statistics/Car
 import CardStatisticsSessionsBarWithGapCharts from '@/views/pages/cards/card-statistics/CardStatisticsSessionsBarWithGapCharts.vue'
 import CardStatisticsTotalProfitLineCharts from '@/views/pages/cards/card-statistics/CardStatisticsTotalProfitLineCharts.vue'
 import CardStatisticsTransactions from '@/views/pages/cards/card-statistics/CardStatisticsTransactions.vue'
-import CardStatisticsHorizontal from '@core/components/CardStatisticsHorizontal.vue'
-import CardStatisticsVertical from '@core/components/CardStatisticsVertical.vue'
 
 const vuetifyTheme = useTheme()
 const currentTheme = vuetifyTheme.current.value.colors
@@ -527,9 +525,9 @@ const simpleStatisticsDemoCards = [
             <VIcon :icon="demo.icon" />
           </VAvatar>
 
-          <h6 class="text-h6 mt-3">
+          <h5 class="text-h5 mt-3">
             {{ demo.title }}
-          </h6>
+          </h5>
           <p class="text-sm text-disabled mt-1 mb-0">
             {{ demo.subTitle }}
           </p>

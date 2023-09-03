@@ -52,29 +52,7 @@ const sourceVisits = [
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="[{ title: 'Refresh', value: 'Refresh' }, { title: 'Download', value: 'Download' }, { title: 'View All', value: 'View All' }]" />
       </div>
     </template>
 
@@ -98,19 +76,18 @@ const sourceVisits = [
           <VListItemTitle class="font-weight-medium">
             {{ visit.title }}
           </VListItemTitle>
-          <VListItemSubtitle class="opacity-100 text-disabled">
+          <VListItemSubtitle class="text-disabled">
             {{ visit.subtitle }}
           </VListItemSubtitle>
 
           <template #append>
             <div class="d-flex align-center">
-              <span class="me-2">{{ visit.stats }}</span>
+              <span class="me-4">{{ visit.stats }}</span>
               <VChip
                 label
                 :color="visit.profitLoss > 0 ? 'success' : 'error'"
               >
-                {{ visit.profitLoss > 0 ? '+' : '' }}
-                {{ visit.profitLoss }}%
+                {{ visit.profitLoss > 0 ? '+' : '' }}{{ visit.profitLoss }}%
               </VChip>
             </div>
           </template>
@@ -122,6 +99,6 @@ const sourceVisits = [
 
 <style lang="scss" scoped>
 .card-list {
-  --v-card-list-gap: 19px;
+  --v-card-list-gap: 30px;
 }
 </style>

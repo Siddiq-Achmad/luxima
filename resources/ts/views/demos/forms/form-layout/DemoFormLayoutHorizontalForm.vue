@@ -15,15 +15,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="firstName">First Name</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="firstName"
+            >First Name</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="firstName"
               v-model="firstName"
               placeholder="First Name"
@@ -39,15 +43,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="email">Email</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="email"
+            >Email</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="email"
               v-model="email"
               placeholder="Email"
@@ -63,15 +71,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="mobile">Mobile</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="mobile"
+            >Mobile</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="mobile"
               v-model="mobile"
               type="number"
@@ -88,15 +100,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="password">Password</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="password"
+            >Password</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="password"
               v-model="password"
               type="password"
@@ -140,4 +156,3 @@ const checkbox = ref(false)
     </VRow>
   </VForm>
 </template>
-

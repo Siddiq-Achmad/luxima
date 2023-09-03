@@ -11,6 +11,7 @@ watch(buyNowUrl, val => {
 
 <template>
   <VBtn
+    id="buy-now-btn"
     color="error"
     class="product-buy-now"
     :href="buyNowUrl"

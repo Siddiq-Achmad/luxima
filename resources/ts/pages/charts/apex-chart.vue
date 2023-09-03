@@ -103,7 +103,6 @@ import ApexChartStocksPrices from '@/views/charts/apex-chart/ApexChartStocksPric
               <VChip
                 label
                 color="success"
-                class="font-weight-bold"
               >
                 <VIcon
                   start

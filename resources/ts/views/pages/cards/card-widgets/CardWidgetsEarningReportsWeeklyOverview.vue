@@ -47,7 +47,7 @@ const chartOptions = computed(() => {
       `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
       `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
       `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
-      currentTheme.primary,
+      `rgba(${hexToRgb(currentTheme.primary)}, 1)`,
       `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
       `rgba(${hexToRgb(currentTheme.primary)},${variableTheme['dragged-opacity']})`,
     ],
@@ -68,7 +68,7 @@ const chartOptions = computed(() => {
       labels: {
         style: {
           colors: `rgba(${hexToRgb(currentTheme['on-surface'])},${variableTheme['disabled-opacity']})`,
-          fontSize: '14px',
+          fontSize: '13px',
           fontFamily: 'Public Sans',
         },
       },
@@ -117,6 +117,11 @@ const earningsReports = [
     progress: '65',
   },
 ]
+
+const moreList = [
+  { title: 'View More', value: 'View More' },
+  { title: 'Delete', value: 'Delete' },
+]
 </script>
 
 <template>
@@ -127,34 +132,12 @@ const earningsReports = [
 
       <template #append>
         <div class="mt-n4 me-n2">
-          <VBtn
-            icon
-            size="x-small"
-            variant="plain"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View More', 'Delete']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn :menu-list="moreList" />
         </div>
       </template>
     </VCardItem>
 
-    <VCardText>
+    <VCardText class="mt-n6">
       <VRow>
         <VCol
           cols="12"
@@ -162,7 +145,7 @@ const earningsReports = [
           class="d-flex flex-column align-self-end"
         >
           <div class="d-flex align-center gap-2 mb-2 pb-1 flex-wrap">
-            <h4 class="text-h4">
+            <h4 class="text-h1">
               $468
             </h4>
             <VChip
@@ -200,19 +183,22 @@ const earningsReports = [
             <div class="d-flex align-center">
               <VAvatar
                 rounded
-                size="30"
+                size="26"
                 :color="report.color"
                 variant="tonal"
                 class="me-2"
               >
-                <VIcon :icon="report.icon" />
+                <VIcon
+                  size="18"
+                  :icon="report.icon"
+                />
               </VAvatar>
 
               <h6 class="text-base font-weight-medium">
                 {{ report.title }}
               </h6>
             </div>
-            <h6 class="text-h6 my-3">
+            <h6 class="text-h4 my-2">
               {{ report.amount }}
             </h6>
             <VProgressLinear

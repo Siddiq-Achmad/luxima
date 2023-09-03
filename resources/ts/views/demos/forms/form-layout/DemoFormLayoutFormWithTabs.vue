@@ -34,11 +34,13 @@ const isCPasswordVisible = ref(false)
       Social Links
     </VTab>
   </VTabs>
-  <VDivider />
 
   <VCard flat>
     <VCardText>
-      <VWindow v-model="tab">
+      <VWindow
+        v-model="tab"
+        class="disable-tab-transition"
+      >
         <VWindowItem value="personal-info">
           <VForm class="mt-2">
             <VRow>
@@ -46,7 +48,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="firstName"
                   label="First name"
                 />
@@ -56,7 +58,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="lastName"
                   label="Last name"
                 />
@@ -66,7 +68,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="country"
                   :items="countryList"
                   label="Country"
@@ -77,7 +79,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="languages"
                   :items="languageList"
                   multiple
@@ -90,7 +92,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="birthDate"
                   label="Birth Date"
                   placeholder="YYYY-MM-DD"
@@ -100,7 +102,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="phoneNo"
                   type="number"
                   label="Phone No."
@@ -117,7 +119,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="username"
                   label="Username"
                 />
@@ -127,7 +129,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="email"
                   label="Email"
                   suffix="@example.com"
@@ -138,7 +140,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="password"
                   label="Password"
                   :type="isPasswordVisible ? 'text' : 'password'"
@@ -151,7 +153,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="cPassword"
                   label="Confirm Password"
                   :type="isCPasswordVisible ? 'text' : 'password'"
@@ -170,7 +172,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="twitterLink"
                   label="Twitter"
                 />
@@ -179,7 +181,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="facebookLink"
                   label="Facebook"
                 />
@@ -188,7 +190,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="googlePlusLink"
                   label="Google+"
                 />
@@ -197,7 +199,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="linkedInLink"
                   label="LinkedIn"
                 />
@@ -206,7 +208,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="instagramLink"
                   label="Instagram"
                 />
@@ -215,7 +217,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="quoraLink"
                   label="Quora"
                 />

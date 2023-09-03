@@ -30,32 +30,28 @@ invoiceListStore.fetchInvoice(Number(route.params.id)).then(response => {
 // ℹ️ Your real data will contain this information
 const purchasedProducts = [
   {
-    name: 'Premium Branding Package',
-    description: 'Branding & Promotion',
+    name: 'Vuexy Admin Template',
+    description: 'HTML Admin Template',
     qty: 1,
-    hours: 15,
-    price: 32,
+    cost: 32,
   },
   {
-    name: 'SMM',
-    description: 'Social media templates',
+    name: 'Frest Admin Template',
+    description: 'Angular Admin Template',
     qty: 1,
-    hours: 14,
-    price: 28,
+    cost: 22,
   },
   {
-    name: 'Web Design',
-    description: 'Web designing package',
-    qty: 1,
-    hours: 12,
-    price: 24,
+    name: 'Apex Admin Template',
+    description: 'HTML Admin Template',
+    qty: 2,
+    cost: 17,
   },
   {
-    name: 'SEO',
-    description: 'Search engine optimization',
+    name: 'Robust Admin Template',
+    description: 'React Admin Template',
     qty: 1,
-    hours: 5,
-    price: 22,
+    cost: 66,
   },
 ]
 
@@ -85,7 +81,7 @@ const printInvoice = () => {
                 />
 
                 <!-- 👉 Title -->
-                <h6 class="font-weight-bold text-xl">
+                <h6 class="font-weight-bold text-capitalize text-h4">
                   {{ themeConfig.app.title }}
                 </h6>
               </div>
@@ -94,7 +90,7 @@ const printInvoice = () => {
               <p class="mb-0">
                 Office 149, 450 South Brand Brooklyn
               </p>
-              <p class="mb-0">
+              <p class="my-2">
                 San Diego County, CA 91905, USA
               </p>
               <p class="mb-0">
@@ -105,20 +101,20 @@ const printInvoice = () => {
             <!-- 👉 Right Content -->
             <div class="mt-4 ma-sm-4">
               <!-- 👉 Invoice ID -->
-              <h6 class="font-weight-medium text-xl mb-6">
+              <h6 class="font-weight-medium text-h4">
                 Invoice #{{ invoiceData.id }}
               </h6>
 
               <!-- 👉 Issue Date -->
-              <p class="mb-2">
+              <p class="my-3">
                 <span>Date Issued: </span>
-                <span class="font-weight-semibold">{{ invoiceData.issuedDate }}</span>
+                <span class="font-weight-medium">{{ invoiceData.issuedDate }}</span>
               </p>
 
               <!-- 👉 Due Date -->
-              <p class="mb-2">
+              <p class="mb-0">
                 <span>Due Date: </span>
-                <span class="font-weight-semibold">{{ invoiceData.dueDate }}</span>
+                <span class="font-weight-medium">{{ invoiceData.dueDate }}</span>
               </p>
             </div>
           </VCardText>
@@ -129,7 +125,7 @@ const printInvoice = () => {
           <!-- 👉 Payment Details -->
           <VCardText class="d-flex justify-space-between flex-wrap flex-column flex-sm-row print-row">
             <div class="ma-sm-4">
-              <h6 class="text-sm font-weight-semibold mb-3">
+              <h6 class="text-base font-weight-medium mb-6">
                 Invoice To:
               </h6>
               <p class="mb-1">
@@ -150,47 +146,49 @@ const printInvoice = () => {
             </div>
 
             <div class="mt-4 ma-sm-4">
-              <h6 class="text-sm font-weight-semibold mb-3">
+              <h6 class="text-h6 font-weight-medium mb-6">
                 Bill To:
               </h6>
               <table>
                 <tr>
-                  <td class="pe-6">
+                  <td class="pe-6 pb-1">
                     Total Due:
                   </td>
-                  <td>
-                    {{ paymentDetails.totalDue }}
+                  <td class="pb-1">
+                    <span class="font-weight-medium">
+                      {{ paymentDetails.totalDue }}
+                    </span>
                   </td>
                 </tr>
                 <tr>
-                  <td class="pe-6">
+                  <td class="pe-6 pb-1">
                     Bank Name:
                   </td>
-                  <td>
+                  <td class="pb-1">
                     {{ paymentDetails.bankName }}
                   </td>
                 </tr>
                 <tr>
-                  <td class="pe-6">
+                  <td class="pe-6 pb-1">
                     Country:
                   </td>
-                  <td>
+                  <td class="pb-1">
                     {{ paymentDetails.country }}
                   </td>
                 </tr>
                 <tr>
-                  <td class="pe-6">
+                  <td class="pe-6 pb-1">
                     IBAN:
                   </td>
-                  <td>
+                  <td class="pb-1">
                     {{ paymentDetails.iban }}
                   </td>
                 </tr>
                 <tr>
-                  <td class="pe-6">
+                  <td class="pe-6 pb-1">
                     SWIFT Code:
                   </td>
-                  <td>
+                  <td class="pb-1">
                     {{ paymentDetails.swiftCode }}
                   </td>
                 </tr>
@@ -201,7 +199,7 @@ const printInvoice = () => {
           <!-- 👉 Table -->
           <VDivider />
 
-          <VTable>
+          <VTable class="invoice-preview-table">
             <thead>
               <tr>
                 <th scope="col">
@@ -214,7 +212,7 @@ const printInvoice = () => {
                   scope="col"
                   class="text-center"
                 >
-                  HOURS
+                  COST
                 </th>
                 <th
                   scope="col"
@@ -226,7 +224,7 @@ const printInvoice = () => {
                   scope="col"
                   class="text-center"
                 >
-                  TOTAL
+                  PRICE
                 </th>
               </tr>
             </thead>
@@ -243,28 +241,28 @@ const printInvoice = () => {
                   {{ item.description }}
                 </td>
                 <td class="text-center">
-                  {{ item.hours }}
+                  ${{ item.cost }}
                 </td>
                 <td class="text-center">
                   {{ item.qty }}
                 </td>
                 <td class="text-center">
-                  ${{ item.price }}
+                  ${{ item.cost * item.qty }}
                 </td>
               </tr>
             </tbody>
           </VTable>
 
-          <VDivider class="my-2" />
+          <VDivider class="mb-2" />
 
           <!-- Total -->
           <VCardText class="d-flex justify-space-between flex-column flex-sm-row print-row">
-            <div class="my-2 mx-sm-4">
+            <div class="my-2 mx-sm-4 text-base">
               <div class="d-flex align-center mb-1">
-                <h6 class="text-sm font-weight-semibold me-1">
+                <h6 class="text-base font-weight-medium me-1">
                   Salesperson:
                 </h6>
-                <span>Jenny Parker</span>
+                <span>Alfie Solomons</span>
               </div>
               <p>Thanks for your business</p>
             </div>
@@ -289,7 +287,7 @@ const printInvoice = () => {
                     </div>
                   </td>
 
-                  <td class="font-weight-semibold">
+                  <td class="font-weight-medium text-high-emphasis">
                     <p class="mb-2">
                       $154.25
                     </p>
@@ -312,7 +310,7 @@ const printInvoice = () => {
 
           <VCardText>
             <div class="d-flex mx-sm-4">
-              <h6 class="text-sm font-weight-semibold me-1">
+              <h6 class="text-base font-weight-medium me-1">
                 Note:
               </h6>
               <span>It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance projects. Thank You!</span>
@@ -389,6 +387,10 @@ const printInvoice = () => {
 </template>
 
 <style lang="scss">
+.invoice-preview-table {
+  --v-table-row-height: 44px !important;
+}
+
 @media print {
   .v-application {
     background: none !important;

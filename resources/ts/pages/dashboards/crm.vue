@@ -5,7 +5,7 @@ import CrmAnalyticsSales from '@/views/dashboards/crm/CrmAnalyticsSales.vue'
 import CrmBrowserStates from '@/views/dashboards/crm/CrmBrowserStates.vue'
 import CrmEarningReportsYearlyOverview from '@/views/dashboards/crm/CrmEarningReportsYearlyOverview.vue'
 import CrmProjectStatus from '@/views/dashboards/crm/CrmProjectStatus.vue'
-import CrmRecentTransaction from '@/views/dashboards/crm/CrmRecentTransaction.vue'
+import CrmRecentTransactions from '@/views/dashboards/crm/CrmRecentTransactions.vue'
 import CrmRevenueGrowth from '@/views/dashboards/crm/CrmRevenueGrowth.vue'
 import CrmSalesAreaCharts from '@/views/dashboards/crm/CrmSalesAreaCharts.vue'
 import CrmSessionsBarWithGapCharts from '@/views/dashboards/crm/CrmSessionsBarWithGapCharts.vue'
@@ -31,7 +31,7 @@ const simpleStatisticsDemoCards = [
 </script>
 
 <template>
-  <VRow>
+  <VRow class="match-height">
     <VCol
       cols="12"
       md="4"
@@ -69,17 +69,17 @@ const simpleStatisticsDemoCards = [
             <VIcon :icon="demo.icon" />
           </VAvatar>
 
-          <h6 class="text-h6 mt-3">
+          <h5 class="text-h5 mt-4">
             {{ demo.title }}
-          </h6>
-          <p class="text-sm text-disabled mt-1 mb-0">
+          </h5>
+          <p class="text-sm text-disabled my-1 mb-0">
             {{ demo.subTitle }}
           </p>
-          <p class="my-2">
+          <p class="mb-3">
             {{ demo.stat }}
           </p>
           <VChip
-            :color="demo.color"
+            color="disabled"
             label
           >
             {{ demo.change }}
@@ -137,12 +137,12 @@ const simpleStatisticsDemoCards = [
       <CrmActiveProject />
     </VCol>
 
-    <!-- 👉 Recent Transaction -->
+    <!-- 👉 Recent Transactions -->
     <VCol
       cols="12"
       md="6"
     >
-      <CrmRecentTransaction />
+      <CrmRecentTransactions />
     </VCol>
 
     <!-- 👉 Active timeline -->

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VueApexCharts from 'vue3-apexcharts'
 import { useTheme } from 'vuetify'
+import { hexToRgb } from '@layouts/utils'
 
 const vuetifyTheme = useTheme()
 
@@ -40,7 +41,7 @@ const chartOptions = computed(() => {
         endingShape: 'rounded',
       },
     },
-    colors: [currentTheme.primary, currentTheme.secondary],
+    colors: [`rgba(${hexToRgb(currentTheme.primary)}, 1)`, `rgba(${hexToRgb(currentTheme.secondary)}, 1)`],
     dataLabels: {
       enabled: false,
     },
@@ -190,7 +191,7 @@ const totalEarnings = [
       <VCardTitle>Total Earning</VCardTitle>
 
       <div class="d-flex align-center mt-2">
-        <h4 class="text-4xl font-weight-semibold me-2">
+        <h4 class="text-h1 me-2">
           87%
         </h4>
         <div class="text-success">
@@ -204,28 +205,7 @@ const totalEarnings = [
 
       <template #append>
         <div class="mt-n10 me-n2">
-          <VBtn
-            icon
-            size="x-small"
-            variant="plain"
-            color="default"
-          >
-            <VIcon
-              size="22"
-              icon="tabler-dots-vertical"
-            />
-            <VMenu activator="parent">
-              <VList>
-                <VListItem
-                  v-for="(item, index) in ['View More', 'Delete']"
-                  :key="index"
-                  :value="index"
-                >
-                  <VListItemTitle>{{ item }}</VListItemTitle>
-                </VListItem>
-              </VList>
-            </VMenu>
-          </VBtn>
+          <MoreBtn :menu-list="[{ title: 'View More', value: 'View More' }, { title: 'Delete', value: 'Delete' }]" />
         </div>
       </template>
     </VCardItem>
@@ -246,7 +226,7 @@ const totalEarnings = [
           <VListItemTitle class="font-weight-medium">
             {{ earning.title }}
           </VListItemTitle>
-          <VListItemSubtitle class="opacity-100 text-disabled">
+          <VListItemSubtitle class="text-disabled">
             {{ earning.subtitle }}
           </VListItemSubtitle>
 
@@ -261,7 +241,7 @@ const totalEarnings = [
           </template>
 
           <template #append>
-            <span class="text-success">{{ earning.earning }}</span>
+            <span class="text-success font-weight-medium">{{ earning.earning }}</span>
           </template>
         </VListItem>
       </VList>

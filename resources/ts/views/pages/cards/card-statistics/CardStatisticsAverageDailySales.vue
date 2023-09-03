@@ -90,15 +90,15 @@ const chartOptions = {
 <template>
   <VCard>
     <VCardText>
-      <h6 class="text-h6 mb-2">
+      <h5 class="text-h5 mb-2">
         Average Daily Sales
-      </h6>
-      <p class="text-sm mb-0">
+      </h5>
+      <p class="mb-0">
         Total Sales This Month
       </p>
-      <h6 class="text-h6">
+      <h4 class="text-h4">
         $28,450
-      </h6>
+      </h4>
     </VCardText>
 
     <VueApexCharts

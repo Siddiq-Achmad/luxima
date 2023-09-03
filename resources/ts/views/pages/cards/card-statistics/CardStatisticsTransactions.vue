@@ -48,15 +48,12 @@ const statistics = [
               size="42"
               class="me-3"
             >
-              <VIcon
-                size="24"
-                :icon="item.icon"
-              />
+              <VIcon :icon="item.icon" />
             </VAvatar>
 
             <div class="d-flex flex-column">
-              <span class="text-h6 font-weight-medium">{{ item.stats }}</span>
-              <span class="text-caption">
+              <span class="text-h5 font-weight-medium">{{ item.stats }}</span>
+              <span class="text-sm">
                 {{ item.title }}
               </span>
             </div>

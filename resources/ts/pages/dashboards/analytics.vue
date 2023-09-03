@@ -9,7 +9,6 @@ import AnalyticsSourceVisits from '@/views/dashboards/analytics/AnalyticsSourceV
 import AnalyticsSupportTracker from '@/views/dashboards/analytics/AnalyticsSupportTracker.vue'
 import AnalyticsTotalEarning from '@/views/dashboards/analytics/AnalyticsTotalEarning.vue'
 import AnalyticsWebsiteAnalytics from '@/views/dashboards/analytics/AnalyticsWebsiteAnalytics.vue'
-import CardStatisticsVertical from '@core/components/CardStatisticsVertical.vue'
 
 const vuetifyTheme = useTheme()
 const currentTheme = vuetifyTheme.current.value.colors
@@ -19,7 +18,7 @@ const statisticsVertical = {
   color: 'success',
   icon: 'tabler-credit-card',
   stats: '97.5k',
-  height: 120,
+  height: 97,
   series: [
     {
       data: [300, 350, 330, 380, 340, 400, 380],

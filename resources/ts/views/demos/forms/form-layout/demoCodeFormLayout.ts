@@ -47,7 +47,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Full Name" />
+              <AppTextField label="Full Name" />
             </VCol>
 
             <!-- 👉 Phone No -->
@@ -55,12 +55,15 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Phone No" />
+              <AppTextField
+                label="Phone No"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Address -->
             <VCol cols="12">
-              <VTextarea
+              <AppTextarea
                 label="Address"
                 rows="3"
               />
@@ -71,7 +74,10 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Pincode" />
+              <AppTextField
+                label="Pincode"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Landmark -->
@@ -79,7 +85,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Landmark" />
+              <AppTextField label="Landmark" />
             </VCol>
 
             <!-- 👉 City -->
@@ -87,7 +93,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="City" />
+              <AppTextField label="City" />
             </VCol>
 
             <!-- 👉 State -->
@@ -95,7 +101,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VSelect
+              <AppSelect
                 :items="stateList"
                 label="State"
               />
@@ -153,7 +159,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Standard 3-5 Days
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   Free
                 </h6>
               </div>
@@ -175,7 +181,7 @@ const paymentMethods = [
                 <h5 class="text-base font-weight-medium">
                   Express
                 </h5>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $5.00
                 </h6>
               </div>
@@ -197,7 +203,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Overnight
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $10.00
                 </h6>
               </div>
@@ -247,7 +253,10 @@ const paymentMethods = [
               <VRow v-show="paymentMethod === 'credit-debit-card'">
                 <!-- 👉 Card Number -->
                 <VCol cols="12">
-                  <VTextField label="Card Number" />
+                  <AppTextField
+                    label="Card Number"
+                    type="number"
+                  />
                 </VCol>
 
                 <!-- 👉 Name -->
@@ -255,7 +264,7 @@ const paymentMethods = [
                   cols="12"
                   md="6"
                 >
-                  <VTextField label="Name" />
+                  <AppTextField label="Name" />
                 </VCol>
 
                 <!-- 👉 Expire Date -->
@@ -263,7 +272,7 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="Expiry Date" />
+                  <AppTextField label="Expiry" />
                 </VCol>
 
                 <!-- 👉 CVV Code -->
@@ -271,7 +280,11 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="CVV Code" />
+                  <AppTextField
+                    label="CVV"
+                    type="number"
+                    max="3"
+                  />
                 </VCol>
               </VRow>
             </VForm>
@@ -361,7 +374,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Full Name" />
+              <AppTextField label="Full Name" />
             </VCol>
 
             <!-- 👉 Phone No -->
@@ -369,12 +382,15 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Phone No" />
+              <AppTextField
+                label="Phone No"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Address -->
             <VCol cols="12">
-              <VTextarea
+              <AppTextarea
                 label="Address"
                 rows="3"
               />
@@ -385,7 +401,10 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Pincode" />
+              <AppTextField
+                label="Pincode"
+                type="number"
+              />
             </VCol>
 
             <!-- 👉 Landmark -->
@@ -393,7 +412,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="Landmark" />
+              <AppTextField label="Landmark" />
             </VCol>
 
             <!-- 👉 City -->
@@ -401,7 +420,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VTextField label="City" />
+              <AppTextField label="City" />
             </VCol>
 
             <!-- 👉 State -->
@@ -409,7 +428,7 @@ const paymentMethods = [
               cols="12"
               md="6"
             >
-              <VSelect
+              <AppSelect
                 :items="stateList"
                 label="State"
               />
@@ -467,7 +486,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Standard 3-5 Days
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   Free
                 </h6>
               </div>
@@ -489,7 +508,7 @@ const paymentMethods = [
                 <h5 class="text-base font-weight-medium">
                   Express
                 </h5>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $5.00
                 </h6>
               </div>
@@ -511,7 +530,7 @@ const paymentMethods = [
                 <h6 class="text-base font-weight-medium">
                   Overnight
                 </h6>
-                <h6 class="text-base font-weight-bold">
+                <h6 class="text-base font-weight-medium">
                   $10.00
                 </h6>
               </div>
@@ -561,7 +580,10 @@ const paymentMethods = [
               <VRow v-show="paymentMethod === 'credit-debit-card'">
                 <!-- 👉 Card Number -->
                 <VCol cols="12">
-                  <VTextField label="Card Number" />
+                  <AppTextField
+                    label="Card Number"
+                    type="number"
+                  />
                 </VCol>
 
                 <!-- 👉 Name -->
@@ -569,7 +591,7 @@ const paymentMethods = [
                   cols="12"
                   md="6"
                 >
-                  <VTextField label="Name" />
+                  <AppTextField label="Name" />
                 </VCol>
 
                 <!-- 👉 Expire Date -->
@@ -577,7 +599,7 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="Expiry Date" />
+                  <AppTextField label="Expiry" />
                 </VCol>
 
                 <!-- 👉 CVV Code -->
@@ -585,7 +607,11 @@ const paymentMethods = [
                   cols="6"
                   md="3"
                 >
-                  <VTextField label="CVV Code" />
+                  <AppTextField
+                    label="CVV"
+                    type="number"
+                    max="3"
+                  />
                 </VCol>
               </VRow>
             </VForm>
@@ -644,7 +670,7 @@ const values = ref<typeof items[number][]>([])
     <VRow>
       <VCol cols="12">
         <!-- 👉 Username -->
-        <VTextField
+        <AppTextField
           v-model="username"
           label="Username"
           placeholder="Username"
@@ -653,7 +679,7 @@ const values = ref<typeof items[number][]>([])
 
       <VCol cols="12">
         <!-- 👉 Email -->
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           type="email"
@@ -663,7 +689,7 @@ const values = ref<typeof items[number][]>([])
 
       <VCol cols="12">
         <!-- 👉 Password -->
-        <VTextField
+        <AppTextField
           v-model="password"
           label="Password"
           type="password"
@@ -675,7 +701,7 @@ const values = ref<typeof items[number][]>([])
 
       <VCol cols="12">
         <!-- 👉 Autocomplete -->
-        <VAutocomplete
+        <AppAutocomplete
           v-model="values"
           :items="items"
           chips
@@ -734,7 +760,7 @@ const values = ref([])
     <VRow>
       <VCol cols="12">
         <!-- 👉 Username -->
-        <VTextField
+        <AppTextField
           v-model="username"
           label="Username"
           placeholder="Username"
@@ -743,7 +769,7 @@ const values = ref([])
 
       <VCol cols="12">
         <!-- 👉 Email -->
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           type="email"
@@ -753,7 +779,7 @@ const values = ref([])
 
       <VCol cols="12">
         <!-- 👉 Password -->
-        <VTextField
+        <AppTextField
           v-model="password"
           label="Password"
           type="password"
@@ -765,7 +791,7 @@ const values = ref([])
 
       <VCol cols="12">
         <!-- 👉 Autocomplete -->
-        <VAutocomplete
+        <AppAutocomplete
           v-model="values"
           :items="items"
           chips
@@ -808,7 +834,7 @@ const values = ref([])
 export const formValidation = {
   ts: `<script lang="ts" setup>
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import type { VForm } from 'vuetify/components'
+import type { VForm } from 'vuetify/components/VForm'
 import { emailValidator, requiredValidator } from '@validators'
 
 const name = ref('')
@@ -826,7 +852,7 @@ const form = ref<VForm>()
   >
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="name"
           :rules="[requiredValidator]"
           label="Name"
@@ -835,7 +861,7 @@ const form = ref<VForm>()
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           :rules="[emailValidator, requiredValidator]"
           label="E-mail"
@@ -844,7 +870,7 @@ const form = ref<VForm>()
       </VCol>
 
       <VCol cols="12">
-        <VSelect
+        <AppSelect
           v-model="select"
           :items="items"
           :rules="[requiredValidator]"
@@ -920,7 +946,7 @@ const form = ref()
   >
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="name"
           :rules="[requiredValidator]"
           label="Name"
@@ -929,7 +955,7 @@ const form = ref()
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           :rules="[emailValidator, requiredValidator]"
           label="E-mail"
@@ -938,7 +964,7 @@ const form = ref()
       </VCol>
 
       <VCol cols="12">
-        <VSelect
+        <AppSelect
           v-model="select"
           :items="items"
           :rules="[requiredValidator]"
@@ -1025,11 +1051,13 @@ const isCPasswordVisible = ref(false)
       Social Links
     </VTab>
   </VTabs>
-  <VDivider />
 
   <VCard flat>
     <VCardText>
-      <VWindow v-model="tab">
+      <VWindow
+        v-model="tab"
+        class="disable-tab-transition"
+      >
         <VWindowItem value="personal-info">
           <VForm class="mt-2">
             <VRow>
@@ -1037,7 +1065,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="firstName"
                   label="First name"
                 />
@@ -1047,7 +1075,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="lastName"
                   label="Last name"
                 />
@@ -1057,7 +1085,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="country"
                   :items="countryList"
                   label="Country"
@@ -1068,7 +1096,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="languages"
                   :items="languageList"
                   multiple
@@ -1081,7 +1109,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="birthDate"
                   label="Birth Date"
                   placeholder="YYYY-MM-DD"
@@ -1091,7 +1119,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="phoneNo"
                   type="number"
                   label="Phone No."
@@ -1108,7 +1136,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="username"
                   label="Username"
                 />
@@ -1118,7 +1146,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="email"
                   label="Email"
                   suffix="@example.com"
@@ -1129,7 +1157,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="password"
                   label="Password"
                   :type="isPasswordVisible ? 'text' : 'password'"
@@ -1142,7 +1170,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="cPassword"
                   label="Confirm Password"
                   :type="isCPasswordVisible ? 'text' : 'password'"
@@ -1161,7 +1189,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="twitterLink"
                   label="Twitter"
                 />
@@ -1170,7 +1198,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="facebookLink"
                   label="Facebook"
                 />
@@ -1179,7 +1207,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="googlePlusLink"
                   label="Google+"
                 />
@@ -1188,7 +1216,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="linkedInLink"
                   label="LinkedIn"
                 />
@@ -1197,7 +1225,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="instagramLink"
                   label="Instagram"
                 />
@@ -1206,7 +1234,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="quoraLink"
                   label="Quora"
                 />
@@ -1287,11 +1315,13 @@ const isCPasswordVisible = ref(false)
       Social Links
     </VTab>
   </VTabs>
-  <VDivider />
 
   <VCard flat>
     <VCardText>
-      <VWindow v-model="tab">
+      <VWindow
+        v-model="tab"
+        class="disable-tab-transition"
+      >
         <VWindowItem value="personal-info">
           <VForm class="mt-2">
             <VRow>
@@ -1299,7 +1329,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="firstName"
                   label="First name"
                 />
@@ -1309,7 +1339,7 @@ const isCPasswordVisible = ref(false)
                 md="6"
                 cols="12"
               >
-                <VTextField
+                <AppTextField
                   v-model="lastName"
                   label="Last name"
                 />
@@ -1319,7 +1349,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="country"
                   :items="countryList"
                   label="Country"
@@ -1330,7 +1360,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   v-model="languages"
                   :items="languageList"
                   multiple
@@ -1343,7 +1373,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="birthDate"
                   label="Birth Date"
                   placeholder="YYYY-MM-DD"
@@ -1353,7 +1383,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="phoneNo"
                   type="number"
                   label="Phone No."
@@ -1370,7 +1400,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="username"
                   label="Username"
                 />
@@ -1380,7 +1410,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="email"
                   label="Email"
                   suffix="@example.com"
@@ -1391,7 +1421,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="password"
                   label="Password"
                   :type="isPasswordVisible ? 'text' : 'password'"
@@ -1404,7 +1434,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="cPassword"
                   label="Confirm Password"
                   :type="isCPasswordVisible ? 'text' : 'password'"
@@ -1423,7 +1453,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="twitterLink"
                   label="Twitter"
                 />
@@ -1432,7 +1462,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="facebookLink"
                   label="Facebook"
                 />
@@ -1441,7 +1471,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="googlePlusLink"
                   label="Google+"
                 />
@@ -1450,7 +1480,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="linkedInLink"
                   label="LinkedIn"
                 />
@@ -1459,7 +1489,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="instagramLink"
                   label="Instagram"
                 />
@@ -1468,7 +1498,7 @@ const isCPasswordVisible = ref(false)
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   v-model="quoraLink"
                   label="Quora"
                 />
@@ -1513,15 +1543,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="firstName">First Name</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="firstName"
+            >First Name</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="firstName"
               v-model="firstName"
               placeholder="First Name"
@@ -1537,15 +1571,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="email">Email</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="email"
+            >Email</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="email"
               v-model="email"
               placeholder="Email"
@@ -1561,15 +1599,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="mobile">Mobile</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="mobile"
+            >Mobile</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="mobile"
               v-model="mobile"
               type="number"
@@ -1586,15 +1628,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="password">Password</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="password"
+            >Password</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="password"
               v-model="password"
               type="password"
@@ -1638,7 +1684,6 @@ const checkbox = ref(false)
     </VRow>
   </VForm>
 </template>
-
 `,
   js: `<script setup>
 const firstName = ref('')
@@ -1657,15 +1702,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="firstName">First Name</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="firstName"
+            >First Name</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="firstName"
               v-model="firstName"
               placeholder="First Name"
@@ -1681,15 +1730,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="email">Email</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="email"
+            >Email</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="email"
               v-model="email"
               placeholder="Email"
@@ -1705,15 +1758,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="mobile">Mobile</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="mobile"
+            >Mobile</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="mobile"
               v-model="mobile"
               type="number"
@@ -1730,15 +1787,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="password">Password</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="password"
+            >Password</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="password"
               v-model="password"
               type="password"
@@ -1782,7 +1843,6 @@ const checkbox = ref(false)
     </VRow>
   </VForm>
 </template>
-
 `,
 }
 
@@ -1804,15 +1864,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="firstNameHorizontalIcons">First Name</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="firstNameHorizontalIcons"
+            >First Name</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="firstNameHorizontalIcons"
               v-model="firstName"
               prepend-inner-icon="tabler-user"
@@ -1829,15 +1893,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="emailHorizontalIcons">Email</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="emailHorizontalIcons"
+            >Email</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="emailHorizontalIcons"
               v-model="email"
               prepend-inner-icon="tabler-mail"
@@ -1854,15 +1922,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="mobileHorizontalIcons">Mobile</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="mobileHorizontalIcons"
+            >Mobile</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="mobileHorizontalIcons"
               v-model="mobile"
               type="number"
@@ -1880,15 +1952,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="passwordHorizontalIcons">Password</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="passwordHorizontalIcons"
+            >Password</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="passwordHorizontalIcons"
               v-model="password"
               prepend-inner-icon="tabler-lock"
@@ -1951,15 +2027,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="firstNameHorizontalIcons">First Name</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="firstNameHorizontalIcons"
+            >First Name</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="firstNameHorizontalIcons"
               v-model="firstName"
               prepend-inner-icon="tabler-user"
@@ -1976,15 +2056,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="emailHorizontalIcons">Email</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="emailHorizontalIcons"
+            >Email</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="emailHorizontalIcons"
               v-model="email"
               prepend-inner-icon="tabler-mail"
@@ -2001,15 +2085,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="mobileHorizontalIcons">Mobile</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="mobileHorizontalIcons"
+            >Mobile</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="mobileHorizontalIcons"
               v-model="mobile"
               type="number"
@@ -2027,15 +2115,19 @@ const checkbox = ref(false)
           <VCol
             cols="12"
             md="3"
+            class="d-flex align-items-center"
           >
-            <label for="passwordHorizontalIcons">Password</label>
+            <label
+              class="v-label text-body-2 text-high-emphasis"
+              for="passwordHorizontalIcons"
+            >Password</label>
           </VCol>
 
           <VCol
             cols="12"
             md="9"
           >
-            <VTextField
+            <AppTextField
               id="passwordHorizontalIcons"
               v-model="password"
               prepend-inner-icon="tabler-lock"
@@ -2102,7 +2194,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           placeholder="First Name"
@@ -2114,7 +2206,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="lastName"
           label="Last Name"
           placeholder="Last Name"
@@ -2126,7 +2218,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           placeholder="Email"
@@ -2138,7 +2230,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="city"
           label="City"
           placeholder="City"
@@ -2150,7 +2242,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="country"
           label="Country"
           placeholder="Country"
@@ -2162,7 +2254,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="company"
           label="Company"
           placeholder="Company"
@@ -2215,7 +2307,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           placeholder="First Name"
@@ -2227,7 +2319,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="lastName"
           label="Last Name"
           placeholder="Last Name"
@@ -2239,7 +2331,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           placeholder="Email"
@@ -2251,7 +2343,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="city"
           label="City"
           placeholder="City"
@@ -2263,7 +2355,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="country"
           label="Country"
           placeholder="Country"
@@ -2275,7 +2367,7 @@ const checkbox = ref(false)
         cols="12"
         md="6"
       >
-        <VTextField
+        <AppTextField
           v-model="company"
           label="Company"
           placeholder="Company"
@@ -2325,7 +2417,7 @@ const checkbox = ref(false)
   <VForm @submit.prevent="() => {}">
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           placeholder="First Name"
@@ -2333,7 +2425,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           type="email"
@@ -2342,7 +2434,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="mobile"
           label="Mobile"
           type="number"
@@ -2351,11 +2443,11 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="password"
           label="Password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </VCol>
 
@@ -2398,7 +2490,7 @@ const checkbox = ref(false)
   <VForm @submit.prevent="() => {}">
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="firstName"
           label="First Name"
           placeholder="First Name"
@@ -2406,7 +2498,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           label="Email"
           type="email"
@@ -2415,7 +2507,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="mobile"
           label="Mobile"
           type="number"
@@ -2424,11 +2516,11 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="password"
           label="Password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </VCol>
 
@@ -2474,7 +2566,7 @@ const checkbox = ref(false)
   <VForm @submit.prevent="{}">
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="firstName"
           prepend-inner-icon="tabler-user"
           label="First Name"
@@ -2483,7 +2575,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           prepend-inner-icon="tabler-mail"
           label="Email"
@@ -2493,7 +2585,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="mobile"
           prepend-inner-icon="tabler-device-mobile"
           label="Mobile"
@@ -2503,12 +2595,12 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="password"
           prepend-inner-icon="tabler-lock"
           label="Password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </VCol>
 
@@ -2551,7 +2643,7 @@ const checkbox = ref(false)
   <VForm @submit.prevent="{}">
     <VRow>
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="firstName"
           prepend-inner-icon="tabler-user"
           label="First Name"
@@ -2560,7 +2652,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="email"
           prepend-inner-icon="tabler-mail"
           label="Email"
@@ -2570,7 +2662,7 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="mobile"
           prepend-inner-icon="tabler-device-mobile"
           label="Mobile"
@@ -2580,12 +2672,12 @@ const checkbox = ref(false)
       </VCol>
 
       <VCol cols="12">
-        <VTextField
+        <AppTextField
           v-model="password"
           prepend-inner-icon="tabler-lock"
           label="Password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
       </VCol>
 
@@ -2617,4 +2709,3 @@ const checkbox = ref(false)
 </template>
 `,
 }
-

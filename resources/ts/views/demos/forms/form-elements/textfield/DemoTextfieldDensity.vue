@@ -1,5 +1,5 @@
 <template>
-  <VTextField
+  <AppTextField
     label="Compact"
     density="compact"
   />

@@ -1,35 +1,19 @@
 <script setup lang="ts">
 import avatar1 from '@images/avatars/avatar-1.png'
 import avatar2 from '@images/avatars/avatar-2.png'
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
   <VCard title="Activity Timeline">
     <template #append>
       <div class="me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -46,27 +30,28 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <!-- 👉 Header -->
-          <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold me-3">
+          <div class="d-flex justify-space-between align-center flex-wrap mb-1">
+            <span class="app-timeline-title">
               Client Meeting
-            </h6>
-            <span class="text-sm text-disabled">Today</span>
+            </span>
+            <span class="app-timeline-meta">Today</span>
           </div>
 
           <!-- 👉 Content -->
-          <p class="mb-1">
+          <p class="app-timeline-text mb-2">
             Project meeting with john @10:15am
           </p>
+
           <div class="d-flex align-center">
             <VAvatar
               :image="avatar1"
               class="me-3"
             />
             <div>
-              <p class="font-weight-semibold mb-0">
+              <p class="text-high-emphasis mb-n1">
                 Lester McCarthy (Client)
               </p>
-              <span>CEO of Infibeam</span>
+              <span class="text-sm">CEO of Infibeam</span>
             </div>
           </div>
         </VTimelineItem>
@@ -76,15 +61,15 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <!-- 👉 Header -->
-          <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold me-3">
+          <div class="d-flex justify-space-between align-center mb-1">
+            <span class="app-timeline-title">
               Create a new project for client
-            </h6>
-            <span class="text-sm text-disabled">2 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">2 Day Ago</span>
           </div>
 
           <!-- 👉 Content -->
-          <p class="mb-1">
+          <p class="app-timeline-text mb-1">
             Add files to new design folder
           </p>
         </VTimelineItem>
@@ -94,16 +79,16 @@ import avatar2 from '@images/avatars/avatar-2.png'
           size="x-small"
         >
           <!-- 👉 Header -->
-          <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold me-3">
+          <div class="d-flex justify-space-between align-center mb-1">
+            <span class="app-timeline-title">
               Shared 2 New Project Files
-            </h6>
-            <span class="text-sm text-disabled">6 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">6 Day Ago</span>
           </div>
 
           <!-- 👉 Content -->
           <p class="mb-1">
-            <span class="me-2">Sent by Mollie Dixon</span>
+            <span class="app-timeline-text me-2">Sent by Mollie Dixon</span>
             <VAvatar
               :image="avatar2"
               size="20"
@@ -120,7 +105,7 @@ import avatar2 from '@images/avatars/avatar-2.png'
                 color="warning"
                 icon="tabler-file-description"
               />
-              <h6 class="font-weight-semibold text-base">App Guidelines</h6>
+              <span class="text-high-emphasis">App Guidelines</span>
             </a>
             <a
               href="#"
@@ -132,7 +117,7 @@ import avatar2 from '@images/avatars/avatar-2.png'
                 color="success"
                 icon="tabler-table"
               />
-              <h6 class="font-weight-semibold text-base">Testing Results</h6>
+              <span class="text-high-emphasis">Testing Results</span>
             </a>
           </div>
         </VTimelineItem>
@@ -143,14 +128,14 @@ import avatar2 from '@images/avatars/avatar-2.png'
         >
           <!-- 👉 Header -->
           <div class="d-flex justify-space-between">
-            <h6 class="text-base font-weight-semibold me-3">
+            <span class="app-timeline-title">
               Project status updated
-            </h6>
-            <span class="text-sm text-disabled">10 Day Ago</span>
+            </span>
+            <span class="app-timeline-meta">10 Day Ago</span>
           </div>
 
           <!-- 👉 Content -->
-          <p class="mb-1">
+          <p class="app-timeline-text mb-1">
             Ecommerce iOS App Completed
           </p>
         </VTimelineItem>

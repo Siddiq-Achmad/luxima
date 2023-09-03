@@ -137,7 +137,7 @@ const faqs = [
         class="d-flex align-center flex-md-row flex-column position-relative mx-auto"
       >
         <div class="text-center text-md-start py-10 px-10 px-sm-0">
-          <h3 class="text-h5 text-primary mb-2">
+          <h3 class="text-h3 text-primary mb-2">
             Still not convinced? Start with a 14-day FREE trial!
           </h3>
           <p class="text-sm">
@@ -160,7 +160,7 @@ const faqs = [
 
     <!-- 👉 Plans -->
     <VCardText class="text-center mt-16">
-      <h4 class="text-h4 mb-2">
+      <h4 class="text-h2 mb-2">
         Pick a plan that works best for you
       </h4>
       <p>Stay cool, we have a 48-hour money back guarantee!</p>
@@ -182,7 +182,7 @@ const faqs = [
                   scope="col"
                   class="py-4"
                 >
-                  <h6 class="text-sm font-weight-semibold mb-1">
+                  <h6 class="text-sm font-weight-medium mb-1">
                     FEATURES
                   </h6>
                   <span class="font-weight-regular text-sm text-disabled">
@@ -194,7 +194,7 @@ const faqs = [
                   scope="col"
                   class="text-center py-4"
                 >
-                  <h6 class="text-sm font-weight-semibold mb-1">
+                  <h6 class="text-sm font-weight-medium mb-1">
                     BASIC
                   </h6>
                   <span class="text-disabled font-weight-regular text-sm">
@@ -206,7 +206,7 @@ const faqs = [
                   scope="col"
                   class="text-center py-4"
                 >
-                  <h6 class="text-sm font-weight-semibold mb-1">
+                  <h6 class="text-sm font-weight-medium mb-1">
                     STANDARD
                     <VAvatar
                       size="22"
@@ -229,7 +229,7 @@ const faqs = [
                   scope="col"
                   class="text-center py-4"
                 >
-                  <h6 class="text-sm font-weight-semibold mb-1">
+                  <h6 class="text-sm font-weight-medium mb-1">
                     ENTERPRISE
                   </h6>
                   <span class="text-disabled font-weight-regular text-sm">
@@ -359,14 +359,16 @@ const faqs = [
           </p>
         </div>
 
-        <VExpansionPanels class="py-6 px-16">
-          <VExpansionPanel
-            v-for="faq in faqs"
-            :key="faq.question"
-            :title="faq.question"
-            :text="faq.answer"
-          />
-        </VExpansionPanels>
+        <div class="py-sm-6 px-sm-16">
+          <VExpansionPanels>
+            <VExpansionPanel
+              v-for="faq in faqs"
+              :key="faq.question"
+              :title="faq.question"
+              :text="faq.answer"
+            />
+          </VExpansionPanels>
+        </div>
       </VCardText>
     </div>
   </VCard>

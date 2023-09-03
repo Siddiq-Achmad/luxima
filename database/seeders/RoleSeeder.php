@@ -21,24 +21,23 @@ class RoleSeeder extends Seeder
         ]);
         \App\Models\Role::create([
             'name' => 'Manager',
-            'description' => 'Manager Roles',
+            'description' => 'Manager Role',
         ]);
         \App\Models\Role::create([
             'name' => 'Staff',
-            'description' => 'Staff Roles',
+            'description' => 'Staff Role',
         ]);
         \App\Models\Role::create([
             'name' => 'Vendor',
-            'description' => 'Vendor Roles',
+            'description' => 'Vendor Role',
         ]);
         \App\Models\Role::create([
             'name' => 'Client',
-            'description' => 'Client Roles',
+            'description' => 'Client Role',
         ]);
         \App\Models\Role::create([
             'name' => 'User',
-            'description' => 'User Roles',
+            'description' => 'User Role',
         ]);
-
     }
 }

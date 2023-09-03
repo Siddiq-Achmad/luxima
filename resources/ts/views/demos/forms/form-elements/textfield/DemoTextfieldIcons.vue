@@ -1,28 +1,28 @@
 <template>
   <VRow>
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         label="Prepend"
         prepend-icon="tabler-map-pin"
       />
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         label="Prepend Inner"
         prepend-inner-icon="tabler-map-pin"
       />
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         label="Append"
         append-icon="tabler-map-pin"
       />
     </VCol>
 
     <VCol cols="12">
-      <VTextField
+      <AppTextField
         label="Append Inner"
         append-inner-icon="tabler-map-pin"
       />

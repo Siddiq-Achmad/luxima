@@ -102,38 +102,22 @@ const orders = [
     ],
   },
 ]
+
+const moreList = [
+  { title: 'Refresh', value: 'refresh' },
+  { title: 'Download', value: 'Download' },
+  { title: 'View All', value: 'View All' },
+]
 </script>
 
 <template>
   <VCard
-    title="Orders"
+    title="Orders by Countries"
     subtitle="62 Deliveries in Progress"
   >
     <template #append>
       <div class="mt-n4 me-n2">
-        <VBtn
-          icon
-          color="default"
-          size="x-small"
-          variant="plain"
-        >
-          <VIcon
-            size="22"
-            icon="tabler-dots-vertical"
-          />
-
-          <VMenu activator="parent">
-            <VList>
-              <VListItem
-                v-for="(item, index) in ['Refresh', 'Download', 'View All']"
-                :key="index"
-                :value="index"
-              >
-                <VListItemTitle>{{ item }}</VListItemTitle>
-              </VListItem>
-            </VList>
-          </VMenu>
-        </VBtn>
+        <MoreBtn :menu-list="moreList" />
       </div>
     </template>
 
@@ -149,7 +133,6 @@ const orders = [
         {{ order.tabName }}
       </VTab>
     </VTabs>
-    <VDivider />
 
     <VCardText>
       <VWindow
@@ -166,37 +149,30 @@ const orders = [
             align="start"
             truncate-line="both"
             density="compact"
-            class="v-timeline-density-compact"
+            class="v-timeline-density-compact v-timeline-icon-only"
           >
             <VTimelineItem
               v-for="item in order.timeline1"
               :key="item.icon"
               fill-dot
-              size="x-small"
+              size="small"
             >
               <template #icon>
-                <div
-                  class="v-timeline-avatar-wrapper rounded-circle"
-                  style="background-color: rgb(var(--v-theme-surface)) ;"
-                >
-                  <VAvatar>
-                    <VIcon
-                      size="22"
-                      :icon="item.icon"
-                      :color="item.type === 'SENDER' ? 'success' : 'primary'"
-                    />
-                  </VAvatar>
-                </div>
+                <VIcon
+                  size="20"
+                  :icon="item.icon"
+                  :color="item.type === 'SENDER' ? 'success' : 'primary'"
+                />
               </template>
               <p :class="`text-sm text-${item.type === 'SENDER' ? 'success' : 'primary'} mb-0`">
                 {{ item.type }}
               </p>
-              <p class="font-weight-semibold mb-0">
+              <p class="app-timeline-title mb-0">
                 {{ item.name }}
               </p>
-              <p class="text-disabled mb-0">
+              <span class="text-disabled">
                 {{ item.address }}
-              </p>
+              </span>
             </VTimelineItem>
           </VTimeline>
 
@@ -210,37 +186,30 @@ const orders = [
             align="start"
             truncate-line="both"
             density="compact"
-            class="v-timeline-density-compact"
+            class="v-timeline-density-compact v-timeline-icon-only"
           >
             <VTimelineItem
               v-for="item in order.timeline2"
               :key="item.icon"
               fill-dot
-              size="x-small"
+              size="small"
             >
               <template #icon>
-                <div
-                  class="v-timeline-avatar-wrapper rounded-circle"
-                  style="background-color: rgb(var(--v-theme-surface)) ;"
-                >
-                  <VAvatar>
-                    <VIcon
-                      size="22"
-                      :icon="item.icon"
-                      :color="item.type === 'SENDER' ? 'success' : 'primary'"
-                    />
-                  </VAvatar>
-                </div>
+                <VIcon
+                  size="20"
+                  :icon="item.icon"
+                  :color="item.type === 'SENDER' ? 'success' : 'primary'"
+                />
               </template>
               <p :class="`text-sm text-${item.type === 'SENDER' ? 'success' : 'primary'} mb-0`">
                 {{ item.type }}
               </p>
-              <p class="font-weight-semibold mb-0">
+              <p class="app-timeline-title mb-0">
                 {{ item.name }}
               </p>
-              <p class="text-disabled mb-0">
+              <span class="text-disabled">
                 {{ item.address }}
-              </p>
+              </span>
             </VTimelineItem>
           </VTimeline>
         </VWindowItem>

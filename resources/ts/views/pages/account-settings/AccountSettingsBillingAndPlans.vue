@@ -131,7 +131,7 @@ const resetPaymentForm = () => {
               </VAlert>
 
               <!-- progress -->
-              <h6 class="d-flex font-weight-semibold text-base mt-4 mb-2">
+              <h6 class="d-flex font-weight-medium text-base mt-4 mb-2">
                 <span>Days</span>
                 <VSpacer />
                 <span>24 of 30 Days</span>
@@ -172,23 +172,15 @@ const resetPaymentForm = () => {
           <!-- 👉 Confirm Dialog -->
           <ConfirmDialog
             v-model:isDialogVisible="isConfirmDialogVisible"
-            confirmation-msg="Are you sure to cancel your subscription?"
+            confirmation-question="Are you sure to cancel your subscription?"
+            cancel-msg="Unsubscription Cancelled!!"
+            cancel-title="Cancelled"
+            confirm-msg="Your subscription cancelled successfully."
+            confirm-title="Unsubscribed!"
           />
 
           <!-- 👉 plan and pricing dialog -->
-          <VDialog
-            v-model="isPricingPlanDialogVisible"
-            class="v-dialog-xl"
-          >
-            <!-- Dialog close btn -->
-            <DialogCloseBtn @click="isPricingPlanDialogVisible = !isPricingPlanDialogVisible" />
-
-            <VCard class="pricing-dialog pa-5 pa-sm-15">
-              <VCardText>
-                <AppPricing lg="4" />
-              </VCardText>
-            </VCard>
-          </VDialog>
+          <PricingPlanDialog v-model:is-dialog-visible="isPricingPlanDialogVisible" />
         </VCardText>
       </VCard>
     </VCol>
@@ -227,7 +219,7 @@ const resetPaymentForm = () => {
                     <VRow v-show="selectedPaymentMethod === 'credit-debit-atm-card'">
                       <!-- 👉 Card Number -->
                       <VCol cols="12">
-                        <VTextField
+                        <AppTextField
                           v-model="cardNumber"
                           label="Card Number"
                           type="number"
@@ -239,7 +231,7 @@ const resetPaymentForm = () => {
                         cols="12"
                         md="6"
                       >
-                        <VTextField
+                        <AppTextField
                           v-model="cardName"
                           label="Name"
                         />
@@ -250,7 +242,7 @@ const resetPaymentForm = () => {
                         cols="6"
                         md="3"
                       >
-                        <VTextField
+                        <AppTextField
                           v-model="cardExpiryDate"
                           label="Expiry Date"
                         />
@@ -261,9 +253,9 @@ const resetPaymentForm = () => {
                         cols="6"
                         md="3"
                       >
-                        <VTextField
+                        <AppTextField
                           v-model="cardCvv"
-                          type="password"
+                          type="number"
                           label="CVV Code"
                         />
                       </VCol>
@@ -316,8 +308,10 @@ const resetPaymentForm = () => {
                           :src="card.image"
                           width="46"
                         />
-                        <h4 class="my-3">
-                          {{ card.name }}
+                        <h4 class="my-3 text-body-1">
+                          <span class="me-2">
+                            {{ card.name }}
+                          </span>
                           <VChip
                             v-if="card.isPrimary"
                             label
@@ -357,7 +351,6 @@ const resetPaymentForm = () => {
                 <CardAddEditDialog
                   v-model:isDialogVisible="isCardEditDialogVisible"
                   :card-details="currentCardDetails"
-                  class="v-dialog-lg"
                 />
               </VCol>
 
@@ -394,7 +387,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="Company Name" />
+                <AppTextField label="Company Name" />
               </VCol>
 
               <!-- 👉 Billing Email -->
@@ -402,7 +395,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="Billing Email" />
+                <AppTextField label="Billing Email" />
               </VCol>
 
               <!-- 👉 Tax ID -->
@@ -410,7 +403,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="Tax ID" />
+                <AppTextField label="Tax ID" />
               </VCol>
 
               <!-- 👉 Vat Number -->
@@ -418,7 +411,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="VAT Number" />
+                <AppTextField label="VAT Number" />
               </VCol>
 
               <!-- 👉 Mobile -->
@@ -426,7 +419,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField
+                <AppTextField
                   dirty
                   label="Phone Number"
                   type="number"
@@ -439,7 +432,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VSelect
+                <AppSelect
                   label="Country"
                   :items="countryList"
                 />
@@ -447,7 +440,7 @@ const resetPaymentForm = () => {
 
               <!-- 👉 Billing Address -->
               <VCol cols="12">
-                <VTextField label="Billing Address" />
+                <AppTextField label="Billing Address" />
               </VCol>
 
               <!-- 👉 State -->
@@ -455,7 +448,7 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="State" />
+                <AppTextField label="State" />
               </VCol>
 
               <!-- 👉 Zip Code -->
@@ -463,7 +456,10 @@ const resetPaymentForm = () => {
                 cols="12"
                 md="6"
               >
-                <VTextField label="Zip Code" />
+                <AppTextField
+                  label="Zip Code"
+                  type="number"
+                />
               </VCol>
 
               <!-- 👉 Actions Button -->

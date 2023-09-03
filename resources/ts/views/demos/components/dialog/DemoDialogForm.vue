@@ -33,7 +33,7 @@ const interest = ref<string[]>([])
             sm="6"
             md="4"
           >
-            <VTextField
+            <AppTextField
               v-model="firstName"
               label="First Name"
             />
@@ -43,7 +43,7 @@ const interest = ref<string[]>([])
             sm="6"
             md="4"
           >
-            <VTextField
+            <AppTextField
               v-model="middleName"
               label="Middle Name"
             />
@@ -53,20 +53,20 @@ const interest = ref<string[]>([])
             sm="6"
             md="4"
           >
-            <VTextField
+            <AppTextField
               v-model="lastName"
               label="Last Name"
               persistent-hint
             />
           </VCol>
           <VCol cols="12">
-            <VTextField
+            <AppTextField
               v-model="email"
               label="Email"
             />
           </VCol>
           <VCol cols="12">
-            <VTextField
+            <AppTextField
               v-model="password"
               label="Password"
               type="password"
@@ -76,20 +76,18 @@ const interest = ref<string[]>([])
             cols="12"
             sm="6"
           >
-            <VSelect
+            <AppTextField
               v-model="age"
-              :items="['0-17', '18-29', '30-54', '54+']"
               label="Age"
+              type="number"
             />
           </VCol>
           <VCol
             cols="12"
             sm="6"
           >
-            <VAutocomplete
+            <AppTextField
               v-model="interest"
-              multiple
-              :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
               label="Interests"
             />
           </VCol>
